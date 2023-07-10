@@ -24,7 +24,7 @@ const Header = () => {
         </div>
         <div className="mx-10">
           {links.map((link, key) => (
-            <Link className="mx-2 hover:text-green-200" href={link.url}>
+            <Link key={key} className="mx-2 hover:text-green-200" href={link.url}>
               {link.title}
             </Link>
           ))}
