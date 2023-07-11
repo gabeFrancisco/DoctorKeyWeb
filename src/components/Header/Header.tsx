@@ -39,7 +39,6 @@ const Header = () => {
           href="/login"
           className="text-teal-700 rounded-md hover:bg-green-200 px-5 py-1 bg-slate-100 shadow-lg"
         >
-          <p>{session?.user?.name}</p>
           Sair
         </Link>
       </div>

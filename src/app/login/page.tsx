@@ -14,11 +14,11 @@ const page = () => {
     },
     onSubmit: (values) => {
       console.log(values)
-      signIn('Credentials', {
+      signIn('credentials', {
         username: values.username,
         password: values.password,
         redirect: true,
-        // callbackUrl: '/dashboard',
+        callbackUrl: '/dashboard',
       }).then(() => console.log(session))
 
     },
