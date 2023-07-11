@@ -5,16 +5,7 @@ import React from "react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 
-const links = [
-  {
-    title: "Painel",
-    url: "/dashboard",
-  },
-  {
-    title: "Chaves",
-    url: "/keys",
-  },
-];
+
 
 const Header = () => {
   return (
@@ -23,7 +14,7 @@ const Header = () => {
         <div>
           <span className="mx-5 text-2xl font-bold">Doctor Key</span>
         </div>
-        <div className="mx-10">
+        {/* <div className="mx-10">
           {links.map((link, key) => (
             <Link
               key={key}
@@ -33,7 +24,7 @@ const Header = () => {
               {link.title}
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-row items-center mx-10">
         <button
