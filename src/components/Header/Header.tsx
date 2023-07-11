@@ -3,6 +3,8 @@
 import React from "react";
 
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { data } from "autoprefixer";
 
 const links = [
   {
@@ -16,6 +18,8 @@ const links = [
 ];
 
 const Header = () => {
+  const { data: session, status} = useSession()
+  const username = session?.user?.email;
   return (
     <div className=" flex flex-row items-center justify-between w-full p-3 bg-green-400 shadow-lg text-white">
       <div className="flex flex-row items-center">
@@ -35,7 +39,8 @@ const Header = () => {
           href="/login"
           className="text-teal-700 rounded-md hover:bg-green-200 px-5 py-1 bg-slate-100 shadow-lg"
         >
-          Login
+          <p>{session?.user?.name}</p>
+          Sair
         </Link>
       </div>
     </div>
