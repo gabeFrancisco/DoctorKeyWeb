@@ -8,7 +8,7 @@ interface SidebarItemProps {
 
 const SidebarItem = (props: SidebarItemProps) => {
   return (
-    <div className="my-3 m-10 p-3 text-white font-bold rounded-xl">
+    <div className="my-2 m-10 p-3 text-white font-bold rounded-xl">
       <Link href={props.url}>{props.title}</Link>
     </div>
   );

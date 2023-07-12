@@ -3,9 +3,9 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import React from "react";
+import React, { ReactNode } from "react";
 
-const layout = async () => {
+const layout = async ({children}: {children: ReactNode}) => {
   const session = await getServerSession(authOptions);
   console.log(session);
   if (!session) {
@@ -13,10 +13,12 @@ const layout = async () => {
   }
   return (
     <div className="bg-slate-100 w-full h-screen">
-      <Header />
+      {/* <Header /> */}
       <div className="flex flex-row">
         <Sidebar />
-        <h1>fsdf</h1>
+        <div className="m-7 block">
+          {children}
+        </div>
       </div>
     </div>
   );

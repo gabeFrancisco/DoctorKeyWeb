@@ -26,4 +26,16 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/login",
   },
+  callbacks: {
+    async session({session, token, user}){
+      if(session){
+        session.user!.name = 'gabeFrank';
+      }
+      return session;
+    },
+    async jwt({ token }){
+      token.sub
+      return token
+    }
+  }
 };
