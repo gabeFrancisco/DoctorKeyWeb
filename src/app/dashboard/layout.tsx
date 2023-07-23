@@ -15,7 +15,7 @@ const layout = async ({children}: {children: ReactNode}) => {
       {/* <Header /> */}
       <div className="flex flex-row">
         <Sidebar />
-        <div className="m-7 block">
+        <div className="m-7 flex flex-col items-stretch w-full">
           {children}
         </div>
       </div>

@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import React from 'react'
-import SidebarItem from './SidebarItem'
-import { signOut, useSession } from 'next-auth/react';
-import api from '@/app/services/api';
+import React from "react";
+import SidebarItem from "./SidebarItem";
+import { signOut, useSession } from "next-auth/react";
+import api from "@/app/services/api";
 
 const links = [
   {
@@ -16,37 +16,33 @@ const links = [
   },
 ];
 
-const handleList = async () => {
-  return await api.get('/users').then(res => console.log(res.data));
-}
-
 const Sidebar = () => {
-  const { data, status } = useSession()
-  console.log(data)
+  const { data, status } = useSession();
+  console.log(data);
   return (
-    <aside className='bg-green-400 w-1/5 h-screen sticky text-slate-100'>
-      <div className='flex flex-col items-center m-5'>
-      {status === 'authenticated' && data !== null && (<p>Bem vindo <i>{data.user.name}</i></p>)}
-      <button
-          onClick={async () => {
-            signOut({ callbackUrl: "/login" })
-        }}
-          className="text-teal-700 rounded-md hover:bg-green-200 py-1 bg-slate-100 shadow-lg px-7 m-2"
-        >
-          Sair
-        </button>  
-        <button
-          onClick={handleList}
-          className="text-teal-700 rounded-md hover:bg-green-200 py-1 bg-slate-100 shadow-lg px-7 m-2"
-        >
-          List
-        </button>       
+    <aside className="bg-green-400 w-1/5 h-screen sticky text-slate-100">
+      <div className="flex flex-col items-center m-5">
+        {status === "authenticated" && data !== null && (
+          <div className="flex flex-col items-center">
+            <p>
+              Bem vindo <i>{data.user.name}</i>
+            </p>
+            <a
+              onClick={async () => {
+                signOut({ callbackUrl: "/login" });
+              }}
+              className="cursor-pointer hover:text-green-200 font-semibold"
+            >
+              Sair
+            </a>
+          </div>
+        )}
       </div>
       {links.map((link, key) => (
-        <SidebarItem key={key} title={link.title} url={link.url}/>
+        <SidebarItem key={key} title={link.title} url={link.url} />
       ))}
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
