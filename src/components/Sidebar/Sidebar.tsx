@@ -3,16 +3,19 @@
 import React from "react";
 import SidebarItem from "./SidebarItem";
 import { signOut, useSession } from "next-auth/react";
-import api from "@/app/services/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDashboard, faKey } from "@fortawesome/free-solid-svg-icons";
 
 const links = [
   {
     title: "Painel",
     url: "/dashboard",
+    icon: faDashboard
   },
   {
     title: "Chaves",
     url: "/dashboard/keys",
+    icon: faKey
   },
 ];
 
@@ -39,7 +42,7 @@ const Sidebar = () => {
         )}
       </div>
       {links.map((link, key) => (
-        <SidebarItem key={key} title={link.title} url={link.url} />
+        <SidebarItem key={key} title={link.title} url={link.url} icon={link.icon}/>
       ))}
     </aside>
   );
