@@ -1,4 +1,3 @@
-import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
