@@ -1,0 +1,31 @@
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Key } from "@/models/Key";
+
+interface KeyState{
+  key: Key;
+  keyList: Array<Key>;
+}
+
+const initialState: KeyState = {
+  key: {
+    id: '',
+    manufactor: '',
+    model: '',
+    year: '',
+    buttons: 0,
+    keyType: null,
+    bladeType: null,
+    userId: ''
+  },
+  keyList: new Array<Key>()
+};
+
+export const KeySlice = createSlice({
+  name: 'Keys',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {}
+});
+
+export default KeySlice.reducer;
+export const {} = KeySlice.actions;

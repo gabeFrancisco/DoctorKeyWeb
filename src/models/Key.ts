@@ -7,7 +7,7 @@ export interface Key extends BaseEntity{
   model: string;
   year: string;
   buttons: number;
-  keyType: KeyType;
-  bladeType: BladeType;
+  keyType: KeyType | null;
+  bladeType: BladeType | null;
   userId: string;
 }
