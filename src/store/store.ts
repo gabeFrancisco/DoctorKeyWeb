@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { KeySlice } from "./features/keySlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    keys: KeySlice.reducer
+  },
   devTools: true,
 });
 

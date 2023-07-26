@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Key } from "@/models/Key";
+import api from "@/app/services/api";
 
 interface KeyState{
   key: Key;
@@ -20,11 +21,25 @@ const initialState: KeyState = {
   keyList: new Array<Key>()
 };
 
+export const getAllKeys = createAsyncThunk(
+  "keys/getAll",
+  async () => {
+    const response = await api 
+      .get("/keys")
+      .then(res => res.data);
+    return response;
+  }
+)
+
 export const KeySlice = createSlice({
   name: 'Keys',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {}
+  extraReducers: (builder) => {
+    builder.addCase(getAllKeys.fulfilled, (state, action) => {
+      state.keyList = action.payload;
+    })
+  }
 });
 
 export default KeySlice.reducer;

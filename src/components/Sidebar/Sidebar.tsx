@@ -21,7 +21,6 @@ const links = [
 
 const Sidebar = () => {
   const { data, status } = useSession();
-  console.log(data);
   return (
     <aside className="bg-green-400 w-1/5 h-screen sticky text-slate-100">
       <div className="flex flex-col items-center m-5">
