@@ -1,6 +1,7 @@
 'use client'
 
-import KeyToolbar from "@/components/KeyToolbar/KeyToolbar";
+import KeyTable from "@/components/Keys/KeyTable";
+import KeyToolbar from "@/components/Keys/KeyToolbar";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { getAllKeys } from "@/store/features/keySlice";
 import { useAppDispatch } from "@/store/store";
@@ -15,7 +16,7 @@ const Keys = () => {
     <div>
       <SectionTitle title="Chaves" subtitle="Gerencie todas as suas chaves nessa seção" />
       <KeyToolbar/>
-      <button className="text-white bg-blue-400 px-2 py-1 rounded-md">Load keys!</button>
+      <KeyTable/>
     </div>
   );
 };
