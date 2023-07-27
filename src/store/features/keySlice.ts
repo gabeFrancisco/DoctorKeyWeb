@@ -14,6 +14,7 @@ const initialState: KeyState = {
     model: '',
     year: '',
     buttons: 0,
+    price: 0,
     keyType: null,
     bladeType: null,
     userId: ''
