@@ -12,7 +12,7 @@
 }
 
 .growingLine{
-  border-bottom: 3px solid rgba(74, 222, 128, 0.709);
+  border-bottom: 3px solid rgba(34, 197, 94, 0.709);
   border-radius: 5px;
   height: 0.3rem;
   background: linear-gradient(to right, var(--primary), #b0d3f5) ;

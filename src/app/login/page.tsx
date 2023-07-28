@@ -25,7 +25,7 @@ const page = () => {
   });
   return (
     <div className="flex flex-row items-stretch h-screen">
-      <div className="w-2/5 bg-zinc bg-gradient-to-tr from-green-200 to-green-400 h-full flex flex-col justify-center items-center">
+      <div className="w-2/5 bg-zinc bg-gradient-to-tr from-green-300 to-green-500 h-full flex flex-col justify-center items-center">
         <div className="bg-slate-200 p-3 rounded-lg shadow-lg h-2/5">
           <form>
             <div className="m-5">
@@ -49,7 +49,7 @@ const page = () => {
             <div>
               <button
                 onClick={() => formik.handleSubmit()}
-                className="rounded-lg px-3 py-1 bg-green-400 text-white"
+                className="rounded-lg px-3 py-1 bg-green-500 text-white"
                 type="button"
               >
                 Entrar!

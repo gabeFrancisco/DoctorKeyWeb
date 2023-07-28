@@ -14,7 +14,7 @@ const KeyTable = () => {
   return (
     <div className="overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-md">
-        <thead className="border-0 rounded-md text-md text-gray-100 bg-green-400 dark:bg-gray-700 dark:text-gray-400">
+        <thead className="border-0 rounded-md text-md text-gray-100 bg-green-500 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th className="px-6 py-3 m-1">Modelo</th>
             <th className="px-6 py-3 m-1">Marca</th>
