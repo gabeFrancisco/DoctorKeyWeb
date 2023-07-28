@@ -1,11 +1,16 @@
+'use client'
+
+import api from "@/app/services/api";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const page = () => {
+  const navigate = useRouter();
   return (
     <div>
       <SectionTitle title="Nova chave" subtitle="Adicione uma nova chave" />
-      <div className=" border-gray-200 border-2 border-dashed rounded-lg shadow-xl mt-5 mx-16">
+      <div className=" border-gray-200 border-2 border-dashed rounded-lg shadow-xl mt-5 mx-20">
         <div className="m-5 p-5">
           <form className="flex flex-col items-center justify-center">
             <div className="grid grid-cols-2 gap-1 text-gray-700">
@@ -73,6 +78,14 @@ const page = () => {
                   type="text"
                 />
               </div>
+            </div>
+            <div className="mt-5 p-3">
+              <button type="button" onClick={() => navigate.replace('/dashboard/keys')} className="rounded bg-red-500 text-white px-3 py-1 m-2">
+                Cancelar
+              </button>
+              <button className="rounded bg-green-500 text-white px-3 py-1 m-2">
+                Adicionar!
+              </button>
             </div>
           </form>
         </div>

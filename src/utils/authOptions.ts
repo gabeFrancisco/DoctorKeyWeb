@@ -12,25 +12,30 @@ export const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const result = await axios
-          .post("http://localhost:5003/users/login", credentials)
-          .then((res) => {
-            if (res.status === 200) {
-              return res.data;
-            }
-          });
-
-        return {
-          id: result.user.id,
-          name: result.user.username,
-          accessToken: result.token,
-        };
+        try{
+          const result = await axios
+            .post("http://localhost:5003/users/login", credentials)
+            .then((res) => {
+              if (res.status === 200) {
+                return res.data;
+              }
+            });
+  
+          return {
+            id: result.user.id,
+            name: result.user.username,
+            accessToken: result.token,
+          };
+        }
+        catch{
+          return null
+        }
       },
     }),
   ],
   session: {
     strategy: "jwt",
-    maxAge: 3600
+    maxAge: 3600,
   },
   pages: {
     signIn: "/login",
