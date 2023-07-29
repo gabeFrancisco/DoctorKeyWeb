@@ -1,7 +1,8 @@
-'use client'
+"use client";
 
 import api from "@/app/services/api";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import { getAllBladeTypes } from "@/store/features/bladeTypeSlice";
 import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
@@ -10,10 +11,13 @@ import React, { useEffect } from "react";
 const page = () => {
   const navigate = useRouter();
   const dispatch = useAppDispatch();
-  const keyTypes = useAppSelector(state => state.keyTypes.keyTypeList)
+  const keyTypes = useAppSelector((state) => state.keyTypes.keyTypeList);
+  const bladeTypes = useAppSelector(state => state.bladeTypes.bladeTypeList);
+
   useEffect(() => {
-    dispatch(getAllKeyTypes())
-  }, [])
+    dispatch(getAllKeyTypes());
+    dispatch(getAllBladeTypes())
+  }, []);
   return (
     <div>
       <SectionTitle title="Nova chave" subtitle="Adicione uma nova chave" />
@@ -31,19 +35,33 @@ const page = () => {
                   type="text"
                 />
                 <label htmlFor="password">Tipo</label>
-                <select className="rounded-md border-2 bg-gray-100" id="keyType">
+                <select
+                  className="rounded-md border-2 bg-gray-100"
+                  id="keyType"
+                >
                   {keyTypes.map((el, key) => (
-                    <option className="rounded-md border-2 bg-gray-100" key={key}>{el.name}</option>
+                    <option
+                      className="rounded-md border-2 bg-gray-100"
+                      key={key}
+                    >
+                      {el.name}
+                    </option>
                   ))}
                 </select>
                 <label htmlFor="password">Lâmina</label>
-                <input
-                  name="password"
-                  className="rounded-md border-2"
-                  // value={formik.values.password}
-                  // onChange={formik.handleChange}
-                  type="text"
-                />
+                <select
+                  className="rounded-md border-2 bg-gray-100"
+                  id="keyType"
+                >
+                  {bladeTypes.map((el, key) => (
+                      <option
+                      className="rounded-md border-2 bg-gray-100"
+                      key={key}
+                    >
+                      {el.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="grid grid-cols-2 gap-5 mx-5">
                 <label htmlFor="password">Modelo</label>
@@ -85,7 +103,11 @@ const page = () => {
               </div>
             </div>
             <div className="mt-5 p-3">
-              <button type="button" onClick={() => navigate.replace('/dashboard/keys')} className="rounded bg-red-500 text-white px-3 py-1 m-2">
+              <button
+                type="button"
+                onClick={() => navigate.replace("/dashboard/keys")}
+                className="rounded bg-red-500 text-white px-3 py-1 m-2"
+              >
                 Cancelar
               </button>
               <button className="rounded bg-green-500 text-white px-3 py-1 m-2">
