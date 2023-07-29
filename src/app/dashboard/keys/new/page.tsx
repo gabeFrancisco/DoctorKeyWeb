@@ -1,10 +1,10 @@
 "use client";
 
-import api from "@/app/services/api";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { getAllBladeTypes } from "@/store/features/bladeTypeSlice";
 import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -12,12 +12,28 @@ const page = () => {
   const navigate = useRouter();
   const dispatch = useAppDispatch();
   const keyTypes = useAppSelector((state) => state.keyTypes.keyTypeList);
-  const bladeTypes = useAppSelector(state => state.bladeTypes.bladeTypeList);
+  const bladeTypes = useAppSelector((state) => state.bladeTypes.bladeTypeList);
 
   useEffect(() => {
     dispatch(getAllKeyTypes());
-    dispatch(getAllBladeTypes())
+    dispatch(getAllBladeTypes());
   }, []);
+
+  const formik = useFormik({
+    initialValues: {
+      manufactor: "",
+      model: "",
+      year: "",
+      buttons: 0,
+      price: 0,
+      keyType: keyTypes[0]?.id,
+      bladeType: bladeTypes[0]?.id
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
   return (
     <div>
       <SectionTitle title="Nova chave" subtitle="Adicione uma nova chave" />
@@ -26,37 +42,43 @@ const page = () => {
           <form className="flex flex-col items-center justify-center">
             <div className="grid grid-cols-2 gap-1 text-gray-700">
               <div className="grid grid-cols-2 gap-5 mx-5">
-                <label htmlFor="user">Fabricante</label>
+                <label htmlFor="manufactor">Fabricante</label>
                 <input
-                  name="username"
+                  name="manufactor"
                   className="rounded-md border-2"
-                  // value={formik.values.username}
-                  // onChange={formik.handleChange}
+                  value={formik.values.manufactor}
+                  onChange={formik.handleChange}
                   type="text"
                 />
-                <label htmlFor="password">Tipo</label>
+                <label htmlFor="keyType">Tipo</label>
                 <select
                   className="rounded-md border-2 bg-gray-100"
                   id="keyType"
+                  value={formik.values.keyType}
+                  onChange={formik.handleChange}
                 >
                   {keyTypes.map((el, key) => (
                     <option
                       className="rounded-md border-2 bg-gray-100"
                       key={key}
+                      value={el.id}
                     >
                       {el.name}
                     </option>
                   ))}
                 </select>
-                <label htmlFor="password">Lâmina</label>
+                <label htmlFor="password">Lâmina</label> 
                 <select
                   className="rounded-md border-2 bg-gray-100"
                   id="keyType"
+                  value={formik.values.bladeType}
+                  onChange={formik.handleChange}
                 >
                   {bladeTypes.map((el, key) => (
-                      <option
+                    <option
                       className="rounded-md border-2 bg-gray-100"
                       key={key}
+                      value={el.id}
                     >
                       {el.name}
                     </option>
@@ -64,44 +86,36 @@ const page = () => {
                 </select>
               </div>
               <div className="grid grid-cols-2 gap-5 mx-5">
-                <label htmlFor="password">Modelo</label>
+                <label htmlFor="model">Modelo</label>
                 <input
-                  name="password"
+                  name="model"
                   className="rounded-md border-2"
-                  // value={formik.values.password}
-                  // onChange={formik.handleChange}
+                  value={formik.values.model}
+                  onChange={formik.handleChange}
                   type="text"
                 />
-                <label htmlFor="password">Ano</label>
+                <label htmlFor="year">Ano</label>
                 <input
-                  name="password"
+                  name="year"
                   className="rounded-md border-2"
-                  // value={formik.values.password}
-                  // onChange={formik.handleChange}
+                  value={formik.values.year}
+                  onChange={formik.handleChange}
                   type="text"
                 />
-                <label htmlFor="password">Quantidade de botões</label>
+
+                <label htmlFor="price">Preço</label>
                 <input
-                  name="password"
+                  name="price"
                   className="rounded-md border-2"
-                  // value={formik.values.password}
-                  // onChange={formik.handleChange}
-                  type="text"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 gap-1 text-gray-700 mt-5 px-20">
-              <div className="grid grid-cols-2 gap-5 mx-5">
-                <label htmlFor="password">Preço</label>
-                <input
-                  name="password"
-                  className="rounded-md border-2"
-                  // value={formik.values.password}
-                  // onChange={formik.handleChange}
+                  value={formik.values.price}
+                  onChange={formik.handleChange}
                   type="text"
                 />
               </div>
             </div>
+            {/* <div className="grid grid-cols-1 gap-1 text-gray-700 mt-5 px-20">
+              
+            </div> */}
             <div className="mt-5 p-3">
               <button
                 type="button"
@@ -110,7 +124,11 @@ const page = () => {
               >
                 Cancelar
               </button>
-              <button className="rounded bg-green-500 text-white px-3 py-1 m-2">
+              <button
+                type="button"
+                onClick={() => formik.handleSubmit()}
+                className="rounded bg-green-500 text-white px-3 py-1 m-2"
+              >
                 Adicionar!
               </button>
             </div>
