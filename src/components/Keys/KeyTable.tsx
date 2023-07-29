@@ -4,6 +4,7 @@ import { getAllKeys } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect, useState } from "react";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
+import KeyRow from "./KeyRow";
 
 const KeyTable = () => {
   const keys = useAppSelector((state) => state.keys.keyList);
@@ -30,16 +31,7 @@ const KeyTable = () => {
             </thead>
             <tbody>
               {keys.map((el, key) => (
-                <tr className="dark:bg-gray-800" key={key}>
-                  <th className="px-6 py-2">{el.model}</th>
-                  <td className="px-6 py-2">{el.manufactor}</td>
-                  <td className="px-6 py-2">{el.year}</td>
-                  <td className="px-6 py-2">{el.keyType?.name}</td>
-                  <td className="px-6 py-2">{el.bladeType?.name}</td>
-                  <td className="px-6 py-2 text-green-500 font-bold">
-                    R${el.price.toFixed(2)}
-                  </td>
-                </tr>
+                <KeyRow _key={el} />
               ))}
             </tbody>
           </table>
