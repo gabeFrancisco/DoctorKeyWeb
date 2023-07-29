@@ -2,11 +2,18 @@
 
 import api from "@/app/services/api";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 const page = () => {
   const navigate = useRouter();
+  const dispatch = useAppDispatch();
+  const keyTypes = useAppSelector(state => state.keyTypes.keyTypeList)
+  useEffect(() => {
+    dispatch(getAllKeyTypes())
+  }, [])
   return (
     <div>
       <SectionTitle title="Nova chave" subtitle="Adicione uma nova chave" />
@@ -24,13 +31,11 @@ const page = () => {
                   type="text"
                 />
                 <label htmlFor="password">Tipo</label>
-                <input
-                  name="password"
-                  className="rounded-md border-2"
-                  // value={formik.values.password}
-                  // onChange={formik.handleChange}
-                  type="text"
-                />
+                <select className="rounded-md border-2 bg-gray-100" id="keyType">
+                  {keyTypes.map((el, key) => (
+                    <option className="rounded-md border-2 bg-gray-100" key={key}>{el.name}</option>
+                  ))}
+                </select>
                 <label htmlFor="password">Lâmina</label>
                 <input
                   name="password"

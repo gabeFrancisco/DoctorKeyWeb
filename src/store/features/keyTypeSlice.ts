@@ -1,3 +1,4 @@
+import api from "@/app/services/api";
 import { KeyType } from "@/models/KeyType";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -15,11 +16,25 @@ const initialState: KeyTypeState = {
   keyTypeList: new Array<KeyType>()
 }
 
-export const keyTypeSlice = createSlice({
+export const getAllKeyTypes = createAsyncThunk(
+  "keTypes/getAll",
+  async () => {
+    return await api
+      .get("/keyTypes")
+      .then(res => res.data);
+  }
+)
+
+export const KeyTypeSlice = createSlice({
   name: "KeyTypes",
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllKeyTypes.fulfilled, (state, action) => {
+      state.keyTypeList = action.payload
+    })
+  }
 })
 
-export default keyTypeSlice.reducer;
-export const {} = keyTypeSlice.actions;
+export default KeyTypeSlice.reducer;
+export const {} = KeyTypeSlice.actions;
