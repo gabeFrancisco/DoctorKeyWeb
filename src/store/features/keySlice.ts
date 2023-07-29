@@ -27,6 +27,18 @@ export const getAllKeys = createAsyncThunk(
   async () => await api.get("/keys").then((res) => res.data)
 );
 
+export const postKey = createAsyncThunk(
+  "keys/post",
+  async (data: {}, thunkAPI) => {
+    return await api.post("/keys", data).then((res) => {
+      if (res.status === 200) {
+        thunkAPI.dispatch(getAllKeys());
+        return res.data;
+      }
+    });
+  }
+);
+
 export const KeySlice = createSlice({
   name: "Keys",
   initialState,

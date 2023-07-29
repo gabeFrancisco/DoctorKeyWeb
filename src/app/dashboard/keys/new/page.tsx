@@ -2,9 +2,11 @@
 
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { getAllBladeTypes } from "@/store/features/bladeTypeSlice";
+import { postKey } from "@/store/features/keySlice";
 import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useFormik } from "formik";
+("");
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -26,12 +28,13 @@ const page = () => {
       year: "",
       buttons: 0,
       price: 0,
-      keyType: keyTypes[0]?.id,
-      bladeType: bladeTypes[0]?.id
+      keyTypeId: keyTypes[0]?.id,
+      bladeTypeId: bladeTypes[0]?.id,
     },
     enableReinitialize: true,
     onSubmit: (values) => {
       console.log(values);
+      dispatch(postKey(values)).then(() => navigate.replace("/dashboard/keys"));
     },
   });
   return (
@@ -50,11 +53,11 @@ const page = () => {
                   onChange={formik.handleChange}
                   type="text"
                 />
-                <label htmlFor="keyType">Tipo</label>
+                <label htmlFor="keyTypeId">Tipo</label>
                 <select
                   className="rounded-md border-2 bg-gray-100"
-                  id="keyType"
-                  value={formik.values.keyType}
+                  id="keyTypeId"
+                  value={formik.values.keyTypeId}
                   onChange={formik.handleChange}
                 >
                   {keyTypes.map((el, key) => (
@@ -67,11 +70,11 @@ const page = () => {
                     </option>
                   ))}
                 </select>
-                <label htmlFor="password">Lâmina</label> 
+                <label htmlFor="password">Lâmina</label>
                 <select
                   className="rounded-md border-2 bg-gray-100"
-                  id="keyType"
-                  value={formik.values.bladeType}
+                  id="keyTypeId"
+                  value={formik.values.bladeTypeId}
                   onChange={formik.handleChange}
                 >
                   {bladeTypes.map((el, key) => (
@@ -109,7 +112,7 @@ const page = () => {
                   className="rounded-md border-2"
                   value={formik.values.price}
                   onChange={formik.handleChange}
-                  type="text"
+                  type="number"
                 />
               </div>
             </div>
