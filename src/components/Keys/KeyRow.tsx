@@ -6,18 +6,23 @@ import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
+import "car-makes-icons/dist/style.css";
+
 const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
   const handleKeyUpdate = () => {
-    navigate.push(`/dashboard/keys/${_key.id}`)
-  }
+    navigate.push(`/dashboard/keys/${_key.id}`);
+  };
   return (
     <tr
       className="dark:bg-gray-800 cursor-pointer hover:bg-green-200"
       key={_key.id}
       onClick={handleKeyUpdate}
     >
-      <th className="px-6 py-2">{_key.model}</th>
+      <th className="px-6 py-2">
+        <i className={`mr-5 text-xl car-${_key.manufactor?.name.toLowerCase()}`} />
+        {_key.model}
+      </th>
       <td className="px-6 py-2">{_key.manufactor?.name}</td>
       <td className="px-6 py-2">{_key.buttons}</td>
       <td className="px-6 py-2">{_key.year}</td>

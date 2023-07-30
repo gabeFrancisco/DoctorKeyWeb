@@ -329,6 +329,11 @@ caniuse-lite@^1.0.30001406, caniuse-lite@^1.0.30001464, caniuse-lite@^1.0.300015
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001514.tgz#e2a7e184a23affc9367b7c8d734e7ec4628c1309"
   integrity sha512-ENcIpYBmwAAOm/V2cXgM7rZUrKKaqisZl4ZAI520FIkqGXUxJjmaIssbRW5HVVR5tyV6ygTLIm15aU8LUmQSaQ==
 
+car-makes-icons@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/car-makes-icons/-/car-makes-icons-1.0.0.tgz#71274c024c35d33c344da945a0add6c4febb6790"
+  integrity sha512-7XKxOFyL7ZbZA+KtwunL3YLuORfQ1DCddee+CQzqjBa7RkJ8EITUNI6BtyviNOlpnU+0uJm45jxGDlCUagIrRw==
+
 chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
