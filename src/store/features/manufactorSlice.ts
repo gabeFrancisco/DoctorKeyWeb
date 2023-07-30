@@ -26,6 +26,11 @@ export const ManufactorSlice = createSlice({
   name: "ManufactorSlice",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllManufactors.fulfilled, (state, action) => {
+      state.manufactorList = action.payload
+    })
+  }
 });
 
 export default ManufactorSlice.reducer;

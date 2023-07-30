@@ -4,6 +4,7 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { getAllBladeTypes } from "@/store/features/bladeTypeSlice";
 import { postKey } from "@/store/features/keySlice";
 import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
+import { getAllManufactors } from "@/store/features/manufactorSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useFormik } from "formik";
 ("");
@@ -15,30 +16,31 @@ const page = () => {
   const dispatch = useAppDispatch();
   const keyTypes = useAppSelector((state) => state.keyTypes.keyTypeList);
   const bladeTypes = useAppSelector((state) => state.bladeTypes.bladeTypeList);
+  const manufactors = useAppSelector(state => state.manufactors.manufactorList);
 
   useEffect(() => {
     dispatch(getAllKeyTypes());
     dispatch(getAllBladeTypes());
+    dispatch(getAllManufactors())
   }, []);
 
   const formik = useFormik({
     initialValues: {
-      manufactor: "",
+      manufactorId: manufactors[0]?.id,
+      keyTypeId: keyTypes[0]?.id,
+      bladeTypeId: bladeTypes[0]?.id,
       model: "",
       year: "",
       buttons: 0,
       price: 0,
-      keyTypeId: keyTypes[0]?.id,
-      bladeTypeId: bladeTypes[0]?.id,
     },
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values);
       dispatch(postKey(values)).then(() => navigate.replace("/dashboard/keys"));
     },
   });
   return (
-    <div>
+    <div>                           
       <SectionTitle title="Nova chave" subtitle="Adicione uma nova chave" />
       <div className="border-gray-300 border-2 border-dashed rounded-lg mt-5 mx-5">
         <div className="m-5 p-5">
@@ -46,14 +48,23 @@ const page = () => {
             <div className="grid grid-cols-2 text-gray-700">
               <div className="text-gray-700 mr-5">
                 <div className="mb-5">
-                  <label htmlFor="manufactor">Fabricante</label>
-                  <input
-                    name="manufactor"
-                    className="rounded-md border-2 block my-2 w-full"
-                    value={formik.values.manufactor}
+                  <label htmlFor="manufactorId">Fabricante</label>
+                  <select
+                    className="rounded-md border-2 bg-gray-100 block my-2 w-full"
+                    id="manufactorId"
+                    value={formik.values.manufactorId}
                     onChange={formik.handleChange}
-                    type="text"
-                  />
+                  >
+                    {manufactors.map((el, key) => (
+                      <option
+                        className="rounded-md border-2 bg-gray-100"
+                        key={key}
+                        value={el.id}
+                      >
+                        {el.name}
+                      </option>
+                    ))}
+                  </select>
                   <small className="block my-2 text-gray-500">
                     Selecione um frabricante nesta lista.
                   </small>
