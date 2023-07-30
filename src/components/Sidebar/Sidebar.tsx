@@ -3,7 +3,6 @@
 import React from "react";
 import SidebarItem from "./SidebarItem";
 import { signOut, useSession } from "next-auth/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDashboard, faKey } from "@fortawesome/free-solid-svg-icons";
 
 const links = [
