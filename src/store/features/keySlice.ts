@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  current,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { Key } from "@/models/Key";
 import api from "@/app/services/api";
 
@@ -10,7 +15,7 @@ interface KeyState {
 const initialState: KeyState = {
   key: {
     id: "",
-    manufactor: "",
+    manufactor: null,
     model: "",
     year: "",
     buttons: 0,
@@ -42,7 +47,13 @@ export const postKey = createAsyncThunk(
 export const KeySlice = createSlice({
   name: "Keys",
   initialState,
-  reducers: {},
+  reducers: {
+    readKey: (state, action: PayloadAction<string>) => {
+      state.key = current(
+        state.keyList.find((key) => key.id === action.payload) as Key
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllKeys.fulfilled, (state, action) => {
       state.keyList = action.payload;
@@ -51,4 +62,4 @@ export const KeySlice = createSlice({
 });
 
 export default KeySlice.reducer;
-export const {} = KeySlice.actions;
+export const { readKey} = KeySlice.actions;
