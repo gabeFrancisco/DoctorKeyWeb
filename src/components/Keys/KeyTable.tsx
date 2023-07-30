@@ -29,10 +29,12 @@ const KeyTable = () => {
                 <tr>
                   <th className="px-6 py-3 m-1">Modelo</th>
                   <th className="px-6 py-3 m-1">Marca</th>
+                  <th className="px-6 py-3 m-1">Botões</th>
                   <th className="px-6 py-3 m-1">Ano</th>
                   <th className="px-6 py-3 m-1">Tipo</th>
                   <th className="px-6 py-3 m-1">Lâmina</th>
                   <th className="px-6 py-3 m-1">Preço</th>
+                  <th className="px-6 py-3 m-1">Ações</th>
                 </tr>
               </thead>
               <tbody>

@@ -11,7 +11,7 @@ const layout = async ({children}: {children: ReactNode}) => {
     redirect("/login");
   }
   return (
-    <div className="bg-slate-100 w-full h-screen">
+    <div className="bg-slate-100 w-full h-full">
       {/* <Header /> */}
       <div className="flex flex-row">
         <Sidebar />

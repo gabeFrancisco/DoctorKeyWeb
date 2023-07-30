@@ -8,7 +8,7 @@ const KeyToolbar = () => {
     navigator;
   };
   return (
-    <div className="rounded-md border-dashed border-green-300 border-b-2 w-full flex flex-row  my-3 p-2">
+    <div className="rounded-md border-dashed border-green-300 border-b-2 w-full flex flex-row  mt-3 mb-5 p-3">
       
       <Link
         href="keys/new"
