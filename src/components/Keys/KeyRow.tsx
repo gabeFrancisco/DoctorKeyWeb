@@ -26,8 +26,8 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       <td className="px-6 py-2">{_key.manufactor}</td>
       <td className="px-6 py-2">{_key.buttons}</td>
       <td className="px-6 py-2">{_key.year}</td>
-      <td className="px-6 py-2">{_key.keyType?.name}</td>
-      <td className="px-6 py-2">{_key.bladeType?.name}</td>
+      <td className="px-6 py-2">{_key.keyType}</td>
+      <td className="px-6 py-2">{_key.bladeType}</td>
       <td className="px-6 py-2 text-green-500 font-bold">
         R${_key.price.toFixed(2)}
       </td>

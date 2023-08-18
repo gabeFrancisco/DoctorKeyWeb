@@ -1,9 +1,10 @@
 "use client";
 
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import { getAllBladeTypes } from "@/store/features/bladeTypeSlice";
+import bladeTypes from "@/models/constants/bladeTypes";
+import keyTypes from "@/models/constants/keyTypes";
+import manufactors from "@/models/constants/manufactors";
 import { postKey } from "@/store/features/keySlice";
-import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
@@ -14,18 +15,12 @@ import React, { useEffect } from "react";
 const page = () => {
   const navigate = useRouter();
   const dispatch = useAppDispatch();
-  const keyTypes = useAppSelector((state) => state.keyTypes.keyTypeList);
-  const bladeTypes = useAppSelector((state) => state.bladeTypes.bladeTypeList);
-
-  useEffect(() => {
-    dispatch(getAllKeyTypes());
-    dispatch(getAllBladeTypes());
-  }, []);
 
   const formik = useFormik({
     initialValues: {
-      keyTypeId: keyTypes[0]?.id,
-      bladeTypeId: bladeTypes[0]?.id,
+      manufactor: "",
+      keyType: "",
+      bladeType: "",
       model: "",
       year: "",
       buttons: 0,
@@ -50,18 +45,17 @@ const page = () => {
                     <select
                       className="rounded-md border-2 bg-gray-100 block my-2 w-full"
                       id="manufactorId"
-                      // value={formik.values.manufactorId}
-                      // onChange={formik.handleChange}
+                      value={formik.values.manufactor}
+                      onChange={formik.handleChange}
                     >
-                      {/* {manufactors.map((el, key) => (
+                      {manufactors.map((el, key) => (
                         <option
                           className="rounded-md border-2 bg-gray-100"
                           key={key}
-                          value={el.id}
                         >
-                          {el.name}
+                          {el}
                         </option>
-                      ))} */}
+                      ))}
                     </select>
                     <small className="block my-2 text-gray-500">
                       Selecione um frabricante nesta lista.
@@ -78,16 +72,15 @@ const page = () => {
                     <select
                       className="rounded-md border-2 bg-gray-100 block my-2 w-full"
                       id="keyTypeId"
-                      value={formik.values.keyTypeId}
+                      value={formik.values.keyType}
                       onChange={formik.handleChange}
                     >
                       {keyTypes.map((el, key) => (
                         <option
                           className="rounded-md border-2 bg-gray-100"
                           key={key}
-                          value={el.id}
                         >
-                          {el.name}
+                          {el}
                         </option>
                       ))}
                     </select>
@@ -101,16 +94,16 @@ const page = () => {
                     <select
                       className="rounded-md border-2 bg-gray-100 block w-full my-2"
                       id="bladeTypeId"
-                      value={formik.values.bladeTypeId}
+                      value={formik.values.bladeType}
                       onChange={formik.handleChange}
                     >
                       {bladeTypes.map((el, key) => (
                         <option
                           className="rounded-md border-2 bg-gray-100"
                           key={key}
-                          value={el.id}
+                          value={el}
                         >
-                          {el.name}
+                          {el}
                         </option>
                       ))}
                     </select>

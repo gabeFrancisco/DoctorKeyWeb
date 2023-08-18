@@ -1,5 +1,4 @@
 import { BaseEntity } from "./BaseEntity";
-import { BladeType } from "./BladeType";
 import { KeyType } from "./KeyType";
 
 export interface Key extends BaseEntity{
@@ -8,7 +7,7 @@ export interface Key extends BaseEntity{
   year: string;
   buttons: number;
   price: number;
-  keyType: KeyType | null;
-  bladeType: BladeType | null;
+  keyType: string;
+  bladeType: string;
   userId: string;
 }
