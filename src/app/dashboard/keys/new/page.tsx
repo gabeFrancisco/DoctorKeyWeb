@@ -4,7 +4,6 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { getAllBladeTypes } from "@/store/features/bladeTypeSlice";
 import { postKey } from "@/store/features/keySlice";
 import { getAllKeyTypes } from "@/store/features/keyTypeSlice";
-import { getAllManufactors } from "@/store/features/manufactorSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
@@ -17,19 +16,14 @@ const page = () => {
   const dispatch = useAppDispatch();
   const keyTypes = useAppSelector((state) => state.keyTypes.keyTypeList);
   const bladeTypes = useAppSelector((state) => state.bladeTypes.bladeTypeList);
-  const manufactors = useAppSelector(
-    (state) => state.manufactors.manufactorList
-  );
 
   useEffect(() => {
     dispatch(getAllKeyTypes());
     dispatch(getAllBladeTypes());
-    dispatch(getAllManufactors());
   }, []);
 
   const formik = useFormik({
     initialValues: {
-      manufactorId: manufactors[0]?.id,
       keyTypeId: keyTypes[0]?.id,
       bladeTypeId: bladeTypes[0]?.id,
       model: "",
@@ -56,10 +50,10 @@ const page = () => {
                     <select
                       className="rounded-md border-2 bg-gray-100 block my-2 w-full"
                       id="manufactorId"
-                      value={formik.values.manufactorId}
-                      onChange={formik.handleChange}
+                      // value={formik.values.manufactorId}
+                      // onChange={formik.handleChange}
                     >
-                      {manufactors.map((el, key) => (
+                      {/* {manufactors.map((el, key) => (
                         <option
                           className="rounded-md border-2 bg-gray-100"
                           key={key}
@@ -67,7 +61,7 @@ const page = () => {
                         >
                           {el.name}
                         </option>
-                      ))}
+                      ))} */}
                     </select>
                     <small className="block my-2 text-gray-500">
                       Selecione um frabricante nesta lista.

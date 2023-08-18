@@ -20,10 +20,10 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       onClick={handleKeyUpdate}
     >
       <th className="px-6 py-2">
-        <i className={`mr-5 text-xl car-${_key.manufactor?.name.toLowerCase()}`} />
+        <i className={`mr-5 text-xl car-${_key.manufactor.toLowerCase()}`} />
         {_key.model}
       </th>
-      <td className="px-6 py-2">{_key.manufactor?.name}</td>
+      <td className="px-6 py-2">{_key.manufactor}</td>
       <td className="px-6 py-2">{_key.buttons}</td>
       <td className="px-6 py-2">{_key.year}</td>
       <td className="px-6 py-2">{_key.keyType?.name}</td>

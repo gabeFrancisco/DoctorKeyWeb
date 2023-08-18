@@ -21,9 +21,9 @@ const page = () => {
   return (
     <div>
       <SectionTitle title='Chave' subtitle='Visualize, edite ou apague uma chave específica nessa seção.'/>
-      <div className='m-5 border-2 border-gray-300 border-dashed rounded'>
-        <div className='flex flex-row items-center justify-between p-2'>
-          <i className={`mx-10 text-9xl car-${key.manufactor?.name.toLowerCase()}`}/>
+      <div className='m-5 border-2 border-gray-300 border-dashed rounded-xl'>
+        <div className='flex flex-row items-center justify-between align-baseline p-2'>
+          <i className={`mx-10 mt-5 text-7xl text-gray-700 car-${key.manufactor?.name.toLowerCase()}`}/>
           <h2 className='text-3xl font-bold text-gray-500 mx-10 my-3'>{key.model}</h2>
           <h2 className='text-3xl font-bold text-gray-500 mx-10 my-3'>{key.year}</h2>
         </div>
