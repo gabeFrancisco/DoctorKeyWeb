@@ -185,14 +185,14 @@ const page = () => {
                 <button
                   type="button"
                   onClick={() => navigate.replace("/dashboard/keys")}
-                  className="rounded bg-red-500 text-white px-3 py-1 m-2"
+                  className="rounded bg-red-400 text-white px-3 py-1 m-2"
                 >
                   Cancelar
                 </button>
                 <button
                   type="button"
                   onClick={() => formik.handleSubmit()}
-                  className="rounded bg-green-500 text-white px-3 py-1 m-2"
+                  className="rounded bg-green-400 text-white px-3 py-1 m-2"
                 >
                   Adicionar!
                 </button>

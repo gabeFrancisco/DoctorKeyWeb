@@ -8,23 +8,16 @@ const KeyToolbar = () => {
     navigator;
   };
   return (
-    <div className="rounded-md border-dashed border-green-300 border-b-2 w-full flex flex-row  mt-3 mb-5 p-3">
+    <div className="rounded-md border-dashed border-slate-300 border-b-2 w-full flex flex-row  mt-3 mb-5 p-3">
       
       <Link
         href="keys/new"
-        className="rounded-md shadow-md bg-green-500 m-1 py-2 px-3 text-sm text-white hover:bg-green-600"
+        className="rounded-md shadow-md bg-green-400 my-1 py-2 px-3 text-sm text-white hover:bg-green-500"
       >
         <FontAwesomeIcon icon={faPlus} className="mx-2"  height={25}/>
         Nova chave!
       </Link>
-      <Link
-        href="keys/manufactors"
-        className="rounded-md shadow-md bg-red-400 m-1 py-2 px-3 text-sm text-white hover:bg-red-500"
-      >
-        <FontAwesomeIcon icon={faCar} className="mx-2"  height={25}/>
-        Marcas
-      </Link>
-      <Link
+      {/* <Link
         href="keys/keyTypes"
         className="rounded-md shadow-md bg-blue-500 m-1 py-2 px-3 text-sm text-white hover:bg-blue-600"
       >
@@ -33,11 +26,11 @@ const KeyToolbar = () => {
       </Link>
       <Link
         href="keys/blades"
-        className="rounded-md shadow-md bg-yellow-500 m-1 py-2 px-3 text-sm text-white hover:bg-yellow-600"
+        className="rounded-md shadow-md bg-yellow-300 m-1 py-2 px-3 text-sm text-white hover:bg-yellow-500"
       >
          <FontAwesomeIcon icon={faThermometer} className="mx-2"  height={25}/>
         Lâminas
-      </Link>
+      </Link> */}
     </div>
   );
 };

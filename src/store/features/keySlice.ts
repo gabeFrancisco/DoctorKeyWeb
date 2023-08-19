@@ -15,13 +15,13 @@ interface KeyState {
 const initialState: KeyState = {
   key: {
     id: "",
-    manufactor: null,
+    manufactor: "",
     model: "",
     year: "",
     buttons: 0,
     price: 0,
-    keyType: null,
-    bladeType: null,
+    keyType: "",
+    bladeType: "",
     userId: "",
   },
   keyList: new Array<Key>(),

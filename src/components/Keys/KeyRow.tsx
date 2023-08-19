@@ -15,7 +15,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
   };
   return (
     <tr
-      className="dark:bg-gray-800 cursor-pointer hover:bg-green-200"
+      className="cursor-pointer hover:bg-slate-200 text-slate-600"
       key={_key.id}
       onClick={handleKeyUpdate}
     >
@@ -35,14 +35,14 @@ const KeyRow = ({ _key }: { _key: Key }) => {
         <motion.button whileHover={{ scale: 1.1 }} onClick={handleKeyUpdate}>
           <FontAwesomeIcon
             icon={faPencil}
-            className="p-2 border border-blue-400 text-blue-400 rounded-md mx-1 shadow"
+            className="p-2 border bg-blue-400 text-white rounded-md mx-1 shadow"
             height={25}
           />
         </motion.button>
         <motion.button whileHover={{ scale: 1.1 }}>
           <FontAwesomeIcon
             icon={faTrash}
-            className="p-2 border border-red-400 text-red-400 rounded-md mx-1 shadow"
+            className="p-2 border bg-red-400 text-white rounded-md mx-1 shadow"
             height={25}
           />
         </motion.button>
