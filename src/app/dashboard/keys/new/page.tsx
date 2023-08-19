@@ -8,7 +8,6 @@ import { postKey } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
-("");
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -18,9 +17,9 @@ const page = () => {
 
   const formik = useFormik({
     initialValues: {
-      manufactor: "",
-      keyType: "",
-      bladeType: "",
+      manufactor: manufactors[0],
+      keyType: keyTypes[0],
+      bladeType: bladeTypes[0],
       model: "",
       year: "",
       buttons: 0,
@@ -44,7 +43,7 @@ const page = () => {
                     <label htmlFor="manufactorId">Fabricante</label>
                     <select
                       className="rounded-md border-2 bg-gray-100 block my-2 w-full"
-                      id="manufactorId"
+                      id="manufactor"
                       value={formik.values.manufactor}
                       onChange={formik.handleChange}
                     >
@@ -52,6 +51,7 @@ const page = () => {
                         <option
                           className="rounded-md border-2 bg-gray-100"
                           key={key}
+                          value={el}
                         >
                           {el}
                         </option>
@@ -71,7 +71,7 @@ const page = () => {
                     <label htmlFor="keyTypeId">Tipo</label>
                     <select
                       className="rounded-md border-2 bg-gray-100 block my-2 w-full"
-                      id="keyTypeId"
+                      id="keyType"
                       value={formik.values.keyType}
                       onChange={formik.handleChange}
                     >
@@ -93,7 +93,7 @@ const page = () => {
                     <label htmlFor="password">Lâmina</label>
                     <select
                       className="rounded-md border-2 bg-gray-100 block w-full my-2"
-                      id="bladeTypeId"
+                      id="bladeType"
                       value={formik.values.bladeType}
                       onChange={formik.handleChange}
                     >
