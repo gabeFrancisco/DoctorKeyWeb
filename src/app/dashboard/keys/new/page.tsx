@@ -149,6 +149,19 @@ const page = () => {
                     </small>
                   </div>
                   <div className="mb-5">
+                    <label htmlFor="price">Botões</label>
+                    <input
+                      name="buttons"
+                      className="rounded-md border-2 block w-full my-2"
+                      value={formik.values.buttons}
+                      onChange={formik.handleChange}
+                      type="number"
+                    />
+                    <small className="block text-gray-500 my-1">
+                      Adicione a quantidade de botões que a chave possui.
+                    </small>
+                  </div>
+                  <div className="mb-5">
                     <label htmlFor="price">Preço</label>
                     <input
                       name="price"
