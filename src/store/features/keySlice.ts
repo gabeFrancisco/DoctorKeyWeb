@@ -44,6 +44,18 @@ export const postKey = createAsyncThunk(
   }
 );
 
+export const deleteKey = createAsyncThunk(
+  "keys/delete",
+  async (data: string, thunkAPI) => {
+    return await api.delete(`/keys/${data}`).then(res => {
+      if(res.status === 200) {
+        thunkAPI.dispatch(getAllKeys());
+        return res.data;
+      }
+    })
+  }
+)
+
 export const KeySlice = createSlice({
   name: "Keys",
   initialState,

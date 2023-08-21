@@ -15,22 +15,25 @@ const KeyRow = ({ _key }: { _key: Key }) => {
     navigate.push(`/dashboard/keys/${_key.id}`);
   };
 
-  const [removalModal, setRemovalModal] = useState(false)
-  const handleDeleteModal  = () => {
+  const [removalModal, setRemovalModal] = useState(false);
+  const handleDeleteModal = () => {
     removalModal ? setRemovalModal(false) : setRemovalModal(true);
-  }
+  };
   return (
     <tr
       className="cursor-pointer hover:bg-slate-200 text-slate-600"
       key={_key.id}
-      // onClick={handleKeyUpdate}
     >
-      {removalModal ? <KeyDeleteModal handleClose={handleDeleteModal} keyId={_key.id}/> : null}
-      
-      <th className="px-6 py-2">
-        <i className={`mr-5 text-xl car-${_key.manufactor.toLowerCase()}`} />
-        {_key.model}
-      </th>
+      {removalModal ? (
+        <KeyDeleteModal
+          handleClose={handleDeleteModal}
+          keyId={_key.id}
+          keyManufactor={_key.manufactor}
+          keyModel={_key.model}
+        />
+      ) : null}
+
+      <th onClick={handleKeyUpdate} className="px-6 py-2">{_key.model}</th>
       <td className="px-6 py-2">{_key.manufactor}</td>
       <td className="px-6 py-2">{_key.buttons}</td>
       <td className="px-6 py-2">{_key.year}</td>
