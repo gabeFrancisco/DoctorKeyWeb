@@ -12,7 +12,7 @@ import { KeyDeleteModal } from "./KeyDeleteModal";
 const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
   const handleKeyUpdate = () => {
-    navigate.push(`/dashboard/keys/${_key.id}`);
+    navigate.push(`/dashboard/keys/update/${_key.id}`);
   };
 
   const [removalModal, setRemovalModal] = useState(false);
@@ -39,21 +39,22 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       <td className="px-6 py-2">{_key.year}</td>
       <td className="px-6 py-2">{_key.keyType}</td>
       <td className="px-6 py-2">{_key.bladeType}</td>
-      <td className="px-6 py-2 text-green-500 font-bold">
+      <td className="px-6 py-2 text-green-600 font-bold">
         R${_key.price.toFixed(2)}
       </td>
       <td className="px-6 py-2">
         <motion.button whileHover={{ scale: 1.1 }} onClick={handleKeyUpdate}>
           <FontAwesomeIcon
             icon={faPencil}
-            className="p-2 border bg-blue-400 text-white rounded-md mx-1 shadow"
+            className="p-2 border bg-blue-500 text-white rounded-md mx-1 shadow"
             height={25}
+            onClick={handleKeyUpdate}
           />
         </motion.button>
         <motion.button whileHover={{ scale: 1.1 }}>
           <FontAwesomeIcon
             icon={faTrash}
-            className="p-2 border bg-red-400 text-white rounded-md mx-1 shadow"
+            className="p-2 border bg-red-500 text-white rounded-md mx-1 shadow"
             height={25}
             onClick={() => setRemovalModal(true)}
           />

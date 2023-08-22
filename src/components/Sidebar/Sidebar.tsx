@@ -21,7 +21,7 @@ const links = [
 const Sidebar = () => {
   const { data, status } = useSession();
   return (
-    <aside className="bg-green-400 w-1/4 h-screen sticky top-0 text-white shadow-2x">
+    <aside className="bg-green-500 w-1/4 h-screen sticky top-0 text-white shadow-2x">
       <div className="flex flex-col items-center m-5">
         {status === "authenticated" && data !== null && (
           <div className="flex flex-col items-center">

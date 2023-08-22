@@ -12,7 +12,7 @@ const KeyToolbar = () => {
       
       <Link
         href="keys/new"
-        className="rounded-md shadow-md bg-green-400 my-1 py-2 px-3 text-sm text-white hover:bg-green-500"
+        className="rounded-md shadow-md bg-green-500 my-1 py-2 px-3 text-sm text-white hover:bg-green-500"
       >
         <FontAwesomeIcon icon={faPlus} className="mx-2"  height={25}/>
         Nova chave!
