@@ -11,6 +11,10 @@ import { KeyDeleteModal } from "./KeyDeleteModal";
 
 const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
+  const handleRead = () => {
+    navigate.push(`/dashboard/keys/${_key.id}`)
+  }
+ 
   const handleKeyUpdate = () => {
     navigate.push(`/dashboard/keys/update/${_key.id}`);
   };
@@ -33,7 +37,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
         />
       ) : null}
 
-      <th onClick={handleKeyUpdate} className="px-6 py-2">{_key.model}</th>
+      <th onClick={handleRead} className="px-6 py-2">{_key.model}</th>
       <td className="px-6 py-2">{_key.manufactor}</td>
       <td className="px-6 py-2">{_key.buttons}</td>
       <td className="px-6 py-2">{_key.year}</td>

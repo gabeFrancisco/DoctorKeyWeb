@@ -8,11 +8,11 @@ const KeyToolbar = () => {
     navigator;
   };
   return (
-    <div className="rounded-md border-dashed border-slate-300 border-b-2 w-full flex flex-row  mt-3 mb-5 p-3">
+    <div className="rounded-md  w-full flex flex-row  my-2 py-2">
       
       <Link
         href="keys/new"
-        className="rounded-md shadow-md bg-green-500 my-1 py-2 px-3 text-sm text-white hover:bg-green-500"
+        className="rounded-md shadow-lg bg-green-500 my-1 py-2 px-3 text-sm text-white hover:bg-green-600"
       >
         <FontAwesomeIcon icon={faPlus} className="mx-2"  height={25}/>
         Nova chave!
