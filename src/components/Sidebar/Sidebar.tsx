@@ -4,6 +4,8 @@ import React from "react";
 import SidebarItem from "./SidebarItem";
 import { signOut, useSession } from "next-auth/react";
 import { faDashboard, faKey } from "@fortawesome/free-solid-svg-icons";
+import User from '../../../public/user.png'
+import Image from "next/image";
 
 const links = [
   {
@@ -25,6 +27,9 @@ const Sidebar = () => {
       <div className="flex flex-col items-center m-5">
         {status === "authenticated" && data !== null && (
           <div className="flex flex-col items-center">
+            <div className="w-28 mb-5">
+              <Image className="rounded-full border-2 border-white" src={User} alt="User image"/>
+            </div>
             <p>
               Bem vindo <i>{data.user.name}</i>
             </p>
