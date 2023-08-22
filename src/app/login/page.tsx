@@ -1,7 +1,7 @@
 'use client'
 
 import { useFormik } from "formik";
-import React from "react";
+import * as Yup from "yup";
 
 import { signIn, useSession } from "next-auth/react";
 
@@ -12,6 +12,10 @@ const page = () => {
       username: "",
       password: "",
     },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Insira um nome de usuário!"),
+      password: Yup.string().required("A senha é obrigatória!")
+    }),
     onSubmit: (values) => {
       console.log(values)
       signIn('credentials', {
@@ -36,6 +40,7 @@ const page = () => {
                 onChange={formik.handleChange}
                 type="text"
               />
+               {formik.errors.username && (<small className="my-2 text-red-500 block">{formik.errors.username}</small>)}
             </div>
             <div className="m-5">
               <label htmlFor="password">Senha</label>
@@ -45,6 +50,7 @@ const page = () => {
                 onChange={formik.handleChange}
                 type="password"
               />
+               {formik.errors.password && (<small className="my-2 text-red-500 block">{formik.errors.password}</small>)}
             </div>
             <div>
               <button

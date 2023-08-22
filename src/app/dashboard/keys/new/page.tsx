@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import * as Yup from "yup";
 
 const page = () => {
   const navigate = useRouter();
@@ -25,6 +26,11 @@ const page = () => {
       buttons: 0,
       price: 0,
     },
+    validationSchema: Yup.object({
+      model: Yup.string().required("Modelo é obrigatório!"),
+      year: Yup.string().required("Ano é obrigatório!"),
+      price: Yup.number().min(1, "Preço precisa ser maior que 0!")
+    }),
     enableReinitialize: true,
     onSubmit: (values) => {
       dispatch(postKey(values)).then(() => navigate.replace("/dashboard/keys"));
@@ -90,7 +96,7 @@ const page = () => {
                     </small>
                   </div>
                   <div className="mb-5">
-                    <label htmlFor="password">Lâmina</label>
+                    <label htmlFor="blade">Lâmina</label>
                     <select
                       className="rounded-md border-2 bg-gray-100 block w-full my-2"
                       id="bladeType"
@@ -122,7 +128,9 @@ const page = () => {
                       value={formik.values.model}
                       onChange={formik.handleChange}
                       type="text"
+                      required
                     />
+                    {formik.errors.model && (<small className="my-2 text-red-500">{formik.errors.model}</small>)}
                     <small className="block text-gray-500 my-2">
                       Especifique aqui o modelo do veículo
                     </small>
@@ -140,6 +148,7 @@ const page = () => {
                       onChange={formik.handleChange}
                       type="text"
                     />
+                    {formik.errors.year && (<small className="my-2 text-red-500">{formik.errors.year}</small>)}
                     <small className="block text-gray-500 my-1">
                       Especifique o ano do veículo.
                     </small>
@@ -170,6 +179,7 @@ const page = () => {
                       onChange={formik.handleChange}
                       type="number"
                     />
+                    {formik.errors.price && (<small className="my-2 text-red-500">{formik.errors.price}</small>)}
                     <small className="block text-gray-500 my-1">
                       Adicione o preço final da chave.
                     </small>
