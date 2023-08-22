@@ -1,4 +1,3 @@
-import api from "@/app/services/api";
 import axios from "axios";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";

@@ -5,7 +5,7 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { Key } from "@/models/Key";
-import api from "@/app/services/api";
+import api from "@/services/api";
 
 interface KeyState {
   key: Key;
