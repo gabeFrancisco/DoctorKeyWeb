@@ -15,8 +15,9 @@ interface KeyDeleteModalProps {
 export const KeyDeleteModal = (props: KeyDeleteModalProps) => {
   const dispatch = useAppDispatch();
   const handleKeyDelete = () => {
-    dispatch(deleteKey(props.keyId));
-  }
+    dispatch(deleteKey(props.keyId)).then(() => props.handleClose());
+  };
+  
   return (
     <Modal
       isOpen={true}
@@ -46,7 +47,12 @@ export const KeyDeleteModal = (props: KeyDeleteModalProps) => {
         >
           Cancelar
         </button>
-        <button onClick={handleKeyDelete} className="bg-red-500 text-white px-3 py-1 mx-2 rounded-lg">Remover!</button>
+        <button
+          onClick={handleKeyDelete}
+          className="bg-red-500 text-white px-3 py-1 mx-2 rounded-lg"
+        >
+          Remover!
+        </button>
       </div>
     </Modal>
   );
