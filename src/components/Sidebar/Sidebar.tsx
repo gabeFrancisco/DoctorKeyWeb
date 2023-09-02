@@ -3,7 +3,11 @@
 import React, { useEffect } from "react";
 import SidebarItem from "./SidebarItem";
 import { signOut, useSession } from "next-auth/react";
-import { faDashboard, faKey } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartBar,
+  faChartColumn,
+  faKey,
+} from "@fortawesome/free-solid-svg-icons";
 import User from "../../../public/user.png";
 import Image from "next/image";
 
@@ -11,7 +15,7 @@ const links = [
   {
     title: "Painel",
     url: "/dashboard",
-    icon: faDashboard,
+    icon: faChartColumn,
   },
   {
     title: "Chaves",
@@ -53,14 +57,16 @@ const Sidebar = () => {
           </div>
         )}
       </div>
-      {links.map((link, key) => (
-        <SidebarItem
-          key={key}
-          title={link.title}
-          url={link.url}
-          icon={link.icon}
-        />
-      ))}
+      <div className="flex flex-col">
+        {links.map((link, key) => (
+          <SidebarItem
+            key={key}
+            title={link.title}
+            url={link.url}
+            icon={link.icon}
+          />
+        ))}
+      </div>
     </aside>
   );
 };
