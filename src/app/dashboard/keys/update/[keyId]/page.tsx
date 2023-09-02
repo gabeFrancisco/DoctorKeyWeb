@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { Key, useEffect } from "react";
 import bladeTypes from "@/models/constants/bladeTypes";
 import keyTypes from "@/models/constants/keyTypes";
 import manufactors from "@/models/constants/manufactors";
@@ -10,7 +10,7 @@ import { useParams, useRouter } from "next/navigation";
 import * as Yup from "yup";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { motion } from "framer-motion";
-import { readKey } from "@/store/features/keySlice";
+import { readKey, updateKey } from "@/store/features/keySlice";
 
 const page = () => {
   const params = useParams();
@@ -43,7 +43,9 @@ const page = () => {
     }),
     enableReinitialize: true,
     onSubmit: (values) => {
-      // dispatch(postKey(values)).then(() => navigate.replace("/dashboard/keys"));
+      dispatch(updateKey({ key: values, id: keyId })).then(() =>
+        navigate.replace("/dashboard/keys")
+      );
     },
   });
   return (
@@ -229,7 +231,7 @@ const page = () => {
                   onClick={() => formik.handleSubmit()}
                   className="rounded bg-green-500 text-white px-3 py-1 m-2"
                 >
-                  Adicionar!
+                  Atualizar!
                 </button>
               </div>
             </form>

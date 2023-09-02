@@ -16,6 +16,7 @@ const page = () => {
       username: Yup.string().required("Insira um nome de usuário!"),
       password: Yup.string().required("A senha é obrigatória!")
     }),
+    enableReinitialize: true,
     onSubmit: (values) => {
       console.log(values)
       signIn('credentials', {

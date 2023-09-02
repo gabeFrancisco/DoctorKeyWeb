@@ -46,8 +46,8 @@ export const postKey = createAsyncThunk(
 
 export const updateKey = createAsyncThunk(
   "keys/update",
-  async (data: {}, thunkAPI) => {
-    return await api.put("/keys", data).then(res => {
+  async (data: {key: Object, id: string}, thunkAPI) => {
+    return await api.put(`/keys/${data.id}`, data.key).then(res => {
       if(res.status === 200){
         thunkAPI.dispatch(getAllKeys());
         return res.data;

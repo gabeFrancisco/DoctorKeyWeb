@@ -40,7 +40,7 @@ const KeyTable = () => {
               <tbody>
                 {keys.map((el, key) => (
                   <KeyRow _key={el} />
-                ))}
+                )).reverse()}
               </tbody>
             </table>
           </motion.div>
