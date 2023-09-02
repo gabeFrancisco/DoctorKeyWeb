@@ -32,6 +32,12 @@ export const getAllKeys = createAsyncThunk(
   async () => await api.get("/keys").then((res) => res.data)
 );
 
+export const getAllByModel = createAsyncThunk(
+  "keys/getAllByModel",
+  async (id: string) =>
+    await api.get(`/keys/byModel/${id}`).then((res) => res.data)
+);
+
 export const postKey = createAsyncThunk(
   "keys/post",
   async (data: {}, thunkAPI) => {
@@ -46,35 +52,35 @@ export const postKey = createAsyncThunk(
 
 export const updateKey = createAsyncThunk(
   "keys/update",
-  async (data: {key: Object, id: string}, thunkAPI) => {
-    return await api.put(`/keys/${data.id}`, data.key).then(res => {
-      if(res.status === 200){
+  async (data: { key: Object; id: string }, thunkAPI) => {
+    return await api.put(`/keys/${data.id}`, data.key).then((res) => {
+      if (res.status === 200) {
         thunkAPI.dispatch(getAllKeys());
         return res.data;
       }
-    })
+    });
   }
-)
+);
 
 export const deleteKey = createAsyncThunk(
   "keys/delete",
   async (data: string, thunkAPI) => {
-    return await api.delete(`/keys/${data}`).then(res => {
-      if(res.status === 200) {
+    return await api.delete(`/keys/${data}`).then((res) => {
+      if (res.status === 200) {
         thunkAPI.dispatch(getAllKeys());
         return res.data;
       }
-    })
+    });
   }
-)
+);
 
 export const KeySlice = createSlice({
   name: "Keys",
   initialState,
   reducers: {
     readKey: (state, action: PayloadAction<string>) => {
-      if(state.keyList.length === 0){
-        getAllKeys()
+      if (state.keyList.length === 0) {
+        getAllKeys();
       }
       state.key = current(
         state.keyList.find((key) => key.id === action.payload) as Key
@@ -85,8 +91,11 @@ export const KeySlice = createSlice({
     builder.addCase(getAllKeys.fulfilled, (state, action) => {
       state.keyList = action.payload;
     });
+    builder.addCase(getAllByModel.fulfilled, (state, action) => {
+      state.keyList = action.payload;
+    })
   },
 });
 
 export default KeySlice.reducer;
-export const { readKey} = KeySlice.actions;
+export const { readKey } = KeySlice.actions;

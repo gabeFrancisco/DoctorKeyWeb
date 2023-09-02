@@ -17,6 +17,8 @@ const page = () => {
       password: Yup.string().required("A senha é obrigatória!")
     }),
     enableReinitialize: true,
+    validateOnChange: false,
+    validateOnBlur: true,
     onSubmit: (values) => {
       console.log(values)
       signIn('credentials', {

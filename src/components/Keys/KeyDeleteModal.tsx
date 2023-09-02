@@ -28,6 +28,7 @@ export const KeyDeleteModal = (props: KeyDeleteModalProps) => {
           width: "25rem",
         },
       }}
+      
     >
       <h3 className="text-xl mb-2 text-slate-700">Remoção de chave</h3>
       <hr />

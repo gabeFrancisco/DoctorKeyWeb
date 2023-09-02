@@ -29,9 +29,11 @@ const page = () => {
     validationSchema: Yup.object({
       model: Yup.string().required("Modelo é obrigatório!"),
       year: Yup.string().required("Ano é obrigatório!"),
-      price: Yup.number().min(1, "Preço precisa ser maior que 0!")
+      price: Yup.number().min(1, "Preço precisa ser maior que 0!"),
     }),
     enableReinitialize: true,
+    validateOnChange: false,
+    validateOnBlur: true,
     onSubmit: (values) => {
       dispatch(postKey(values)).then(() => navigate.replace("/dashboard/keys"));
     },
@@ -130,7 +132,11 @@ const page = () => {
                       type="text"
                       required
                     />
-                    {formik.errors.model && (<small className="my-2 text-red-500">{formik.errors.model}</small>)}
+                    {formik.errors.model && (
+                      <small className="my-2 text-red-500">
+                        {formik.errors.model}
+                      </small>
+                    )}
                     <small className="block text-gray-500 my-2">
                       Especifique aqui o modelo do veículo
                     </small>
@@ -148,7 +154,11 @@ const page = () => {
                       onChange={formik.handleChange}
                       type="text"
                     />
-                    {formik.errors.year && (<small className="my-2 text-red-500">{formik.errors.year}</small>)}
+                    {formik.errors.year && (
+                      <small className="my-2 text-red-500">
+                        {formik.errors.year}
+                      </small>
+                    )}
                     <small className="block text-gray-500 my-1">
                       Especifique o ano do veículo.
                     </small>
@@ -172,14 +182,21 @@ const page = () => {
                   </div>
                   <div className="mb-5">
                     <label htmlFor="price">Preço</label>
-                    <input
-                      name="price"
-                      className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.price}
-                      onChange={formik.handleChange}
-                      type="number"
-                    />
-                    {formik.errors.price && (<small className="my-2 text-red-500">{formik.errors.price}</small>)}
+                    <div className="flex flex-row items-center">
+                      <p className="mr-1">R$</p>
+                      <input
+                        name="price"
+                        className="rounded-md border-2 block w-full my-2"
+                        value={formik.values.price}
+                        onChange={formik.handleChange}
+                        type="number"
+                      />
+                    </div>
+                    {formik.errors.price && (
+                      <small className="my-2 text-red-500">
+                        {formik.errors.price}
+                      </small>
+                    )}
                     <small className="block text-gray-500 my-1">
                       Adicione o preço final da chave.
                     </small>

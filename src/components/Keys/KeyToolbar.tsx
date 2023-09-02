@@ -1,36 +1,68 @@
+"use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faKey, faThermometer, faCar} from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faKey,
+  faThermometer,
+  faCar,
+  faSearch,
+  faSync,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import React from "react";
+import React, { HTMLInputTypeAttribute, SyntheticEvent, useState } from "react";
+import { useAppDispatch } from "@/store/store";
+import { getAllByModel, getAllKeys } from "@/store/features/keySlice";
 
 const KeyToolbar = () => {
-  const handleBlades = () => {
-    navigator;
+  const dispatch = useAppDispatch();
+  const [search, setSearch] = useState("");
+  const handleSearch = () => {
+    if (search !== "") {
+      dispatch(getAllByModel(search));
+    } else {
+      dispatch(getAllKeys());
+    }
+  };
+
+  const handleClear = () => {
+    dispatch(getAllKeys()).then(() => setSearch(""));
   };
   return (
-    <div className="rounded-md  w-full flex flex-row  my-2 py-2">
-      
-      <Link
-        href="keys/new"
-        className="rounded-md shadow-lg bg-green-500 my-1 py-2 px-3 text-sm text-white hover:bg-green-600"
-      >
-        <FontAwesomeIcon icon={faPlus} className="mx-2"  height={25}/>
-        Nova chave!
-      </Link>
-      {/* <Link
-        href="keys/keyTypes"
-        className="rounded-md shadow-md bg-blue-500 m-1 py-2 px-3 text-sm text-white hover:bg-blue-600"
-      >
-          <FontAwesomeIcon icon={faKey}  className="mx-2"  height={25}/>
-        Tipos
-      </Link>
-      <Link
-        href="keys/blades"
-        className="rounded-md shadow-md bg-yellow-300 m-1 py-2 px-3 text-sm text-white hover:bg-yellow-500"
-      >
-         <FontAwesomeIcon icon={faThermometer} className="mx-2"  height={25}/>
-        Lâminas
-      </Link> */}
+    <div className="rounded-md  w-full flex flex-row justify-between my-1 py-2">
+      <div>
+        <Link
+          href="keys/new"
+          className="rounded-md shadow-lg bg-green-500 my-1 py-2 px-3 text-md text-white hover:bg-green-600"
+        >
+          <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />
+          Nova chave!
+        </Link>
+      </div>
+
+      <div className="flex flex-row items-center">
+        <input
+          type="text"
+          placeholder="Pesquisar por modelo"
+          className="rounded-md border-2 block w-full p-1"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button
+          onClick={handleSearch}
+          className="rounded-md shadow-lg bg-green-500 mx-1 py-1 px-3 text-md text-white hover:bg-green-600"
+        >
+          <FontAwesomeIcon icon={faSearch} height={25} />
+        </button>
+        {search !== "" ? (
+          <button
+            onClick={handleClear}
+            className="rounded-md shadow-lg bg-blue-500 mx-1 py-1 px-3 text-md text-white hover:bg-blue-600"
+          >
+            <FontAwesomeIcon icon={faSync} height={25} />
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 };

@@ -22,11 +22,11 @@ const links = [
 
 const Sidebar = () => {
   const { data, status } = useSession();
-  useEffect(() => {
-    if (status !== "authenticated") {
-      window.location.href = "/login";
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (status !== "authenticated") {
+  //     window.location.href = "/login";
+  //   }
+  // }, []);
   return (
     <aside className="bg-green-500 w-1/4 h-screen sticky top-0 text-white shadow-2x">
       <div className="flex flex-col items-center m-5">
