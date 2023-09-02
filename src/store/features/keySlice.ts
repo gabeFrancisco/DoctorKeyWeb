@@ -44,6 +44,18 @@ export const postKey = createAsyncThunk(
   }
 );
 
+export const updateKey = createAsyncThunk(
+  "keys/update",
+  async (data: {}, thunkAPI) => {
+    return await api.put("/keys", data).then(res => {
+      if(res.status === 200){
+        thunkAPI.dispatch(getAllKeys());
+        return res.data;
+      }
+    })
+  }
+)
+
 export const deleteKey = createAsyncThunk(
   "keys/delete",
   async (data: string, thunkAPI) => {
@@ -61,6 +73,9 @@ export const KeySlice = createSlice({
   initialState,
   reducers: {
     readKey: (state, action: PayloadAction<string>) => {
+      if(state.keyList.length === 0){
+        getAllKeys()
+      }
       state.key = current(
         state.keyList.find((key) => key.id === action.payload) as Key
       );

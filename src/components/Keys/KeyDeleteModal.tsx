@@ -17,7 +17,7 @@ export const KeyDeleteModal = (props: KeyDeleteModalProps) => {
   const handleKeyDelete = () => {
     dispatch(deleteKey(props.keyId)).then(() => props.handleClose());
   };
-  
+
   return (
     <Modal
       isOpen={true}
