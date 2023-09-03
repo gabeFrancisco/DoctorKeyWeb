@@ -44,7 +44,7 @@ const page = () => {
     enableReinitialize: true,
     onSubmit: (values) => {
       dispatch(updateKey({ key: values, id: keyId })).then(() =>
-        navigate.replace("/dashboard/keys")
+        navigate.replace("/painel/chaves")
       );
     },
   });
@@ -221,7 +221,7 @@ const page = () => {
               <div className="mt-5 p-3">
                 <button
                   type="button"
-                  onClick={() => navigate.replace("/dashboard/keys")}
+                  onClick={() => navigate.replace("/painel/chaves")}
                   className="rounded bg-red-500 text-white px-3 py-1 m-2"
                 >
                   Cancelar

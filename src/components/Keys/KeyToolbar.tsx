@@ -32,7 +32,7 @@ const KeyToolbar = () => {
     <div className="rounded-md  w-full flex flex-row justify-between my-1 py-2">
       <div>
         <Link
-          href="keys/new"
+          href="chaves/adicionar"
           className="rounded-md shadow-lg bg-green-500 my-1 py-2 px-3 text-md text-white hover:bg-green-600"
         >
           <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />

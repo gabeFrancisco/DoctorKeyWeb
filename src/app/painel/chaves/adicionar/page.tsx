@@ -35,7 +35,7 @@ const page = () => {
     validateOnChange: false,
     validateOnBlur: true,
     onSubmit: (values) => {
-      dispatch(postKey(values)).then(() => navigate.replace("/dashboard/keys"));
+      dispatch(postKey(values)).then(() => navigate.replace("/painel/chaves"));
     },
   });
   return (
@@ -211,7 +211,7 @@ const page = () => {
               <div className="mt-5 p-3">
                 <button
                   type="button"
-                  onClick={() => navigate.replace("/dashboard/keys")}
+                  onClick={() => navigate.replace("/painel/chaves")}
                   className="rounded bg-red-500 text-white px-3 py-1 m-2"
                 >
                   Cancelar

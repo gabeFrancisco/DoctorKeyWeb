@@ -1,8 +1,17 @@
+'use client'
+
 import DataCard from "@/components/DataCard/DataCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import React from "react";
+import { getAllKeys } from "@/store/features/keySlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import React, { useEffect } from "react";
 
 const page = async () => {
+  const keys = useAppSelector(state => state.keys.keyList);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getAllKeys())
+  }, [])
   return (
     <div>
       <SectionTitle
@@ -12,7 +21,7 @@ const page = async () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
         <DataCard
           description="Chaves cadastradas"
-          data={7}
+          data={keys.length}
           className="bg-gradient-to-tr from-green-600 to-green-400"
         />
         <DataCard

@@ -15,17 +15,17 @@ interface SidebarItemProps {
 
 const SidebarItem = (props: SidebarItemProps) => {
   return (
-    <div className="my-2 ml-10 p-1 text-white">
+    <li className="my-3 ml-5 p-1 text-white">
       <Link
         className="font-normal tracking-widest hover:text-slate-200"
         href={props.url}
       >
         <motion.div whileHover={{ x: 10 }}>
-          <FontAwesomeIcon className="mr-3 text-xl" icon={props.icon} />
+          <FontAwesomeIcon className=" mr-3 text-xl" icon={props.icon} />
           {props.title}
         </motion.div>
       </Link>
-    </div>
+    </li>
   );
 };
 

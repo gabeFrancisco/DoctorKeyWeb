@@ -25,7 +25,7 @@ const page = () => {
         username: values.username,
         password: values.password,
         redirect: true,
-        callbackUrl: '/dashboard',
+        callbackUrl: '/painel',
       }).then(() => console.log(session))
 
     },

@@ -7,6 +7,10 @@ import {
   faChartBar,
   faChartColumn,
   faKey,
+  faList,
+  faSheetPlastic,
+  faUserFriends,
+  faWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import User from "../../../public/user.png";
 import Image from "next/image";
@@ -14,13 +18,33 @@ import Image from "next/image";
 const links = [
   {
     title: "Painel",
-    url: "/dashboard",
+    url: "/painel",
     icon: faChartColumn,
   },
   {
     title: "Chaves",
-    url: "/dashboard/keys",
+    url: "/painel/chaves",
     icon: faKey,
+  },
+  {
+    title: "Ordens de Serviço",
+    url: "/painel/ordens",
+    icon: faSheetPlastic,
+  },
+  {
+    title: "Checklists",
+    url: "/painel/checklists",
+    icon: faList,
+  },
+  {
+    title: "Clientes",
+    url: "/painel/clientes",
+    icon: faUserFriends,
+  },
+  {
+    title: "Serviços",
+    url: "/painel/serviços",
+    icon: faWrench,
   },
 ];
 
@@ -57,7 +81,7 @@ const Sidebar = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col">
+      <ul className="">
         {links.map((link, key) => (
           <SidebarItem
             key={key}
@@ -66,7 +90,7 @@ const Sidebar = () => {
             icon={link.icon}
           />
         ))}
-      </div>
+      </ul>
     </aside>
   );
 };

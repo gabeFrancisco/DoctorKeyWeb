@@ -12,11 +12,11 @@ import { KeyDeleteModal } from "./KeyDeleteModal";
 const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
   const handleRead = () => {
-    navigate.push(`/dashboard/keys/${_key.id}`);
+    navigate.push(`/painel/chaves/${_key.id}`);
   };
 
   const handleKeyUpdate = () => {
-    navigate.push(`/dashboard/keys/update/${_key.id}`);
+    navigate.push(`/painel/chaves/atualizar/${_key.id}`);
   };
 
   const [removalModal, setRemovalModal] = useState(false);
