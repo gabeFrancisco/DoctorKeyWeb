@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Josefin_Sans } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import NextAuthSessionProvider from "./providers/NextAuthSessionProvider";
 
 import "@fortawesome/fontawesome-svg-core";
