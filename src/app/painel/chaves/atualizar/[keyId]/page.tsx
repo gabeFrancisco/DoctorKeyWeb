@@ -147,7 +147,7 @@ const page = () => {
                     />
                     {formik.errors.model && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.model}
+                        {formik.errors.model.toString()}
                       </small>
                     )}
                     <small className="block text-gray-500 my-2">
@@ -169,7 +169,7 @@ const page = () => {
                     />
                     {formik.errors.year && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.year}
+                        {formik.errors.year.toString()}
                       </small>
                     )}
                     <small className="block text-gray-500 my-1">
@@ -204,7 +204,7 @@ const page = () => {
                     />
                     {formik.errors.price && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.price}
+                        {formik.errors.price.toString()}
                       </small>
                     )}
                     <small className="block text-gray-500 my-1">

@@ -4,6 +4,7 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import bladeTypes from "@/models/constants/bladeTypes";
 import keyTypes from "@/models/constants/keyTypes";
 import manufactors from "@/models/constants/manufactors";
+import serviceTypes from "@/models/constants/serviceTypes";
 import { postKey } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useFormik } from "formik";
@@ -16,15 +17,18 @@ const page = () => {
   const navigate = useRouter();
   const dispatch = useAppDispatch();
 
+
   const formik = useFormik({
     initialValues: {
       manufactor: manufactors[0],
       keyType: keyTypes[0],
       bladeType: bladeTypes[0],
+      serviceType: serviceTypes[0],
       model: "",
       year: "",
       buttons: 0,
       price: 0,
+      observation: ""
     },
     validationSchema: Yup.object({
       model: Yup.string().required("Modelo é obrigatório!"),
@@ -119,6 +123,44 @@ const page = () => {
                       Adicione ou remova tipos de lâminas na seção Lâminas.
                     </small>
                   </div>
+                  <div className="mb-5">
+                    <label htmlFor="service">Tipo de Serviço</label>
+                    <select
+                      className="rounded-md border-2 bg-gray-100 block w-full my-2"
+                      id="serviceType"
+                      value={formik.values.serviceType}
+                      onChange={formik.handleChange}
+                    >
+                      {serviceTypes.map((el, key) => (
+                        <option
+                          className="rounded-md border-2 bg-gray-100"
+                          key={key}
+                          value={el}
+                        >
+                          {el}
+                        </option>
+                      ))}
+                    </select>
+                    <small className="block text-gray-500">
+                      Especifique o tipo de serviço a ser realizado.
+                    </small>
+                  </div>
+                  
+                  <div className="mb-5">
+                    <label htmlFor="obs">Observações</label>
+                    <textarea
+                      name="observation"
+                      id="observation"
+                      className="rounded-md border-2 block w-full my-2"
+                      value={formik.values.observation}
+                      onChange={formik.handleChange}
+                      cols={30}
+                      rows={5}
+                    />
+                    <small className="block text-gray-500 my-1">
+                      Descreva alguma propriedade específica sobre a chave a ser adicionada.
+                    </small>
+                  </div>
                 </div>
 
                 <div className="ext-gray-700 pl-5 border-l-2 border-dashed">
@@ -206,7 +248,6 @@ const page = () => {
               <div className="grid grid-cols-2 gap-5 mx-5"></div>
               {/* </div> */}
               {/* <div className="grid grid-cols-1 gap-1 text-gray-700 mt-5 px-20">
-              
             </div> */}
               <div className="mt-5 p-3">
                 <button
