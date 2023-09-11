@@ -7,6 +7,7 @@ export default function Home() {
       <Image src={Logo} alt='Logo'/>
       <h1 className='text-2xl'>Bem vindo ao <b>Doctor Key</b></h1>
       <h2>Seu gerenciador de chaves automotivas</h2>
+        <Link href="/login">Login</Link>
     </main>
   )
 }
