@@ -13,7 +13,7 @@ export const authOptions: AuthOptions = {
       async authorize(credentials, req) {
         try{
           const result = await axios
-            .post("http://localhost:5003/users/login", credentials)
+            .post("https://doctorkeyapi.azurewebsites.net/users/login", credentials)
             .then((res) => {
               if (res.status === 200) {
                 return res.data;

@@ -4,6 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
+
+import Logo from '../../../public/logo.png';
 
 const page = () => {
   const session = useSession();
@@ -20,24 +23,25 @@ const page = () => {
     validateOnChange: false,
     validateOnBlur: true,
     onSubmit: (values) => {
-      console.log(values)
       signIn('credentials', {
         username: values.username,
         password: values.password,
         redirect: true,
         callbackUrl: '/painel',
-      }).then(() => console.log(session))
+      })
 
     },
   });
   return (
     <div className="flex flex-row items-stretch h-screen">
-      <div className="w-2/5 bg-zinc bg-gradient-to-tr from-green-300 to-green-500 h-full flex flex-col justify-center items-center">
-        <div className="bg-slate-200 p-3 rounded-lg shadow-lg h-2/5">
+      <div className="w-2/5 bg-zinc bg-gradient-to-tr from-green-300 to-green-500 h-full flex flex-col justify-evenly items-center">
+      <h1 className="text-4xl font-bold text-white">Doctor Key</h1>
+        <div className="bg-slate-100 p-3 rounded-lg shadow-lg">
           <form>
             <div className="m-5">
               <label htmlFor="user">Usuário</label>
               <input
+              className="rounded-md border-2  block my-2 w-full p-1"
                 name="username"
                 value={formik.values.username}
                 onChange={formik.handleChange}
@@ -48,6 +52,7 @@ const page = () => {
             <div className="m-5">
               <label htmlFor="password">Senha</label>
               <input
+              className="rounded-md border-2  block my-2 w-full p-1"
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -58,7 +63,7 @@ const page = () => {
             <div>
               <button
                 onClick={() => formik.handleSubmit()}
-                className="rounded-lg px-3 py-1 bg-green-500 text-white"
+                className="rounded-lg px-3 py-1 mx-5 mb-5 bg-green-500 text-white"
                 type="button"
               >
                 Entrar!

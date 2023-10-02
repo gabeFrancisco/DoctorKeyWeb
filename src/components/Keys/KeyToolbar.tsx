@@ -3,9 +3,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
-  faKey,
-  faThermometer,
-  faCar,
   faSearch,
   faSync,
 } from "@fortawesome/free-solid-svg-icons";
