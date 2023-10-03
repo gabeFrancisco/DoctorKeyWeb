@@ -42,8 +42,8 @@ const page = () => {
     },
   });
   return (
-    <div className="flex flex-row items-stretch h-screen">
-      <div className="w-2/5 bg-zinc bg-gradient-to-tr from-green-300 to-green-500 h-full flex flex-col justify-evenly items-center">
+    <div className="flex flex-col lg:flex-row items-stretch h-screen">
+      <div className="w-full lg:w-2/5 bg-zinc bg-gradient-to-tr from-green-300 to-green-500 h-full flex flex-col justify-evenly items-center">
         <h1 className="text-4xl font-bold text-white">Doctor Key</h1>
         <div className="bg-slate-100 p-3 w-96 m-5 rounded-lg shadow-lg">
           <form>
@@ -99,10 +99,11 @@ const page = () => {
           </form>
         </div>
       </div>
-      <div className="bg-slate-200 h-full w-full">
-        <h1>Doctor Key</h1>
+      <div className="hidden lg:flex flex-col items-center justify-center bg-slate-200 lg:h-full w-full md:h-0 lg:w-full text-green-500">
+        <h1 className="text-4xl font-bold">Doctor Key</h1>
+        <h3 className="text-2xl font-bold">Seu gerenciador de chaves automotivas inteligente!</h3>
       </div>
-    </div>
+    </div> 
   );
 };
 

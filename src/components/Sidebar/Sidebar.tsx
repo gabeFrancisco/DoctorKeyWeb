@@ -59,8 +59,8 @@ const Sidebar = () => {
     <aside className="bg-green-500 w-1/4 h-screen sticky top-0 text-white shadow-2x">
       <div className="flex flex-col items-center m-5">
         {status === "authenticated" && data !== null && (
-          <div className="flex flex-col items-center">
-            <div className="w-28 mb-5">
+          <div className="absolute hidden  flex-col items-center">
+            <div className="hidden w-0 lg:w-28 mb-5">
               <Image
                 className="rounded-full border-2 border-white"
                 src={User}
