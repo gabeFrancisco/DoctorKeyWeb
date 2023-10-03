@@ -6,6 +6,7 @@ import React, { ReactNode } from "react";
 
 const layout = async ({children}: {children: ReactNode}) => {
   const session = await getServerSession(authOptions);
+  console.log('something')
   if (!session) {
     redirect("/login");
   }

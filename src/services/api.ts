@@ -1,7 +1,13 @@
 import axios, { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig} from "axios";
 import { getSession } from "next-auth/react";
+
+export const urls = {
+  "dev": "http://localhost:5003",
+  "prod": "https://doctorkeyapi.azurewebsites.net/"
+}
+
 const api = axios.create({
-  baseURL: "https://doctorkeyapi.azurewebsites.net/",
+  baseURL: urls.dev,
   timeout: 10000
 })
 

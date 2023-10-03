@@ -5,6 +5,7 @@ import NextAuthSessionProvider from "./providers/NextAuthSessionProvider";
 
 import "@fortawesome/fontawesome-svg-core";
 import { config } from "@fortawesome/fontawesome-svg-core";
+
 import { Providers } from "@/components/Provider/Provider";
 config.autoAddCss = false;
 

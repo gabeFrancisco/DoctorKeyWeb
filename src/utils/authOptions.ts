@@ -1,4 +1,5 @@
 import axios from "axios";
+import { error } from "console";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -11,25 +12,15 @@ export const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        try{
           const result = await axios
             .post("https://doctorkeyapi.azurewebsites.net/users/login", credentials)
-            .then((res) => {
-              if (res.status === 200) {
-                return res.data;
-              }
-            });
-  
+            
           return {
-            id: result.user.id,
-            name: result.user.username,
-            accessToken: result.token,
+            id: result.data.user.id,
+            name: result.data.user.username,
+            accessToken: result.data.token,
           };
         }
-        catch{
-          return null
-        }
-      },
     }),
   ],
   session: {
@@ -44,6 +35,7 @@ export const authOptions: AuthOptions = {
       return {
         ...token,
         ...user,
+        ...error,
       };
     },
     async session({ session, token, user }) {
@@ -51,9 +43,6 @@ export const authOptions: AuthOptions = {
         session.user = token as any;
       }
       return session;
-    },
-    async signIn({ account }) {
-      return true;
     },
   },
 };
