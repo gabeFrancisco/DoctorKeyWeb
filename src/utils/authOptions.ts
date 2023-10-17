@@ -2,6 +2,7 @@ import axios from "axios";
 import { error } from "console";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { urls } from "@/services/api";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -13,7 +14,7 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials, req) {
           const result = await axios
-            .post("https://doctorkeyapi.azurewebsites.net/users/login", credentials)
+            .post(`${urls.prod}/users/login`, credentials)
             
           return {
             id: result.data.user.id,

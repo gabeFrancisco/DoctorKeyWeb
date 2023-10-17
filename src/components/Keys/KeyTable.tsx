@@ -24,17 +24,17 @@ const KeyTable = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-md">
-              <thead className="border-0 rounded-md text-md text-gray-100 bg-green-500 dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-gray-500 rounded-md">
+              <thead className="border-0 rounded-md text-md text-gray-100 bg-green-500">
                 <tr>
-                  <th className="px-6 py-3 m-1">Modelo</th>
-                  <th className="px-6 py-3 m-1">Marca</th>
-                  <th className="px-6 py-3 m-1">Botões</th>
-                  <th className="px-6 py-3 m-1">Ano</th>
-                  <th className="px-6 py-3 m-1">Tipo</th>
-                  <th className="px-6 py-3 m-1">Lâmina</th>
-                  <th className="px-6 py-3 m-1">Preço</th>
-                  <th className="px-6 py-3 m-1">Ações</th>
+                  <th className="px-2 lg:px-6 py-3 m-1">Modelo</th>
+                  <th className="px-2 lg:px-6 py-3 m-1">Marca</th>
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">Botões</th>
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">Ano</th>
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">Tipo</th>
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">Lâmina</th>
+                  <th className="px-2 lg:px-6 py-3 m-1">Preço</th>
+                  <th className="px-2 lg:px-6 py-3 m-1">Ações</th>
                 </tr>
               </thead>
               <tbody>
