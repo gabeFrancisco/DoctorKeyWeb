@@ -9,5 +9,7 @@ export interface Key extends BaseEntity{
   price: number;
   keyType: string;
   bladeType: string;
+  serviceType: string;
+  observation: string;
   userId: string;
 }

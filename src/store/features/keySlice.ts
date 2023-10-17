@@ -23,6 +23,8 @@ const initialState: KeyState = {
     price: 0,
     keyType: "",
     bladeType: "",
+    serviceType: "",
+    observation: "",
     userId: "",
   },
   keyList: new Array<Key>(),

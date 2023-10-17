@@ -17,7 +17,6 @@ const page = () => {
   const navigate = useRouter();
   const dispatch = useAppDispatch();
 
-
   const formik = useFormik({
     initialValues: {
       manufactor: manufactors[0],
@@ -28,7 +27,7 @@ const page = () => {
       year: "",
       buttons: 0,
       price: 0,
-      observation: ""
+      observation: "",
     },
     validationSchema: Yup.object({
       model: Yup.string().required("Modelo é obrigatório!"),
@@ -239,7 +238,8 @@ const page = () => {
                       rows={5}
                     />
                     <small className="block text-gray-500 my-1">
-                      Descreva alguma propriedade específica sobre a chave a ser adicionada.
+                      Descreva alguma propriedade específica sobre a chave a ser
+                      adicionada.
                     </small>
                   </div>
                 </div>

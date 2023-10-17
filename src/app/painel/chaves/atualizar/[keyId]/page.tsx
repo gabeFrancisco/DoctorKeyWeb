@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { motion } from "framer-motion";
 import { readKey, updateKey } from "@/store/features/keySlice";
+import serviceTypes from "@/models/constants/serviceTypes";
 
 const page = () => {
   const params = useParams();
@@ -31,10 +32,12 @@ const page = () => {
       ),
       keyType: keyTypes.find((keyType) => keyType === key.keyType),
       bladeType: bladeTypes.find((bladeType) => bladeType === key.bladeType),
+      serviceType: serviceTypes.find((serviceType) => serviceType === key.serviceType),
       model: key.model,
       year: key.year,
       buttons: key.buttons,
       price: key.price,
+      observation: key.observation
     },
     validationSchema: Yup.object({
       model: Yup.string().required("Modelo é obrigatório!"),
@@ -132,6 +135,28 @@ const page = () => {
                       Adicione ou remova tipos de lâminas na seção Lâminas.
                     </small>
                   </div>
+                  <div className="mb-5">
+                    <label htmlFor="service">Tipo de Serviço</label>
+                    <select
+                      className="rounded-md border-2 bg-gray-100 block w-full my-2"
+                      id="serviceType"
+                      value={formik.values.serviceType}
+                      onChange={formik.handleChange}
+                    >
+                      {serviceTypes.map((el, key) => (
+                        <option
+                          className="rounded-md border-2 bg-gray-100"
+                          key={key}
+                          value={el}
+                        >
+                          {el}
+                        </option>
+                      ))}
+                    </select>
+                    <small className="block text-gray-500">
+                      Especifique o tipo de serviço a ser realizado.
+                    </small>
+                  </div>
                 </div>
 
                 <div className="ext-gray-700 pl-5 border-l-2 border-dashed">
@@ -210,6 +235,22 @@ const page = () => {
                     <small className="block text-gray-500 my-1">
                       Adicione o preço final da chave.
                     </small>
+                    <div className="mb-5">
+                    <label htmlFor="obs">Observações</label>
+                    <textarea
+                      name="observation"
+                      id="observation"
+                      className="rounded-md border-2 block w-full my-2"
+                      value={formik.values.observation}
+                      onChange={formik.handleChange}
+                      cols={30}
+                      rows={5}
+                    />
+                    <small className="block text-gray-500 my-1">
+                      Descreva alguma propriedade específica sobre a chave a ser
+                      adicionada.
+                    </small>
+                  </div>
                   </div>
                 </div>
               </div>
