@@ -49,7 +49,7 @@ const page = () => {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <div className="m-5 p-5">
             <form className="flex flex-col items-center justify-center">
-              <div className="grid grid-cols-2 text-gray-700">
+              <div className="grid grid-cols-1 lg:grid-cols-2 text-gray-700">
                 <div className="text-gray-700 mr-5">
                   <div className="mb-5">
                     <label htmlFor="manufactorId">Fabricante</label>
@@ -145,25 +145,9 @@ const page = () => {
                       Especifique o tipo de serviço a ser realizado.
                     </small>
                   </div>
-                  
-                  <div className="mb-5">
-                    <label htmlFor="obs">Observações</label>
-                    <textarea
-                      name="observation"
-                      id="observation"
-                      className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.observation}
-                      onChange={formik.handleChange}
-                      cols={30}
-                      rows={5}
-                    />
-                    <small className="block text-gray-500 my-1">
-                      Descreva alguma propriedade específica sobre a chave a ser adicionada.
-                    </small>
-                  </div>
                 </div>
 
-                <div className="ext-gray-700 pl-5 border-l-2 border-dashed">
+                <div className="ext-gray-700 pl-0 lg:pl-5 border-0 lg:border-l-2 lg:border-dashed">
                   <div className="mb-5">
                     <label htmlFor="model">Modelo</label>
                     <input
@@ -241,6 +225,21 @@ const page = () => {
                     )}
                     <small className="block text-gray-500 my-1">
                       Adicione o preço final da chave.
+                    </small>
+                  </div>
+                  <div className="mb-5">
+                    <label htmlFor="obs">Observações</label>
+                    <textarea
+                      name="observation"
+                      id="observation"
+                      className="rounded-md border-2 block w-full my-2"
+                      value={formik.values.observation}
+                      onChange={formik.handleChange}
+                      cols={30}
+                      rows={5}
+                    />
+                    <small className="block text-gray-500 my-1">
+                      Descreva alguma propriedade específica sobre a chave a ser adicionada.
                     </small>
                   </div>
                 </div>

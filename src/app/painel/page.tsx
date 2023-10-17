@@ -6,7 +6,7 @@ import { getAllKeys } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect } from "react";
 
-const page = async () => {
+const page = () => {
   const keys = useAppSelector(state => state.keys.keyList);
   const dispatch = useAppDispatch();
   useEffect(() => {

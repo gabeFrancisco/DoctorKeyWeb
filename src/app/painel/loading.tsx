@@ -1,10 +1,12 @@
-import LoadingSkeleton from '@/components/LoadingSkeleton/LoadingSkeleton'
-import React from 'react'
+import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
+import React from "react";
 
 const loading = () => {
   return (
-    <LoadingSkeleton/>
-  )
-}
+    <div className="flex flex-col items-center justify-center">
+      <LoadingSkeleton />
+    </div>
+  );
+};
 
-export default loading
+export default loading;
