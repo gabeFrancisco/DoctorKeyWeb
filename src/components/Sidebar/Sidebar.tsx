@@ -56,7 +56,7 @@ const Sidebar = () => {
   //   }
   // }, []);
   return (
-    <aside className="flex flex-row-reverse lg:flex-col justify-evenly bg-green-500 lg:w-1/4 lg:h-screen sticky top-0 text-white shadow-2x">
+    <aside className="flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 lg:w-1/4 lg:h-screen sticky top-0 text-white shadow-2x">
       <div className="flex flex-row lg:flex-col items-center m-0 lg:m-5">
         {status === "authenticated" && data !== null && (
           <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
