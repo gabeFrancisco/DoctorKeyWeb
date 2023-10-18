@@ -56,18 +56,18 @@ const Sidebar = () => {
   //   }
   // }, []);
   return (
-    <aside className="bg-green-500 lg:w-1/4 h-screen sticky top-0 text-white shadow-2x">
-      <div className="flex flex-col items-center m-5">
+    <aside className="flex flex-row-reverse lg:flex-col justify-evenly bg-green-500 lg:w-1/4 lg:h-screen sticky top-0 text-white shadow-2x">
+      <div className="flex flex-row lg:flex-col items-center m-0 lg:m-5">
         {status === "authenticated" && data !== null && (
-          <div className="absolute hidden lg:flex lg:relative  flex-col items-center">
-            <div className="hidden lg:flex w-0 lg:w-28 mb-5">
+          <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
+            <div className="hidden lg:flex w-0 lg:w-28 mb-0 lg:mb-5">
               <Image
                 className="rounded-full border-2 border-white"
                 src={User}
                 alt="User image"
               />
             </div>
-            <p>
+            <p className="hidden lg:inline-block">
               Bem vindo <i>{data.user.name}</i>
             </p>
             <a
@@ -81,7 +81,7 @@ const Sidebar = () => {
           </div>
         )}
       </div>
-      <ul className="">
+      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start">
         {links.map((link, key) => (
           <SidebarItem
             key={key}

@@ -12,9 +12,9 @@ const layout = async ({children}: {children: ReactNode}) => {
   return (
     <div className="bg-slate-50 w-full h-full">
       {/* <Header /> */}
-      <div className="flex flex-row">
+      <div className="flex flex-col lg:flex-row">
         <Sidebar />
-        <div className="m-7 flex flex-col items-stretch w-full">
+        <div className="p-5 lg:p-2 lg:m-7 flex flex-col items-stretch w-full">
           {children}
         </div>
       </div>

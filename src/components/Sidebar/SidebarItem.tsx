@@ -17,7 +17,7 @@ const SidebarItem = (props: SidebarItemProps) => {
   return (
     <li className="my-3 ml-5 p-1 text-white">
       <Link
-        className="font-normal tracking-widest p-0 w-1 hover:text-slate-200"
+        className="font-normal tracking-widest text-sm lg:text-md p-0 w-1 hover:text-slate-200"
         href={props.url}
       >
         <motion.div whileHover={{ x: 10 }}>
