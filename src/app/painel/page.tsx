@@ -22,21 +22,25 @@ const page = () => {
         <DataCard
           description="Chaves cadastradas"
           data={keys.length}
+          delay={0.4}
           className="bg-gradient-to-tr from-green-600 to-green-400"
         />
         <DataCard
           description="Ordens de serviço"
           data={7}
+          delay={0.8}
           className="bg-gradient-to-tr from-blue-600 to-blue-400"
         />
         <DataCard
           description="Total de clientes"
           data={7}
+          delay={1.2}
           className="bg-gradient-to-tr from-yellow-500 to-yellow-300"
         />
          <DataCard
           description="Checklists ativos"
           data={7}
+          delay={1.6}
           className="bg-gradient-to-tr from-red-500 to-red-300"
         />
       </div>
