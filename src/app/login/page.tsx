@@ -10,6 +10,7 @@ import LoadingSkeletonButton from "@/components/LoadingSkeleton/LoadingSkeletonB
 import Logo from "../../../public/logo.svg";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
+import Link from "next/link";
 
 const page = () => {
   const [error, setError] = useState(false);
@@ -56,7 +57,12 @@ const page = () => {
         >
           <Image src={Logo} alt="Doctor Key" />
         </motion.div>
-        <div className="bg-slate-50 p-3 w-96 m-5 rounded-lg border shadow-lg">
+        <motion.div
+          initial={{ translateY: -10, opacity: 0 }}
+          animate={{ translateY: 10, opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="bg-slate-50 p-3 w-96 m-5 rounded-lg border shadow-lg"
+        >
           <form>
             {error ? (
               <motion.div
@@ -102,28 +108,51 @@ const page = () => {
               <motion.button
                 whileHover={{ translateY: -3 }}
                 onClick={() => formik.handleSubmit()}
-                className="rounded-lg px-3 py-1 mx-5 mb-5 bg-green-500 text-white"
+                className="rounded-lg px-7 py-2 mx-5 mb-5 bg-green-500 text-white"
                 type="button"
               >
-                {loading ? <LoadingSkeletonButton /> : "Entrar"}
+                {loading ? <LoadingSkeletonButton /> : "Acessar!"}
               </motion.button>
             </div>
+            <div>
+              <div>
+                <Link
+                  className="text-green-500 mx-5 my-1 hover:text-green-700 hover:underline text-sm"
+                  href={"#"}
+                >
+                  Esqueci minha senha!
+                </Link>
+              </div>
+              <div>
+                <Link
+                  className="text-green-500 mx-5 my-1 hover:text-green-700 hover:underline text-sm"
+                  href={"#"}
+                >
+                  Não tenho cadastro.
+                </Link>
+              </div>
+            </div>
           </form>
+        </motion.div>
+        <div className="text-slate-400">
+          Doctor Key © {new Date().getFullYear().toString()}
         </div>
       </div>
       <div className="hidden lg:flex flex-col items-center justify-evenly lg:h-full w-full md:h-0 lg:w-full text-white landing">
-        <motion.h3 
-           initial={{ translateY: -30, opacity: 0 }}
-           animate={{ translateY: 5, opacity: 1 }}
-           transition={{ duration: 1.5, delay: 1 }}
-          className="text-6xl font-extrabold m-16 text-center">
+        <motion.h3
+          initial={{ translateY: -30, opacity: 0 }}
+          animate={{ translateY: 5, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 1 }}
+          className="text-6xl font-extrabold m-16 text-center"
+        >
           Seu gerenciador de chaves automotivas inteligente!
         </motion.h3>
-        <motion.div 
-           initial={{ translateY: -30, opacity: 0 }}
-           animate={{ translateY: 5, opacity: 1 }}
-           transition={{ duration: 1.5, delay: 2 }}
-          className="m-16">
+        <motion.div
+          initial={{ translateY: -30, opacity: 0 }}
+          animate={{ translateY: 5, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 2 }}
+          className="m-16"
+        >
           <TypeAnimation
             sequence={[
               "Gestão completa de Chaves",
