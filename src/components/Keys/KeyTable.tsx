@@ -19,7 +19,7 @@ const KeyTable = () => {
   return (
     <div className="flex flex-col items-center">
       {isLoaded ? (
-        <div className="overflow-x-auto shadow-md sm:rounded-lg w-full">
+        <div className="overflow-x-auto shadow-md rounded-lg w-full">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

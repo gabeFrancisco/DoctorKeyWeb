@@ -25,7 +25,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
   };
   return (
     <tr
-      className="cursor-pointer hover:bg-slate-200 text-slate-600"
+      className="cursor-pointer hover:bg-slate-200 text-slate-600 border-b border-double border-slate-200"
       key={_key.id}
     >
       {removalModal ? (
