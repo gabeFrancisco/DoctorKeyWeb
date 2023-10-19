@@ -7,6 +7,10 @@ import { signIn, useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 import LoadingSkeletonButton from "@/components/LoadingSkeleton/LoadingSkeletonButton";
 
+import Logo from "../../../public/logo.svg";
+import Image from "next/image";
+import { TypeAnimation } from "react-type-animation";
+
 const page = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,9 +47,16 @@ const page = () => {
   });
   return (
     <div className="flex flex-col lg:flex-row items-stretch h-screen">
-      <div className="w-full lg:w-2/5 bg-zinc bg-gradient-to-tr from-green-300 to-green-500 h-full flex flex-col justify-evenly items-center">
-        <h1 className="text-4xl font-bold text-white">Doctor Key</h1>
-        <div className="bg-slate-100 p-3 w-96 m-5 rounded-lg shadow-lg">
+      <div className="w-full h-screen lg:w-2/5 bg-slate-50 flex flex-col justify-start items-center">
+        <motion.div
+          initial={{ translateY: -10, opacity: 0 }}
+          animate={{ translateY: 10, opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="p-12 mb-5 mt-5"
+        >
+          <Image src={Logo} alt="Doctor Key" />
+        </motion.div>
+        <div className="bg-slate-50 p-3 w-96 m-5 rounded-lg border shadow-lg">
           <form>
             {error ? (
               <motion.div
@@ -88,22 +99,49 @@ const page = () => {
               )}
             </div>
             <div>
-              <button
+              <motion.button
+                whileHover={{ translateY: -3 }}
                 onClick={() => formik.handleSubmit()}
                 className="rounded-lg px-3 py-1 mx-5 mb-5 bg-green-500 text-white"
                 type="button"
               >
-                {loading ? <LoadingSkeletonButton/> : "Entrar"}
-              </button>
+                {loading ? <LoadingSkeletonButton /> : "Entrar"}
+              </motion.button>
             </div>
           </form>
         </div>
       </div>
-      <div className="hidden lg:flex flex-col items-center justify-center bg-slate-200 lg:h-full w-full md:h-0 lg:w-full text-green-500">
-        <h1 className="text-4xl font-bold">Doctor Key</h1>
-        <h3 className="text-2xl font-bold">Seu gerenciador de chaves automotivas inteligente!</h3>
+      <div className="hidden lg:flex flex-col items-center justify-evenly lg:h-full w-full md:h-0 lg:w-full text-white landing">
+        <motion.h3 
+           initial={{ translateY: -30, opacity: 0 }}
+           animate={{ translateY: 5, opacity: 1 }}
+           transition={{ duration: 1.5, delay: 1 }}
+          className="text-6xl font-extrabold m-16 text-center">
+          Seu gerenciador de chaves automotivas inteligente!
+        </motion.h3>
+        <motion.div 
+           initial={{ translateY: -30, opacity: 0 }}
+           animate={{ translateY: 5, opacity: 1 }}
+           transition={{ duration: 1.5, delay: 2 }}
+          className="m-16">
+          <TypeAnimation
+            sequence={[
+              "Gestão completa de Chaves",
+              2000,
+              "Gestão de Clientes e Serviços",
+              2000,
+              "Checklists Técnicos",
+              2000,
+              "Marketing e Pós-venda",
+              2000,
+            ]}
+            speed={70}
+            className="text-4xl font-bold"
+            repeat={Infinity}
+          />
+        </motion.div>
       </div>
-    </div> 
+    </div>
   );
 };
 
