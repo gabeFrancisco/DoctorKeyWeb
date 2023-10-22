@@ -11,6 +11,7 @@ import api from "@/services/api";
 interface KeyState {
   key: Key;
   keyList: Array<Key>;
+  filteredList: Array<Key>;
 }
 
 const initialState: KeyState = {
@@ -28,6 +29,7 @@ const initialState: KeyState = {
     userId: "",
   },
   keyList: new Array<Key>(),
+  filteredList: new Array<Key>(),
 };
 
 export const getAllKeys = createAsyncThunk(
@@ -35,11 +37,11 @@ export const getAllKeys = createAsyncThunk(
   async () => await api.get("/keys").then((res) => res.data)
 );
 
-export const getAllByModel = createAsyncThunk(
-  "keys/getAllByModel",
-  async (id: string) =>
-    await api.get(`/keys/byModel/${id}`).then((res) => res.data)
-);
+// export const getAllByModel = createAsyncThunk(
+//   "keys/getAllByModel",
+//   async (id: string) =>
+//     await api.get(`/keys/byModel/${id}`).then((res) => res.data)
+// );
 
 export const postKey = createAsyncThunk(
   "keys/post",
@@ -89,16 +91,25 @@ export const KeySlice = createSlice({
         state.keyList.find((key) => key.id === action.payload) as Key
       );
     },
+    searchKey: (state, action: PayloadAction<string>) => {
+      let filtered = state.keyList.filter((key) =>
+        key.model.toLowerCase().startsWith(action.payload)
+      );
+      state.filteredList = filtered;
+    },
+    clearSearch: (state) => {
+      state.filteredList.length = 0;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllKeys.fulfilled, (state, action) => {
       state.keyList = action.payload;
     });
-    builder.addCase(getAllByModel.fulfilled, (state, action) => {
-      state.keyList = action.payload;
-    })
+    // builder.addCase(getAllByModel.fulfilled, (state, action) => {
+    //   state.keyList = action.payload;
+    // })
   },
 });
 
 export default KeySlice.reducer;
-export const { readKey } = KeySlice.actions;
+export const { readKey, searchKey, clearSearch } = KeySlice.actions;

@@ -15,7 +15,7 @@ const Keys = () => {
   return (
     <div>
       <SectionTitle title="Chaves" subtitle="Gerencie todas as suas chaves nessa seção" />
-      <KeyToolbar/>
+      {/* <KeyToolbar/> */}
       <KeyTable/>
     </div>
   );
