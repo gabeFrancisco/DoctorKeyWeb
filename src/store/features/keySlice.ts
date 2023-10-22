@@ -44,7 +44,11 @@ export const getAllKeys = createAsyncThunk(
 export const getAllByModel = createAsyncThunk(
   "keys/getAllByModel",
   async (id: string) =>
-    await api.get(`/keys/byModel/${id}`).then((res) => res.data)
+    await api.get(`/keys/byModel/${id}`).then((res) => {
+      if(res.status === 200){
+        return res.data;
+      }
+    })
 );
 
 export const postKey = createAsyncThunk(
@@ -109,9 +113,9 @@ export const KeySlice = createSlice({
     builder.addCase(getAllKeys.fulfilled, (state, action) => {
       state.keyList = action.payload;
     });
-    // builder.addCase(getAllByModel.fulfilled, (state, action) => {
-    //   state.keyList = action.payload;
-    // })
+    builder.addCase(getAllByModel.fulfilled, (state, action) => {
+      state.keyList = action.payload;
+    })
   },
 });
 
