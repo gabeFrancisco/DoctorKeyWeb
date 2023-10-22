@@ -34,14 +34,18 @@ const initialState: KeyState = {
 
 export const getAllKeys = createAsyncThunk(
   "keys/getAll",
-  async () => await api.get("/keys").then((res) => res.data)
+  async () => await api.get("/keys").then((res) => {
+    if(res.status === 200){
+      return res.data;
+    }
+  })
 );
 
-// export const getAllByModel = createAsyncThunk(
-//   "keys/getAllByModel",
-//   async (id: string) =>
-//     await api.get(`/keys/byModel/${id}`).then((res) => res.data)
-// );
+export const getAllByModel = createAsyncThunk(
+  "keys/getAllByModel",
+  async (id: string) =>
+    await api.get(`/keys/byModel/${id}`).then((res) => res.data)
+);
 
 export const postKey = createAsyncThunk(
   "keys/post",

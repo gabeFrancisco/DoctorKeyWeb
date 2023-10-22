@@ -43,7 +43,7 @@ const links = [
   },
   {
     title: "Serviços",
-    url: "/painel/serviços",
+    url: "/painel/servicos",
     icon: faWrench,
   },
 ];
