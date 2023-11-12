@@ -104,7 +104,7 @@ const Sidebar = () => {
           />
         ))}
         <div
-          className="hidden lg:block my-3 ml-5 p-1 text-white cursor-pointer"
+          className="hidden lg:block my-10 ml-5 p-1 text-white cursor-pointer"
           onClick={toggleSidebar}
         >
           <motion.div whileHover={{ x: 10 }}>
@@ -112,7 +112,7 @@ const Sidebar = () => {
               className=" mr-3 text-xl"
               icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}
             />
-            <span className="">
+            <span>
               {toggle ? null : "Recolher Menu"}
             </span>
           </motion.div>
