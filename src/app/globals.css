@@ -16,9 +16,28 @@
   }
 }
 
-.landing{
+.landing {
   background-image: url("../../public/landing.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: -100px;
-  }
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #26b259
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #24a955
+}

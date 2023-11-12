@@ -65,9 +65,9 @@ const Sidebar = () => {
     toggle ? setToggle(false) : setToggle(true)
   };
   return (
-    <aside className={`flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 ${toggle ? '' : 'lg:w-1/4'} lg:h-screen sticky top-0 text-white shadow-2x`}>
+    <aside id="sidebar" className={`overflow-y-auto flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 ${toggle ? '' : 'lg:w-1/4'} lg:h-screen sticky top-0 text-white shadow-2x`}>
       {!toggle ? (
-        <div className="flex flex-row lg:flex-col items-center m-0 lg:m-5">
+        <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
           {status === "authenticated" && data !== null && (
             <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
               <div className="hidden lg:flex w-0 lg:w-28 mb-0 lg:mb-5">
@@ -77,7 +77,7 @@ const Sidebar = () => {
                   alt="User image"
                 />
               </div>
-              <p className="hidden lg:inline-block">
+              <p className="hidden lg:inline-block text-center">
                 Bem vindo <i>{data.user.name}</i>
               </p>
               <a
@@ -93,7 +93,7 @@ const Sidebar = () => {
         </div>
       ) : null}
 
-      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start ">
+      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-green-500">
         {links.map((link, key) => (
           <SidebarItem
             key={key}
@@ -104,7 +104,7 @@ const Sidebar = () => {
           />
         ))}
         <div
-          className="hidden lg:block my-10 ml-5 p-1 text-white cursor-pointer"
+          className="hidden lg:block my-10 ml-5 p-1 text-white cursor-pointer bg-green-500"
           onClick={toggleSidebar}
         >
           <motion.div whileHover={{ x: 10 }}>
