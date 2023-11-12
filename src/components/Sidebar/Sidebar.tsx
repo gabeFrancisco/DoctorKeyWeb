@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SidebarItem from "./SidebarItem";
 import { signOut, useSession } from "next-auth/react";
 import {
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight,
   faChartBar,
   faChartColumn,
   faKey,
@@ -14,6 +16,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import User from "../../../public/user.png";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 
 const links = [
   {
@@ -50,46 +54,69 @@ const links = [
 
 const Sidebar = () => {
   const { data, status } = useSession();
-  // useEffect(() => {
-  //   if (status !== "authenticated") {
-  //     window.location.href = "/login";
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (status !== "authenticated") {
+      window.location.href = "/login";
+    }
+  }, []);
+
+  const [toggle, setToggle] = useState(false);
+  const toggleSidebar = () => {
+    toggle ? setToggle(false) : setToggle(true)
+  };
   return (
-    <aside className="flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 lg:w-1/4 lg:h-screen sticky top-0 text-white shadow-2x">
-      <div className="flex flex-row lg:flex-col items-center m-0 lg:m-5">
-        {status === "authenticated" && data !== null && (
-          <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
-            <div className="hidden lg:flex w-0 lg:w-28 mb-0 lg:mb-5">
-              <Image
-                className="rounded-full border-2 border-white"
-                src={User}
-                alt="User image"
-              />
+    <aside className={`flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 ${toggle ? '' : 'lg:w-1/4'} lg:h-screen sticky top-0 text-white shadow-2x`}>
+      {!toggle ? (
+        <div className="flex flex-row lg:flex-col items-center m-0 lg:m-5">
+          {status === "authenticated" && data !== null && (
+            <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
+              <div className="hidden lg:flex w-0 lg:w-28 mb-0 lg:mb-5">
+                <Image
+                  className="rounded-full border-2 border-white"
+                  src={User}
+                  alt="User image"
+                />
+              </div>
+              <p className="hidden lg:inline-block">
+                Bem vindo <i>{data.user.name}</i>
+              </p>
+              <a
+                onClick={async () => {
+                  signOut({ callbackUrl: "/login" });
+                }}
+                className="cursor-pointer hover:text-green-200 font-semibold"
+              >
+                Sair
+              </a>
             </div>
-            <p className="hidden lg:inline-block">
-              Bem vindo <i>{data.user.name}</i>
-            </p>
-            <a
-              onClick={async () => {
-                signOut({ callbackUrl: "/login" });
-              }}
-              className="cursor-pointer hover:text-green-200 font-semibold"
-            >
-              Sair
-            </a>
-          </div>
-        )}
-      </div>
-      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start">
+          )}
+        </div>
+      ) : null}
+
+      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start ">
         {links.map((link, key) => (
           <SidebarItem
             key={key}
             title={link.title}
             url={link.url}
             icon={link.icon}
+            toggle={toggle}
           />
         ))}
+        <div
+          className="hidden lg:block my-3 ml-5 p-1 text-white cursor-pointer"
+          onClick={toggleSidebar}
+        >
+          <motion.div whileHover={{ x: 10 }}>
+            <FontAwesomeIcon
+              className=" mr-3 text-xl"
+              icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}
+            />
+            <span className="">
+              {toggle ? null : "Recolher Menu"}
+            </span>
+          </motion.div>
+        </div>
       </ul>
     </aside>
   );

@@ -11,6 +11,7 @@ interface SidebarItemProps {
   title: string;
   url: string;
   icon: IconDefinition;
+  toggle: boolean;
 }
 
 const SidebarItem = (props: SidebarItemProps) => {
@@ -22,7 +23,9 @@ const SidebarItem = (props: SidebarItemProps) => {
       >
         <motion.div whileHover={{ x: 10 }}>
           <FontAwesomeIcon className=" mr-3 text-xl" icon={props.icon} />
-          <span className="hidden lg:inline">{props.title}</span>
+          {props.toggle ? null : (
+            <span className="hidden lg:inline">{props.title}</span>
+          )}
         </motion.div>
       </Link>
     </li>
