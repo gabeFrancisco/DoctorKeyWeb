@@ -2,6 +2,7 @@
 
 import { deleteKey } from "@/store/features/keySlice";
 import { useAppDispatch } from "@/store/store";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Modal from "react-modal";
 
@@ -10,12 +11,19 @@ interface KeyDeleteModalProps {
   keyManufactor: string;
   keyModel: string;
   handleClose: () => void;
+  return?: boolean
 }
 
 export const KeyDeleteModal = (props: KeyDeleteModalProps) => {
   const dispatch = useAppDispatch();
+  const navigate = useRouter();
   const handleKeyDelete = () => {
-    dispatch(deleteKey(props.keyId)).then(() => props.handleClose());
+    dispatch(deleteKey(props.keyId)).then(() => {
+      props.handleClose()
+      if(props.return){
+        navigate.back();
+      }
+    });
   };
 
   return (
