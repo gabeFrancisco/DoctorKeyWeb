@@ -4,6 +4,7 @@ import { Key } from "@/models/Key";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { KeyDeleteModal } from "./KeyDeleteModal";
+import { motion } from "framer-motion";
 
 interface Props {
   keyModel: Key;
@@ -19,7 +20,11 @@ const KeyCard = (props: Props) => {
     removalModal ? setRemovalModal(false) : setRemovalModal(true);
   };
   return (
-    <div className="m-0 lg:m-5 border-0 rounded-xl shadow-lg">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="m-0 lg:m-5 border-0 rounded-xl shadow-lg"
+    >
       {removalModal ? (
         <KeyDeleteModal
           handleClose={handleDeleteModal}
@@ -37,7 +42,7 @@ const KeyCard = (props: Props) => {
           {props.keyModel.model}
         </h2>
       </div>
-      <div className="p-5 text-gray-600 border border-double border-gray-100 rounded-bl-xl rounded-br-xl">
+      <div className="py-5 px-8 text-gray-600  border border-double border-gray-100 rounded-bl-xl rounded-br-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <h3 className="my-1">Ano de fabricação: {props.keyModel.year}</h3>
           <h3 className="my-1">
@@ -50,7 +55,7 @@ const KeyCard = (props: Props) => {
 
         <div className="my-5">
           <h3>Observações:</h3>
-          <div className="border-b mt-2 mb-5 p-2 text-sm">
+          <div className="border-b mt-2 mb-5 py-2 text-sm">
             {props.keyModel.observation.length > 1
               ? props.keyModel.observation
               : "Sem dados!"}
@@ -60,7 +65,7 @@ const KeyCard = (props: Props) => {
             <div className="border-b my-3"></div>
             <button
               onClick={() => navigate.back()}
-              className="border border-green-500 rounded-lg text-green-500 bg-white shadow-lg py-1 px-5 mx-1 hover:bg-green-500 hover:text-white"
+              className="border border-green-500 rounded-lg text-green-500 bg-white shadow-lg py-1 px-5 mr-1 hover:bg-green-500 hover:text-white"
             >
               Voltar
             </button>
@@ -72,14 +77,14 @@ const KeyCard = (props: Props) => {
             </button>
             <button
               onClick={handleDeleteModal}
-              className="rounded-lg text-white bg-red-500 shadow-lg py-1 px-5 mx-1 hover:bg-red-600"
+              className="rounded-lg text-white bg-red-500 shadow-lg py-1 px-5 m-1 hover:bg-red-600"
             >
               Apagar
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

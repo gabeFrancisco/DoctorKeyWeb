@@ -27,6 +27,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
     <tr
       className="cursor-pointer hover:bg-slate-200 text-slate-600 border-b border-double border-slate-200"
       key={_key.id}
+      onClick={handleRead} 
     >
       {removalModal ? (
         <KeyDeleteModal
@@ -37,7 +38,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
         />
       ) : null}
 
-      <th onClick={handleRead} className="px-2 lg:px-6 py-2">
+      <th className="px-2 lg:px-6 py-2">
         {_key.model}
       </th>
       <td className="px-2 lg:px-6 py-2">{_key.manufactor}</td>

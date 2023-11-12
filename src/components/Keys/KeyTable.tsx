@@ -81,7 +81,7 @@ const KeyTable = () => {
             animate={{ opacity: 1 }}
           >
             <table className="w-full text-sm text-left text-gray-500 rounded-md">
-              <thead className="border-0 rounded-md text-md text-gray-100 bg-green-500">
+              <thead className="border-0 rounded-md text-md text-white bg-green-500">
                 <tr>
                   <th className="px-2 lg:px-6 py-3 m-1">Modelo</th>
                   <th className="px-2 lg:px-6 py-3 m-1">Marca</th>
