@@ -1,5 +1,4 @@
 import { BaseEntity } from "./BaseEntity";
-import { KeyType } from "./KeyType";
 
 export interface Key extends BaseEntity{
   manufactor: string

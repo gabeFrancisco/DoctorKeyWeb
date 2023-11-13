@@ -54,11 +54,11 @@ const links = [
 
 const Sidebar = () => {
   const { data, status } = useSession();
-  useEffect(() => {
-    if (status !== "authenticated") {
-      window.location.href = "/login";
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (status !== "authenticated") {
+  //     window.location.href = "/login";
+  //   }
+  // }, []);
 
   const [toggle, setToggle] = useState(false);
   const toggleSidebar = () => {
