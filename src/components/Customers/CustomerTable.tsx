@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 import { motion } from "framer-motion";
 import { getAllCustomers } from "@/store/features/customerSlice";
+import CustomerRow from "./CustomerRow";
 
 const CustomerTable = () => {
   const customers = useAppSelector((state) => state.customers.customerList);
@@ -15,8 +16,8 @@ const CustomerTable = () => {
   const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(getAllCustomers()).then(() => setLoaded(true))
-  }, [])
+    dispatch(getAllCustomers()).then(() => setLoaded(true));
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -46,6 +47,11 @@ const CustomerTable = () => {
                   <th className="px-2 lg:px-6 py-3 m-1">Ações</th>
                 </tr>
               </thead>
+              <tbody>
+                {customers.map((el, key) => (
+                  <CustomerRow customer={el} />
+                ))}
+              </tbody>
             </table>
           </motion.div>
         </div>
