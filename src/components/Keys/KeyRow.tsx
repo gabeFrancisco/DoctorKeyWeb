@@ -24,7 +24,10 @@ const KeyRow = ({ _key }: { _key: Key }) => {
     removalModal ? setRemovalModal(false) : setRemovalModal(true);
   };
   return (
-    <tr
+    <motion.tr
+      initial={{ opacity: 0, x: -7 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={ { duration: 0.3}}
       className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200"
       key={_key.id}
     >
@@ -75,7 +78,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
           />
         </motion.button>
       </td>
-    </tr>
+    </motion.tr>
   );
 };
 

@@ -33,7 +33,7 @@ const CustomerTable = () => {
         </div>
       </div>
       {isLoaded ? (
-        <div className="overflow-x-auto shadow-md rounded-lg w-full">
+        <div className="overflow-x-auto shadow-md rounded-lg w-full my-2">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <table className="w-full text-sm text-left text-gray-500 rounded-md">
               <thead className="border-0 rounded-md text-md text-white bg-green-500">
