@@ -21,7 +21,7 @@ const SidebarItem = (props: SidebarItemProps) => {
         className="font-normal tracking-widest text-sm lg:text-md p-0 w-1 hover:text-slate-200"
         href={props.url}
       >
-        <motion.div whileHover={{ x: 10 }}>
+        <motion.div whileHover={{ x: 5 }}>
           <FontAwesomeIcon className=" mr-3 text-xl" icon={props.icon} />
           {props.toggle ? null : (
             <span className="hidden lg:inline">{props.title}</span>

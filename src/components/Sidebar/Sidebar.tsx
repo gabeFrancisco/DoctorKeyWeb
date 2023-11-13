@@ -65,7 +65,7 @@ const Sidebar = () => {
     toggle ? setToggle(false) : setToggle(true)
   };
   return (
-    <aside id="sidebar" className={`overflow-y-auto flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 ${toggle ? '' : 'lg:w-1/4'} lg:h-screen sticky top-0 text-white shadow-2x`}>
+    <aside id="sidebar" className={`overflow-y-auto overflow-x-hidden flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 ${toggle ? '' : 'lg:w-1/4'} lg:h-screen sticky top-0 text-white shadow-2x`}>
       {!toggle ? (
         <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
           {status === "authenticated" && data !== null && (
@@ -107,7 +107,7 @@ const Sidebar = () => {
           className="hidden lg:block my-10 ml-5 p-1 text-white cursor-pointer bg-green-500"
           onClick={toggleSidebar}
         >
-          <motion.div whileHover={{ x: 10 }}>
+          <motion.div whileHover={{ x: 5 }}>
             <FontAwesomeIcon
               className=" mr-3 text-xl"
               icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}

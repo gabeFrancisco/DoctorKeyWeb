@@ -7,6 +7,7 @@ import {
 
 import { Customer } from "@/models/Customer"
 import { Address } from "@/models/Address"
+import api from "@/services/api";
 
 interface CustomerState {
   customer: Customer;
@@ -35,11 +36,23 @@ const initialState: CustomerState = {
   
 }
 
+export const getAllCustomers = createAsyncThunk(
+  "customers/getAll",
+  async () => await api.get("/api/customers").then(res => {
+    if(res.status === 200){
+      return res.data;
+    }
+  })
+)
+
 export const CustomerSlice = createSlice({
   name: "Customers",
   initialState,
-  reducers: {
-
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllCustomers.fulfilled, (state, action) => {
+      state.customerList = action.payload;
+    })
   }
 })
 
