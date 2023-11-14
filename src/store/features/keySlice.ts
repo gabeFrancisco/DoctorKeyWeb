@@ -101,7 +101,7 @@ export const KeySlice = createSlice({
     },
     searchKey: (state, action: PayloadAction<string>) => {
       let filtered = state.keyList.filter((key) =>
-        key.model.toLowerCase().startsWith(action.payload)
+        key.model.toLowerCase().startsWith(action.payload.toLowerCase())
       );
       state.filteredList = filtered;
     },

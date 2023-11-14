@@ -65,11 +65,11 @@ const KeyTable = () => {
           </Link>
         </div>
 
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-stretch">
           <input
             type="text"
             placeholder="Pesquisar por modelo"
-            className="rounded-md border-2 block w-full p-1"
+            className="rounded-md border-2 block w-52 lg:w-full p-1"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
