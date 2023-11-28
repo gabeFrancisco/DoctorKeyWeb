@@ -146,7 +146,7 @@ const page = () => {
                   </div>
                 </div>
 
-                <div className="ext-gray-700 pl-0 lg:pl-5 border-0 lg:border-l-2 lg:border-dashed">
+                <div className="text-gray-700 pl-0 lg:pl-5 border-0 lg:border-l-2 lg:border-dashed">
                   <div className="mb-5">
                     <label htmlFor="model">Modelo</label>
                     <input

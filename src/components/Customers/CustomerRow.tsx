@@ -10,7 +10,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
       className="hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200"
       key={customer.id}
     >
-      <th className="px-2 lg:px-5 text-green-500 underline cursor-pointer border-r border-dashed">{customer.name}</th>
+      <th className="px-2 lg:px-5 text-green-500 underline cursor-pointer border-r">{customer.name}</th>
       <td className="px-2 lg:px-6 py-2">{customer.phone}</td>
       <td className="hidden lg:table-cell px-2 lg:px-6 py-2">{customer.email}</td>
       <td className="px-2 lg:px-6 py-2">{`${customer.address.road}, ${customer.address.number}`}</td>

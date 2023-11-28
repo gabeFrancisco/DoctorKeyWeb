@@ -41,7 +41,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       ) : null}
 
       <th
-        className="px-2 lg:px-6 py-2 text-green-500 underline cursor-pointer border-r border-dashed"
+        className="px-2 lg:px-6 py-2 text-green-500 underline cursor-pointer border-r"
         onClick={handleRead}
       >
         {_key.model}
