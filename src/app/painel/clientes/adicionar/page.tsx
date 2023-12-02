@@ -242,7 +242,24 @@ const page = () => {
                     </div>
                   </div>
                 </div>
+                
               </div>
+              <div className="mt-5 p-3">
+                  <button
+                    type="button"
+                    onClick={() => navigate.replace("/painel/clientes")}
+                    className="rounded bg-red-500 text-white px-3 py-1 m-2"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => formik.handleSubmit()}
+                    className="rounded bg-green-500 text-white px-3 py-1 m-2"
+                  >
+                    Adicionar!
+                  </button>
+                </div>
             </form>
           </div>
         </motion.div>
