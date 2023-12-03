@@ -36,10 +36,12 @@ const page = () => {
     validateOnBlur: true,
     onSubmit: (values) => {
       let customer: Customer = {
+        id: '',
         name: values.name,
         phone: values.phone,
         email: values.email,
         address: {
+          id: '',
           road: values.road,
           number: values.number,
           complement: values.complement,
