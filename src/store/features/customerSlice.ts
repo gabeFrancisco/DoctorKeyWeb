@@ -45,6 +45,18 @@ export const getAllCustomers = createAsyncThunk(
   })
 )
 
+export const postCustomer = createAsyncThunk(
+  "customers/post",
+  async (data: {}, thunkAPI) => {
+    return await api.post("/api/customers", data).then(res => {
+      if(res.status === 200){
+        thunkAPI.dispatch(getAllCustomers());
+        return res.data;
+      }
+    })
+  }
+)
+
 export const CustomerSlice = createSlice({
   name: "Customers",
   initialState,

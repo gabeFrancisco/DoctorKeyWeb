@@ -3,9 +3,12 @@
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { useAppDispatch } from "@/store/store";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { motion } from "framer-motion";
+import { postCustomer } from "@/store/features/customerSlice";
+import { Customer } from "@/models/Customer";
 
 const page = () => {
   const navigate = useRouter();
@@ -16,8 +19,40 @@ const page = () => {
       name: "",
       phone: "",
       email: "",
+      road: "",
+      number: "",
+      complement: "",
+      neighborhood: "",
+      cep: "",
+      city: "",
+      state: "",
     },
-    onSubmit: (values) => {},
+    validationSchema: Yup.object({
+      name: Yup.string().required("Nome é obrigatório!"),
+      phone: Yup.string().required("Telefone é obrigatório!"),
+    }),
+    enableReinitialize: true,
+    validateOnChange: false,
+    validateOnBlur: true,
+    onSubmit: (values) => {
+      let customer: Customer = {
+        name: values.name,
+        phone: values.phone,
+        email: values.email,
+        address: {
+          road: values.road,
+          number: values.number,
+          complement: values.complement,
+          neighborhood: values.neighborhood,
+          cep: values.cep,
+          city: values.city,
+          state: values.state
+        }
+      }
+      dispatch(postCustomer(customer)).then(() =>
+        navigate.replace("/painel/clientes")
+      );
+    },
   });
 
   return (
@@ -104,16 +139,16 @@ const page = () => {
                   <div className="mb-5">
                     <label htmlFor="name">Rua</label>
                     <input
-                      name="name"
+                      name="road"
                       className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.name}
+                      value={formik.values.road}
                       onChange={formik.handleChange}
                       type="text"
                       required
                     />
-                    {formik.errors.name && (
+                    {formik.errors.road && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.name}
+                        {formik.errors.road}
                       </small>
                     )}
                     <small className="block text-gray-500 my-2">
@@ -124,16 +159,16 @@ const page = () => {
                   <div className="mb-5">
                     <label htmlFor="name">Bairro</label>
                     <input
-                      name="name"
+                      name="neighborhood"
                       className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.name}
+                      value={formik.values.neighborhood}
                       onChange={formik.handleChange}
                       type="text"
                       required
                     />
-                    {formik.errors.name && (
+                    {formik.errors.neighborhood && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.name}
+                        {formik.errors.neighborhood}
                       </small>
                     )}
                     <small className="block text-gray-500 my-2">
@@ -145,16 +180,16 @@ const page = () => {
                   <div className="mb-5">
                     <label htmlFor="name">Número</label>
                     <input
-                      name="name"
+                      name="number"
                       className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.name}
+                      value={formik.values.number}
                       onChange={formik.handleChange}
                       type="text"
                       required
                     />
-                    {formik.errors.name && (
+                    {formik.errors.number && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.name}
+                        {formik.errors.number}
                       </small>
                     )}
                     <small className="block text-gray-500 my-2">
@@ -164,16 +199,16 @@ const page = () => {
                   <div className="mb-5">
                     <label htmlFor="name">CEP</label>
                     <input
-                      name="name"
+                      name="cep"
                       className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.name}
+                      value={formik.values.cep}
                       onChange={formik.handleChange}
                       type="text"
                       required
                     />
-                    {formik.errors.name && (
+                    {formik.errors.cep && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.name}
+                        {formik.errors.cep}
                       </small>
                     )}
                     <small className="block text-gray-500 my-2">
@@ -185,16 +220,16 @@ const page = () => {
                   <div className="mb-5">
                     <label htmlFor="name">Complemento</label>
                     <input
-                      name="email"
+                      name="complement"
                       className="rounded-md border-2 block w-full my-2"
-                      value={formik.values.email}
+                      value={formik.values.complement}
                       onChange={formik.handleChange}
-                      type="email"
+                      type="complement"
                       required
                     />
-                    {formik.errors.email && (
+                    {formik.errors.complement && (
                       <small className="my-2 text-red-500">
-                        {formik.errors.email}
+                        {formik.errors.complement}
                       </small>
                     )}
                     <small className="block text-gray-500 my-2">
@@ -205,16 +240,16 @@ const page = () => {
                     <div>
                       <label htmlFor="name">Cidade</label>
                       <input
-                        name="name"
+                        name="city"
                         className="rounded-md border-2 block w-full my-2"
-                        value={formik.values.name}
+                        value={formik.values.city}
                         onChange={formik.handleChange}
                         type="text"
                         required
                       />
-                      {formik.errors.name && (
+                      {formik.errors.city && (
                         <small className="my-2 text-red-500">
-                          {formik.errors.name}
+                          {formik.errors.city}
                         </small>
                       )}
                       <small className="block text-gray-500 my-2">
@@ -224,16 +259,16 @@ const page = () => {
                     <div>
                       <label htmlFor="name">Estado</label>
                       <input
-                        name="name"
+                        name="state"
                         className="rounded-md border-2 block w-full my-2"
-                        value={formik.values.name}
+                        value={formik.values.state}
                         onChange={formik.handleChange}
                         type="text"
                         required
                       />
-                      {formik.errors.name && (
+                      {formik.errors.state && (
                         <small className="my-2 text-red-500">
-                          {formik.errors.name}
+                          {formik.errors.state}
                         </small>
                       )}
                       <small className="block text-gray-500 my-2">
@@ -242,24 +277,23 @@ const page = () => {
                     </div>
                   </div>
                 </div>
-                
               </div>
               <div className="mt-5 p-3">
-                  <button
-                    type="button"
-                    onClick={() => navigate.replace("/painel/clientes")}
-                    className="rounded bg-red-500 text-white px-3 py-1 m-2"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => formik.handleSubmit()}
-                    className="rounded bg-green-500 text-white px-3 py-1 m-2"
-                  >
-                    Adicionar!
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => navigate.replace("/painel/clientes")}
+                  className="rounded bg-red-500 text-white px-3 py-1 m-2"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => formik.handleSubmit()}
+                  className="rounded bg-green-500 text-white px-3 py-1 m-2"
+                >
+                  Adicionar!
+                </button>
+              </div>
             </form>
           </div>
         </motion.div>
