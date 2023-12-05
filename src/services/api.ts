@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react";
 
 export const urls = {
   "dev": "http://10.0.10.250:5003",
-  "prod": "https://doctorkeyapi.azurewebsites.net"
+  "prod": "https://doctorkeyapi.azurewebsites.net",
 }
 
 const api = axios.create({

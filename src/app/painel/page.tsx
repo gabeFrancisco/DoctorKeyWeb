@@ -1,17 +1,42 @@
-'use client'
+"use client";
 
 import DataCard from "@/components/DataCard/DataCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { getAllKeys } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect } from "react";
+import { urls } from "../../services/api";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 const page = () => {
-  const keys = useAppSelector(state => state.keys.keyList);
+  const ws_url = "ws://10.0.10.250:5003/api/sockets";
+  const { sendJsonMessage, lastMessage, readyState } = useWebSocket(ws_url, {
+    share: false,
+    shouldReconnect: () => true,
+    heartbeat: true,
+  });
+
+  useEffect(() => {
+    console.log("Connection state changed!");
+    if (readyState === ReadyState.OPEN) {
+      sendJsonMessage({
+        event: "subscribe",
+        data: {
+          channel: "dashboard-socket",
+        },
+      });
+    }
+  }, [readyState]);
+
+  useEffect(() => {
+    console.log(`Got a new message: ${lastMessage?.data}`);
+  }, [lastMessage]);
+
+  const keys = useAppSelector((state) => state.keys.keyList);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getAllKeys())
-  }, [])
+    dispatch(getAllKeys());
+  }, []);
   return (
     <div>
       <SectionTitle
@@ -37,7 +62,7 @@ const page = () => {
           delay={1.2}
           className="bg-gradient-to-tr from-yellow-500 to-yellow-300"
         />
-         <DataCard
+        <DataCard
           description="Checklists ativos"
           data={7}
           delay={1.6}

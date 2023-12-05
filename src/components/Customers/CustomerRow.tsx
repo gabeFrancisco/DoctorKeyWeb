@@ -11,10 +11,10 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
       key={customer.id}
     >
       <th className="px-2 lg:px-5 text-green-500 underline cursor-pointer border-r">{customer.name}</th>
-      <td className="px-2 lg:px-6 py-2">{customer.phone}</td>
-      <td className="hidden lg:table-cell px-2 lg:px-6 py-2">{customer.email}</td>
-      <td className="px-2 lg:px-6 py-2">{`${customer.address.road}, ${customer.address.number}`}</td>
-      <td className="px-2 lg:px-6 py-2">
+      <td className="px-2 lg:px-6 py-1">{customer.phone}</td>
+      <td className="hidden lg:table-cell px-2 lg:px-6 py-1">{customer.email}</td>
+      <td className="px-2 lg:px-6 py-1">{`${customer.address.road}, ${customer.address.number}`}</td>
+      <td className="px-2 lg:px-6 py-1">
         <motion.button whileHover={{ scale: 1.1 }}>
           <FontAwesomeIcon
             icon={faPencil}

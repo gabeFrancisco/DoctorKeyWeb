@@ -36,12 +36,10 @@ const page = () => {
     validateOnBlur: true,
     onSubmit: (values) => {
       let customer: Customer = {
-        id: '',
         name: values.name,
         phone: values.phone,
         email: values.email,
         address: {
-          id: '',
           road: values.road,
           number: values.number,
           complement: values.complement,
@@ -51,6 +49,7 @@ const page = () => {
           state: values.state
         }
       }
+      console.log(customer)
       dispatch(postCustomer(customer)).then(() =>
         navigate.replace("/painel/clientes")
       );

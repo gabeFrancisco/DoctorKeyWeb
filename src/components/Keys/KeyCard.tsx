@@ -28,7 +28,7 @@ const KeyCard = (props: Props) => {
       {removalModal ? (
         <KeyDeleteModal
           handleClose={handleDeleteModal}
-          keyId={props.keyModel.id}
+          keyId={props.keyModel.id!}
           keyManufactor={props.keyModel.manufactor}
           keyModel={props.keyModel.model}
           return

@@ -31,32 +31,32 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200"
       key={_key.id}
     >
-      {removalModal ? (
+      {removalModal ? ( 
         <KeyDeleteModal
           handleClose={handleDeleteModal}
-          keyId={_key.id}
+          keyId={_key.id!}
           keyManufactor={_key.manufactor}
           keyModel={_key.model}
         />
       ) : null}
 
       <th
-        className="px-2 lg:px-6 py-2 text-green-500 underline cursor-pointer border-r"
+        className="px-2 lg:px-6 py-1 text-green-500 underline cursor-pointer border-r"
         onClick={handleRead}
       >
         {_key.model}
       </th>
-      <td className="px-2 lg:px-6 py-2">{_key.manufactor}</td>
-      <td className="hidden lg:table-cell px-2 lg:px-6 py-2">{_key.buttons}</td>
-      <td className="hidden lg:table-cell px-2 lg:px-6 py-2">{_key.year}</td>
-      <td className="hidden lg:table-cell px-2 lg:px-6 py-2">{_key.keyType}</td>
-      <td className="hidden lg:table-cell px-2 lg:px-6 py-2">
+      <td className="px-2 lg:px-6 py-1">{_key.manufactor}</td>
+      <td className="hidden lg:table-cell px-2 lg:px-6 py-1">{_key.buttons}</td>
+      <td className="hidden lg:table-cell px-2 lg:px-6 py-1">{_key.year}</td>
+      <td className="hidden lg:table-cell px-2 lg:px-6 py-1">{_key.keyType}</td>
+      <td className="hidden lg:table-cell px-2 lg:px-6 py-1">
         {_key.bladeType}
       </td>
-      <td className="px-2 lg:px-6 py-2 text-green-600 font-bold">
+      <td className="px-2 lg:px-6 py-1 text-green-600 font-bold">
         R${_key.price.toFixed(2)}
       </td>
-      <td className="px-2 lg:px-6 py-2">
+      <td className="px-2 lg:px-6 py-1">
         <motion.button whileHover={{ scale: 1.1 }} onClick={handleKeyUpdate}>
           <FontAwesomeIcon
             icon={faPencil}
