@@ -15,6 +15,7 @@ import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 const KeyTable = () => {
   const storeKeys = useAppSelector((state) => state.keys);
@@ -52,6 +53,8 @@ const KeyTable = () => {
     setKeys(storeKeys?.keyList);
     setSearch("");
   };
+
+ 
   return (
     <div className="flex flex-col items-center">
       <div className="rounded-md  w-full flex flex-row justify-between items-center my-1 py-2">

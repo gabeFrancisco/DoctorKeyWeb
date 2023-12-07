@@ -9,34 +9,13 @@ import { urls } from "../../services/api";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 
 const page = () => {
-  const ws_url = "ws://10.0.10.250:5003/api/sockets";
-  const { sendJsonMessage, lastMessage, readyState } = useWebSocket(ws_url, {
-    share: false,
-    shouldReconnect: () => true,
-    heartbeat: true,
-  });
-
-  useEffect(() => {
-    console.log("Connection state changed!");
-    if (readyState === ReadyState.OPEN) {
-      sendJsonMessage({
-        event: "subscribe",
-        data: {
-          channel: "dashboard-socket",
-        },
-      });
-    }
-  }, [readyState]);
-
-  useEffect(() => {
-    console.log(`Got a new message: ${lastMessage?.data}`);
-  }, [lastMessage]);
-
+ 
   const keys = useAppSelector((state) => state.keys.keyList);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getAllKeys());
   }, []);
+  
   return (
     <div>
       <SectionTitle

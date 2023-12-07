@@ -1,5 +1,4 @@
 import axios from "axios";
-import { error } from "console";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { urls } from "@/services/api";
@@ -35,7 +34,6 @@ export const authOptions: AuthOptions = {
       return {
         ...token,
         ...user,
-        ...error,
       };
     },
     async session({ session, token, user }) {
