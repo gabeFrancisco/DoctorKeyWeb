@@ -30,16 +30,27 @@ const layout = async ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (connection) {
-      connection.start().then(() => {
-        connection.invoke("SendMessage");
-        console.log("SignalR connection started!");
+      connection
+        .start()
+        .then(() => {
+          connection.invoke("SendMessage");
+          console.log("SignalR connection started!");
 
-        connection.on("God", (message) => {
-          console.log(message);
-        });
-      }).catch(error => console.log(error))
+          connection.on("God", (message) => {
+            console.log(message);
+          });
+
+          connection.on("Receive", (message) => {
+            alert("Clicked! God bless you!");
+          });
+        })
+        .catch((error) => console.log(error));
     }
-  });
+  }, [connection]);
+
+  const clickMe = async () => {
+    if (connection) await connection.send("Receive");
+  };
 
   return (
     <div className="bg-white w-full h-full">
@@ -47,6 +58,7 @@ const layout = async ({ children }: { children: ReactNode }) => {
       <div className="flex flex-col lg:flex-row">
         <Sidebar />
         <div className="p-5 lg:p-2 lg:m-7 flex flex-col items-stretch w-full">
+          <button onClick={clickMe}>Click me!</button>
           {children}
         </div>
       </div>
