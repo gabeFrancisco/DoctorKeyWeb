@@ -34,7 +34,7 @@ const initialState: KeyState = {
 
 export const getAllKeys = createAsyncThunk(
   "keys/getAll",
-  async () => await api.get("/keys").then((res) => {
+  async () => await api.get("/api/keys").then((res) => {
     if(res.status === 200){
       return res.data;
     }
@@ -44,7 +44,7 @@ export const getAllKeys = createAsyncThunk(
 export const getAllByModel = createAsyncThunk(
   "keys/getAllByModel",
   async (id: string) =>
-    await api.get(`/keys/byModel/${id}`).then((res) => {
+    await api.get(`/api/keys/byModel/${id}`).then((res) => {
       if(res.status === 200){
         return res.data;
       }
@@ -54,7 +54,7 @@ export const getAllByModel = createAsyncThunk(
 export const postKey = createAsyncThunk(
   "keys/post",
   async (data: {}, thunkAPI) => {
-    return await api.post("/keys", data).then((res) => {
+    return await api.post("/api/keys", data).then((res) => {
       if (res.status === 200) {
         thunkAPI.dispatch(getAllKeys());
         return res.data;
@@ -66,7 +66,7 @@ export const postKey = createAsyncThunk(
 export const updateKey = createAsyncThunk(
   "keys/update",
   async (data: { key: Object; id: string }, thunkAPI) => {
-    return await api.put(`/keys/${data.id}`, data.key).then((res) => {
+    return await api.put(`/api/keys/${data.id}`, data.key).then((res) => {
       if (res.status === 200) {
         thunkAPI.dispatch(getAllKeys());
         return res.data;
@@ -78,7 +78,7 @@ export const updateKey = createAsyncThunk(
 export const deleteKey = createAsyncThunk(
   "keys/delete",
   async (data: string, thunkAPI) => {
-    return await api.delete(`/keys/${data}`).then((res) => {
+    return await api.delete(`/api/keys/${data}`).then((res) => {
       if (res.status === 200) {
         thunkAPI.dispatch(getAllKeys());
         return res.data;

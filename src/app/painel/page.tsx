@@ -2,20 +2,17 @@
 
 import DataCard from "@/components/DataCard/DataCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import { getAllKeys } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect } from "react";
-import { urls } from "../../services/api";
-import useWebSocket, { ReadyState } from "react-use-websocket";
+import { getAllData } from "@/store/features/dashboardSlice";
 
 const page = () => {
- 
-  const keys = useAppSelector((state) => state.keys.keyList);
+  const data = useAppSelector((state) => state.dashboard.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getAllKeys());
+    dispatch(getAllData());
   }, []);
-  
+
   return (
     <div>
       <SectionTitle
@@ -25,7 +22,7 @@ const page = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
         <DataCard
           description="Chaves cadastradas"
-          data={keys.length}
+          data={data.keyCount}
           delay={0.4}
           className="bg-gradient-to-tr from-green-600 to-green-400"
         />

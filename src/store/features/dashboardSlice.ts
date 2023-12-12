@@ -1,18 +1,41 @@
 import { Dashboard } from "@/models/Dashboard";
-import { createSlice } from "@reduxjs/toolkit";
+import api from "@/services/api";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialState: Dashboard = {
-  keyCount: 0,
-  serviceOrderCount: 0,
-  customerCount: 0,
-  checklistCount: 0
+interface DashboardState {
+  data: Dashboard;
 }
+
+const initialState: DashboardState = {
+  data: {
+    keyCount: 0,
+    serviceOrderCount: 0,
+    customerCount: 0,
+    checklistCount: 0,
+  },
+};
+
+export const getAllData = createAsyncThunk(
+  "dashboard/getAllData",
+  async () =>
+    await api.get("/api/dashboard").then((res) => {
+      if (res.status === 200) {
+        return res.data;
+      }
+    })
+);
 
 export const DashboardSlice = createSlice({
   name: "Dashboard",
   initialState,
-  reducers: {}
-})
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllData.fulfilled, (state, action) => {
+      console.log(action);
+      state.data = action.payload
+    });
+  },
+});
 
 export default DashboardSlice.reducer;
-export const { } = DashboardSlice.actions;
+export const {} = DashboardSlice.actions;
