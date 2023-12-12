@@ -13,7 +13,7 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials, req) {
           const result = await axios
-            .post(`${urls.prod}/users/login`, credentials)
+            .post(`${urls.dev}/users/login`, credentials)
             
           return {
             id: result.data.user.id,

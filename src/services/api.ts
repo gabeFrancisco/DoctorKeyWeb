@@ -7,7 +7,7 @@ export const urls = {
 }
 
 const api = axios.create({
-  baseURL: urls.prod,
+  baseURL: urls.dev,
   timeout: 10000
 })
 
@@ -23,7 +23,7 @@ api.interceptors.request.use(
     catch(error){
       if(!window.navigator.onLine){
         alert("no internet connection!")
-      }
+      }        
       return config
     }
   }
