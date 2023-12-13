@@ -3,6 +3,8 @@ import api from "@/services/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface DashboardState {
+  isConnecting: boolean,
+  isConnected: boolean
   data: Dashboard;
 }
 
@@ -13,6 +15,8 @@ const initialState: DashboardState = {
     customerCount: 0,
     checklistCount: 0,
   },
+  isConnecting: false,
+  isConnected: false
 };
 
 export const getAllData = createAsyncThunk(
@@ -28,7 +32,14 @@ export const getAllData = createAsyncThunk(
 export const DashboardSlice = createSlice({
   name: "Dashboard",
   initialState,
-  reducers: {},
+  reducers: {
+    startConnection: (state => {
+      state.isConnecting = true
+    }),
+    setConnection: (state => {
+      state.isConnected = true
+    })
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllData.fulfilled, (state, action) => {
       console.log(action);

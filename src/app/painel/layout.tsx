@@ -58,7 +58,6 @@ const layout = async ({ children }: { children: ReactNode }) => {
       <div className="flex flex-col lg:flex-row">
         <Sidebar />
         <div className="p-5 lg:p-2 lg:m-7 flex flex-col items-stretch w-full">
-          <button onClick={clickMe}>Click me!</button>
           {children}
         </div>
       </div>
