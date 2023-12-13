@@ -34,19 +34,22 @@ export const DashboardSlice = createSlice({
   initialState,
   reducers: {
     startConnection: (state => {
-      state.isConnecting = true
+      state.isConnecting = true 
     }),
     setConnection: (state => {
       state.isConnected = true
+    }),
+    loadData: ((state, action) => {
+      state.data = action.payload
     })
   },
   extraReducers: (builder) => {
     builder.addCase(getAllData.fulfilled, (state, action) => {
       console.log(action);
-      state.data = action.payload
+      // state.data = action.payload
     });
   },
 });
 
 export default DashboardSlice.reducer;
-export const {} = DashboardSlice.actions;
+export const dashboardActions = DashboardSlice.actions;

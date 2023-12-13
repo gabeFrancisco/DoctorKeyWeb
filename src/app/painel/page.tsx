@@ -10,8 +10,9 @@ const page = () => {
   const data = useAppSelector((state) => state.dashboard.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getAllData());
-  }, []);
+    dispatch(getAllData()).then(() => console.log(data))
+  }, [data]);
+
 
   return (
     <div>
@@ -22,7 +23,7 @@ const page = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
         <DataCard
           description="Chaves cadastradas"
-          data={data.keyCount}
+          data={data?.keyCount}
           delay={0.4}
           className="bg-gradient-to-tr from-green-600 to-green-400"
         />
