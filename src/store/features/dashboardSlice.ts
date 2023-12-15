@@ -3,8 +3,8 @@ import api from "@/services/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface DashboardState {
-  isConnecting: boolean,
-  isConnected: boolean
+  isEstablishingConnection: boolean;
+  isConnected: boolean;
   data: Dashboard;
 }
 
@@ -15,7 +15,7 @@ const initialState: DashboardState = {
     customerCount: 0,
     checklistCount: 0,
   },
-  isConnecting: false,
+  isEstablishingConnection: false,
   isConnected: false
 };
 
@@ -33,11 +33,12 @@ export const DashboardSlice = createSlice({
   name: "Dashboard",
   initialState,
   reducers: {
-    startConnection: (state => {
-      state.isConnecting = true 
+    startConnecting: (state => {
+      state.isEstablishingConnection = true;
     }),
-    setConnection: (state => {
-      state.isConnected = true
+    connectionEstablished: (state => {
+      state.isConnected = true;
+      state.isEstablishingConnection = true;
     }),
     loadData: ((state, action) => {
       state.data = action.payload

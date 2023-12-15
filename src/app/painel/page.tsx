@@ -4,14 +4,15 @@ import DataCard from "@/components/DataCard/DataCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect } from "react";
-import { getAllData } from "@/store/features/dashboardSlice";
+import { dashboardActions, getAllData } from "@/store/features/dashboardSlice";
 
 const page = () => {
   const data = useAppSelector((state) => state.dashboard.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getAllData()).then(() => console.log(data))
-  }, [data]);
+    dispatch(dashboardActions.startConnecting());
+  }, []);
 
 
   return (
