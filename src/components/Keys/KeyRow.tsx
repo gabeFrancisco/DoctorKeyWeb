@@ -27,11 +27,11 @@ const KeyRow = ({ _key }: { _key: Key }) => {
     <motion.tr
       initial={{ opacity: 0, x: -7 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={ { duration: 0.3}}
+      transition={{ duration: 0.3 }}
       className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200"
       key={_key.id}
     >
-      {removalModal ? ( 
+      {removalModal ? (
         <KeyDeleteModal
           handleClose={handleDeleteModal}
           keyId={_key.id!}
@@ -41,7 +41,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       ) : null}
 
       <th
-        className="px-2 lg:px-6 py-1 text-green-500 underline cursor-pointer border-r"
+        className="px-2 lg:px-6 py-1 resize-none text-green-500 underline cursor-pointer overflow-ellipsis border-r"
         onClick={handleRead}
       >
         {_key.model}
@@ -60,7 +60,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
         <motion.button whileHover={{ scale: 1.1 }} onClick={handleKeyUpdate}>
           <FontAwesomeIcon
             icon={faPencil}
-            className="p-2 bg-green-500 text-white rounded-md mx-1 shadow z-50"
+            className="p-2 bg-green-500 text-white rounded-sm mx-1 shadow z-50"
             title="Atualizar chave"
             height={25}
             onClick={handleKeyUpdate}
@@ -73,7 +73,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
         >
           <FontAwesomeIcon
             icon={faTrash}
-            className="p-2 bg-red-500 text-white rounded-md mx-1 shadow"
+            className="p-2 bg-red-500 text-white rounded-sm mx-1 shadow"
             height={25}
           />
         </motion.button>

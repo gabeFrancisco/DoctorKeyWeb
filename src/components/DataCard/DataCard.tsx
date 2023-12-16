@@ -16,7 +16,7 @@ const DataCard = (props: DataCardProps) => {
       animate={{ translateY: 0, opacity: 1, scale: 1 }}
       transition={{ duration: props.delay }}
       className={
-        "px-7 py-5 m-3 bg-gradient-to-tr rounded-xl text-white shadow-xl " +
+        "px-7 py-5 m-3 bg-gradient-to-tr rounded text-white shadow-xl cursor-pointer" +
         props.className
       }
     >

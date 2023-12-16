@@ -61,7 +61,7 @@ const KeyTable = () => {
         <div>
           <Link
             href="chaves/adicionar"
-            className="rounded-md shadow-lg bg-green-500 py-2 px-3 text-md text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-500 py-2 px-3 text-md text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />
             <span className="hidden md:inline-block">Nova chave!</span>
@@ -93,10 +93,10 @@ const KeyTable = () => {
         </div>
       </div>
       {isLoaded ? (
-        <div className="overflow-x-auto shadow-md rounded-lg w-full">
+        <div className="overflow-x-auto shadow-md rounded-sm w-full">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <table className="w-full text-sm text-left text-gray-500 rounded-md">
-              <thead className="border-0 rounded-md text-md text-white bg-green-500">
+            <table className="w-full text-sm text-left text-gray-500 rounded-sm">
+              <thead className="border-0 rounded-sm text-md text-white bg-green-500">
                 <tr>
                   <th className="px-2 lg:px-6 py-3 m-1">Modelo</th>
                   <th className="px-2 lg:px-6 py-3 m-1">Marca</th>
