@@ -10,13 +10,13 @@ interface DashboardState {
 
 const initialState: DashboardState = {
   data: {
-    keyCount: 0,
-    serviceOrderCount: 0,
-    customerCount: 0,
-    checklistCount: 0,
+    keyCount: -1,
+    serviceOrderCount: -1,
+    customerCount: -1,
+    checklistCount: -1,
   },
   isEstablishingConnection: false,
-  isConnected: false
+  isConnected: false,
 };
 
 export const getAllData = createAsyncThunk(
@@ -33,16 +33,19 @@ export const DashboardSlice = createSlice({
   name: "Dashboard",
   initialState,
   reducers: {
-    startConnecting: (state => {
+    startConnecting: (state) => {
       state.isEstablishingConnection = true;
-    }),
-    connectionEstablished: (state => {
+    },
+    connectionEstablished: (state) => {
       state.isConnected = true;
       state.isEstablishingConnection = true;
-    }),
-    loadData: ((state, action) => {
-      state.data = action.payload
-    })
+    },
+    loadData: (state, action) => {
+      state.data = action.payload;
+    },
+    loadKeyCount: (state, action) => {
+      state.data.keyCount = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllData.fulfilled, (state, action) => {

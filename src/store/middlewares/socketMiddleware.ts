@@ -17,8 +17,11 @@ const socketMiddleware: Middleware = (store) => (next) => (action) => {
     connection.start();
     connection.on("ReceiveInitialData", (data) => {
       store.dispatch(dashboardActions.loadData(JSON.parse(data)));
-      console.log(data)
     });
+
+    connection.on("KeyCount", (data) => {
+      store.dispatch(dashboardActions.loadKeyCount(data))
+    })
   }
 
   next(action);

@@ -30,19 +30,19 @@ const page = () => {
         />
         <DataCard
           description="Ordens de serviço"
-          data={7}
+          data={data?.serviceOrderCount}
           delay={0.8}
           className="bg-gradient-to-tr from-blue-600 to-blue-400"
         />
         <DataCard
           description="Total de clientes"
-          data={7}
+          data={data?.customerCount}
           delay={1.2}
           className="bg-gradient-to-tr from-yellow-500 to-yellow-300"
         />
         <DataCard
           description="Checklists ativos"
-          data={7}
+          data={data?.checklistCount}
           delay={1.6}
           className="bg-gradient-to-tr from-red-500 to-red-300"
         />
