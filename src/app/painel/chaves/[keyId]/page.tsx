@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '@/store/store'
 import { useParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 
-import 'car-makes-icons/dist/style.css'
 import KeyCard from '@/components/Keys/KeyCard'
 
 const page = () => {

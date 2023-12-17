@@ -1,20 +1,27 @@
-'use client'
+"use client";
 
-import SectionTitle from '@/components/SectionTitle/SectionTitle'
-import { useParams } from 'next/navigation'
-import React from 'react'
+import CustomerCard from "@/components/Customers/CustomerCard";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import { getAllCustomers, readCustomer } from "@/store/features/customerSlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useParams } from "next/navigation";
+import React, { useEffect } from "react";
 
 const page = () => {
   const params = useParams();
   const customerId = params.customerId;
+  const dispatch = useAppDispatch();
+  const customer = useAppSelector((state) => state.customers.customer);
+
+  useEffect(() => {
+    dispatch(getAllCustomers()).then(() => dispatch(readCustomer(customerId)));
+  }, []);
   return (
     <div>
-      <SectionTitle title='Cliente'/>
-      <div className='border-gray-400 border-dashed rounded p-5'>
-        {customerId}
-      </div>
+      <SectionTitle title="Cliente" />
+      <CustomerCard customer={customer} />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
