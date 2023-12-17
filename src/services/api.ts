@@ -7,7 +7,7 @@ export const urls = {
 }
 
 const api = axios.create({
-  baseURL: urls.dev,
+  baseURL: urls.prod,
   timeout: 10000
 })
 

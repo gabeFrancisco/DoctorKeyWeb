@@ -15,7 +15,6 @@ import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import useWebSocket, { ReadyState } from "react-use-websocket";
 
 const KeyTable = () => {
   const storeKeys = useAppSelector((state) => state.keys);
