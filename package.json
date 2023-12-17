@@ -41,5 +41,9 @@
     "utf-8-validate": "^5.0.10",
     "ws": "^8.15.1",
     "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.0.4"
   }
 }

@@ -12,7 +12,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
   };
   return (
     <tr
-      className="hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200"
+      className="hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200 text-sm"
       key={customer.id}
     >
       <th
@@ -30,7 +30,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
         <motion.button whileHover={{ scale: 1.1 }}>
           <FontAwesomeIcon
             icon={faPencil}
-            className="p-2 bg-green-500 text-white rounded-md mx-1 shadow z-50"
+            className="p-2 bg-green-500 text-white rounded-sm mx-1 shadow z-50"
             title="Atualizar chave"
             height={25}
             // onClick={handleKeyUpdate}
@@ -43,7 +43,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
         >
           <FontAwesomeIcon
             icon={faTrash}
-            className="p-2 bg-red-500 text-white rounded-md mx-1 shadow"
+            className="p-2 bg-red-500 text-white rounded-sm mx-1 shadow"
             height={25}
           />
         </motion.button>

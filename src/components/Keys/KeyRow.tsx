@@ -27,7 +27,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       initial={{ opacity: 0, x: -7 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
-      className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200"
+      className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200 text-sm"
       key={_key.id}
     >
       {removalModal ? (

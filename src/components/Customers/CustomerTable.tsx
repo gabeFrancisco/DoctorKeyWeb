@@ -25,7 +25,7 @@ const CustomerTable = () => {
         <div>
           <Link
             href="clientes/adicionar"
-            className="rounded-sm shadow-lg bg-green-500 py-2 px-3 text-md text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-500 py-2 px-3 text-sm text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />
             <span className="hidden md:inline-block">Novo cliente!</span>
@@ -38,13 +38,13 @@ const CustomerTable = () => {
             <table className="w-full text-sm text-left text-gray-500 rounded-md">
               <thead className="border-0 rounded-md text-md text-white bg-green-500">
                 <tr>
-                  <th className="px-2 lg:px-6 py-3 m-1">Nome</th>
-                  <th className="px-2 lg:px-6 py-3 m-1">Telefone</th>
-                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">
+                  <th className="px-2 lg:px-6 py-2 m-1">Nome</th>
+                  <th className="px-2 lg:px-6 py-2 m-1">Telefone</th>
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-2 m-1">
                     Email
                   </th>
-                  <th className="px-2 lg:px-6 py-3 m-1">Endereço</th>
-                  <th className="px-2 lg:px-6 py-3 m-1">Ações</th>
+                  <th className="px-2 lg:px-6 py-2 m-1">Endereço</th>
+                  <th className="px-2 lg:px-6 py-2 m-1">Ações</th>
                 </tr>
               </thead>
               <tbody>

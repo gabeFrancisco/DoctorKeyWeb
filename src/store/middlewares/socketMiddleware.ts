@@ -1,6 +1,7 @@
 import { Middleware } from "@reduxjs/toolkit";
 import * as signalR from "@microsoft/signalr";
 import { dashboardActions } from "../features/dashboardSlice";
+import { apiUrl } from "@/services/api";
 
 const socketMiddleware: Middleware = (store) => (next) => (action) => {
   // if (!dashboardActions.startConnecting.match(action)) {
@@ -8,7 +9,7 @@ const socketMiddleware: Middleware = (store) => (next) => (action) => {
   // }
 
   const connection = new signalR.HubConnectionBuilder()
-    .withUrl("http://10.0.10.250:5003/socket/dashboard")
+    .withUrl(`${apiUrl}/socket/dashboard`)
     .configureLogging(signalR.LogLevel.Information)
     .build();
 

@@ -1,13 +1,15 @@
-import axios, { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig} from "axios";
+import axios, { InternalAxiosRequestConfig} from "axios";
 import { getSession } from "next-auth/react";
 
-export const urls = {
+const urls = {
   "dev": "http://10.0.10.250:5003",
   "prod": "https://doctorkeyapi.azurewebsites.net",
 }
 
+export const apiUrl = process.env.NODE_ENV === 'production' ? urls.prod : urls.dev
+
 const api = axios.create({
-  baseURL: urls.prod,
+  baseURL: apiUrl,
   timeout: 10000
 })
 

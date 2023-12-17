@@ -60,7 +60,7 @@ const KeyTable = () => {
         <div>
           <Link
             href="chaves/adicionar"
-            className="rounded-sm shadow-lg bg-green-500 py-2 px-3 text-md text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-500 py-2 px-3 text-sm text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />
             <span className="hidden md:inline-block">Nova chave!</span>
@@ -71,20 +71,20 @@ const KeyTable = () => {
           <input
             type="text"
             placeholder="Pesquisar por modelo"
-            className="rounded-md border-2 block w-52 lg:w-full p-1"
+            className="rounded-md border-2 block w-52 lg:w-full p-0.5 text-sm"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <button
             onClick={handleSearch}
-            className="rounded-md shadow-lg bg-green-500 mx-1 py-1 px-3 text-md text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-500 mx-1 py-1 px-3 text-sm text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faSearch} height={25} />
           </button>
           {search !== "" ? (
             <button
               onClick={handleClear}
-              className="rounded-md shadow-lg bg-blue-500 mx-1 py-1 px-3 text-md text-white hover:bg-blue-600"
+              className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
             >
               <FontAwesomeIcon icon={faSync} height={25} />
             </button>
@@ -97,22 +97,22 @@ const KeyTable = () => {
             <table className="w-full text-sm text-left text-gray-500 rounded-sm">
               <thead className="border-0 rounded-sm text-md text-white bg-green-500">
                 <tr>
-                  <th className="px-2 lg:px-6 py-3 m-1">Modelo</th>
-                  <th className="px-2 lg:px-6 py-3 m-1">Marca</th>
-                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">
+                  <th className="px-2 lg:px-6 py-2 m-1">Modelo</th>
+                  <th className="px-2 lg:px-6 py-2 m-1">Marca</th>
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-2 m-1">
                     Botões
                   </th>
-                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-2 m-1">
                     Ano
                   </th>
-                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-2 m-1">
                     Tipo
                   </th>
-                  <th className="hidden lg:table-cell px-2 lg:px-6 py-3 m-1">
+                  <th className="hidden lg:table-cell px-2 lg:px-6 py-2 m-1">
                     Lâmina
                   </th>
-                  <th className="px-2 lg:px-6 py-3 m-1">Preço</th>
-                  <th className="px-2 lg:px-6 py-3 m-1">Ações</th>
+                  <th className="px-2 lg:px-6 py-2 m-1">Preço</th>
+                  <th className="px-2 lg:px-6 py-2 m-1">Ações</th>
                 </tr>
               </thead>
               <tbody>

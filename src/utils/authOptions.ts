@@ -1,7 +1,7 @@
+import { apiUrl } from "@/services/api";
 import axios from "axios";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { urls } from "@/services/api";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -13,13 +13,13 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials, req) {
           const result = await axios
-            .post(`${urls.prod}/api/users/login`, credentials)
+            .post(`${apiUrl}/api/users/login`, credentials)
             
           return {
             id: result.data.user.id,
             name: result.data.user.username,
             accessToken: result.data.token,
-          };
+          }
         }
     }),
   ],
