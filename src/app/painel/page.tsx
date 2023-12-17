@@ -10,10 +10,9 @@ const page = () => {
   const data = useAppSelector((state) => state.dashboard.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getAllData()).then(() => console.log(data))
+    dispatch(getAllData()).then(() => console.log(data));
     dispatch(dashboardActions.startConnecting());
   }, []);
-
 
   return (
     <div>

@@ -6,7 +6,6 @@ import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-import "car-makes-icons/dist/style.css";
 import { KeyDeleteModal } from "./KeyDeleteModal";
 
 const KeyRow = ({ _key }: { _key: Key }) => {
