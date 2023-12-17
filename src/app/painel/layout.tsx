@@ -4,7 +4,6 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import React, { ReactNode, useEffect, useState } from "react";
-import { createSignalRContext } from "react-signalr";
 
 // const SignalRContext = createSignalRContext();
 
