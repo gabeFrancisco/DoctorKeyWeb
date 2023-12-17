@@ -49,7 +49,6 @@ export const DashboardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllData.fulfilled, (state, action) => {
-      console.log(action);
       // state.data = action.payload
     });
   },

@@ -49,7 +49,6 @@ const page = () => {
           state: values.state
         }
       }
-      console.log(customer)
       dispatch(postCustomer(customer)).then(() =>
         navigate.replace("/painel/clientes")
       );
