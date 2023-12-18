@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 
 const page = () => {
   const params = useParams();
-  const customerId = params.customerId;
+  const customerId = params.customerId as string
   const dispatch = useAppDispatch();
   const customer = useAppSelector((state) => state.customers.customer);
 

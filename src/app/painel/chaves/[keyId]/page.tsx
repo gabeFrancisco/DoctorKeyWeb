@@ -10,7 +10,7 @@ import KeyCard from '@/components/Keys/KeyCard'
 
 const page = () => {
   const params = useParams()
-  const keyId = params.keyId
+  const keyId = params.keyId as string
   const dispatch = useAppDispatch()
   const key = useAppSelector(state => state.keys.key)
   

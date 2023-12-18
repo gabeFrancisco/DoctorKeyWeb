@@ -1,3 +1,5 @@
+'use client'
+
 import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
 import React from "react";
 

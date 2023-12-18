@@ -11,10 +11,10 @@ interface DataCardProps {
 
 const DataCard = (props: DataCardProps) => {
   return (
-    <motion.div
-      initial={{ translateY: -20, opacity: 0, scale: 0.5 }}
-      animate={{ translateY: 0, opacity: 1, scale: 1 }}
-      transition={{ duration: props.delay }}
+    <div
+      // initial={{ translateY: -20, opacity: 0, scale: 0.5 }}
+      // animate={{ translateY: 0, opacity: 1, scale: 1 }}
+      // transition={{ duration: props.delay }}
       className={
         "px-7 py-5 m-3 bg-gradient-to-tr rounded text-white shadow-xl cursor-pointer" +
         props.className
@@ -27,7 +27,7 @@ const DataCard = (props: DataCardProps) => {
       ) : (
         <SmallLoadingSkeleton/>
       )}
-    </motion.div>
+    </div>
   );
 };
 

@@ -33,13 +33,13 @@ export const DashboardSlice = createSlice({
   name: "Dashboard",
   initialState,
   reducers: {
-    startConnecting: (state) => {
-      state.isEstablishingConnection = true;
-    },
-    connectionEstablished: (state) => {
-      state.isConnected = true;
-      state.isEstablishingConnection = true;
-    },
+    // startConnecting: (state) => {
+    //   state.isEstablishingConnection = true;
+    // },
+    // connectionEstablished: (state) => {
+    //   state.isConnected = true;
+    //   state.isEstablishingConnection = true;
+    // },
     loadData: (state, action) => {
       state.data = action.payload;
     },
@@ -49,7 +49,7 @@ export const DashboardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllData.fulfilled, (state, action) => {
-      // state.data = action.payload
+      state.data = action.payload
     });
   },
 });

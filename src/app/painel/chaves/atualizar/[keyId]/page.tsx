@@ -15,7 +15,7 @@ import serviceTypes from "@/models/constants/serviceTypes";
 
 const page = () => {
   const params = useParams();
-  const keyId = params.keyId;
+  const keyId = params.keyId as string
   const navigate = useRouter();
   const dispatch = useAppDispatch();
 

@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  clearSearch,
-  getAllByModel,
   getAllKeys,
   searchKey,
 } from "@/store/features/keySlice";
