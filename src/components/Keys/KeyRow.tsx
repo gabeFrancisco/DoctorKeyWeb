@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import { KeyDeleteModal } from "./KeyDeleteModal";
+import Dropdown from "../Dropdown/Dropdown";
 
 const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
@@ -56,26 +57,9 @@ const KeyRow = ({ _key }: { _key: Key }) => {
         R${_key.price.toFixed(2)}
       </td>
       <td className="px-2 lg:px-6 py-1">
-        <motion.button whileHover={{ scale: 1.1 }} onClick={handleKeyUpdate}>
-          <FontAwesomeIcon
-            icon={faPencil}
-            className="p-2 bg-green-500 text-white rounded-sm mx-1 shadow z-50"
-            title="Atualizar chave"
-            height={25}
-            onClick={handleKeyUpdate}
-          />
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          onClick={() => setRemovalModal(true)}
-          title="Remover chave"
-        >
-          <FontAwesomeIcon
-            icon={faTrash}
-            className="p-2 bg-red-500 text-white rounded-sm mx-1 shadow"
-            height={25}
-          />
-        </motion.button>
+         <Dropdown buttonText="">
+          <p>Editar</p>
+         </Dropdown>
       </td>
     </tr>
   );

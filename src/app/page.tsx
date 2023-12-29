@@ -12,7 +12,7 @@ export default function Home() {
         </h1>
         <h2 className="my-10 text-white">Seu gerenciador de chaves automotivas</h2>
         <Link
-          className="bg-gradient-to-r from-gray-300 to-white py-2 px-7 text-green-500 rounded shadow-lg hover:border hover:border-gray-300"
+          className="bg-gradient-to-r from-gray-300 to-white py-2 px-7 text-green-500 rounded shadow-lg hover:border hover:border-gray-300da"
           href="/login"
         >
           Login
