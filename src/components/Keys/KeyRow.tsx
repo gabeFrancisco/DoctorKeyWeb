@@ -1,13 +1,14 @@
 import { Key } from "@/models/Key";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faAdd, faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import { KeyDeleteModal } from "./KeyDeleteModal";
 import Dropdown from "../Dropdown/Dropdown";
+import DropdownItem from "../Dropdown/DropdownItem";
 
 const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
@@ -58,7 +59,8 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       </td>
       <td className="px-2 lg:px-6 py-1">
          <Dropdown buttonText="">
-          <p>Editar</p>
+          <DropdownItem itemName="Editar" faIcon={faPencil} onClick={handleKeyUpdate} />
+          <DropdownItem itemName="Remover" faIcon={faTrash} onClick={handleDeleteModal}/>
          </Dropdown>
       </td>
     </tr>
