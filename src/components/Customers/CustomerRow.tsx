@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React from "react";
+import Dropdown from "../Dropdown/Dropdown";
+import DropdownItem from "../Dropdown/DropdownItem";
 
 const CustomerRow = ({ customer }: { customer: Customer }) => {
   const navigate = useRouter();
@@ -27,26 +29,10 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
       </td>
       <td className="px-2 lg:px-6 py-1">{`${customer.address.road}, ${customer.address.number}`}</td>
       <td className="px-2 lg:px-6 py-1">
-        <motion.button whileHover={{ scale: 1.1 }}>
-          <FontAwesomeIcon
-            icon={faPencil}
-            className="p-2 bg-green-500 text-white rounded-sm mx-1 shadow z-50"
-            title="Atualizar chave"
-            height={25}
-            // onClick={handleKeyUpdate}
-          />
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          // onClick={() => setRemovalModal(true)}
-          title="Remover chave"
-        >
-          <FontAwesomeIcon
-            icon={faTrash}
-            className="p-2 bg-red-500 text-white rounded-sm mx-1 shadow"
-            height={25}
-          />
-        </motion.button>
+      <Dropdown buttonText="">
+          <DropdownItem itemName="Editar" faIcon={faPencil} onClick={() => {}} />
+          <DropdownItem itemName="Remover" faIcon={faTrash} onClick={() => {}}/>
+         </Dropdown>
       </td>
     </tr>
   );
