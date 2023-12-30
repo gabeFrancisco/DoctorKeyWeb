@@ -1,7 +1,5 @@
 import { Customer } from "@/models/Customer";
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React from "react";
 import Dropdown from "../Dropdown/Dropdown";
@@ -29,7 +27,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
       </td>
       <td className="px-2 lg:px-6 py-1">{`${customer.address.road}, ${customer.address.number}`}</td>
       <td className="px-2 lg:px-6 py-1">
-      <Dropdown buttonText="">
+      <Dropdown buttonText="">  
           <DropdownItem itemName="Editar" faIcon={faPencil} onClick={() => {}} />
           <DropdownItem itemName="Remover" faIcon={faTrash} onClick={() => {}}/>
          </Dropdown>
