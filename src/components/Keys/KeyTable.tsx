@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  getAllKeys,
-  searchKey,
-} from "@/store/features/keySlice";
+import { getAllKeys, searchKey } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect, useState } from "react";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
@@ -51,7 +48,6 @@ const KeyTable = () => {
     setSearch("");
   };
 
- 
   return (
     <div className="flex flex-col items-center">
       <div className="rounded-md  w-full flex flex-row justify-between items-center my-1 py-2">
@@ -114,7 +110,9 @@ const KeyTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {keys.map((el, key) => <KeyRow _key={el} />).reverse()}
+                {keys.map((el, key) => (
+                  <KeyRow _key={el} />
+                ))}
               </tbody>
             </table>
           </motion.div>
