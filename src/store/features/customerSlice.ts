@@ -60,7 +60,7 @@ export const postCustomer = createAsyncThunk(
 export const  deleteCustomer = createAsyncThunk(
   "customer/delete",
   async (data: string, thunkAPI) => {
-    return await api.delete(`/api/customer/${data}`).then((res) => {
+    return await api.delete(`/api/customers/${data}`).then((res) => {
       if(res.status === 200){
         thunkAPI.dispatch(getAllCustomers());
         return res.data;
