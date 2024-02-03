@@ -5,11 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const KeyToolbar = () => {
-  const storeKeys = useAppSelector((state) => state.keys);
+interface KeyToolbarProps{
+  handleClear(): void,
+}
+
+const KeyToolbar = (props: KeyToolbarProps) => {
   const [search, setSearch] = useState("");
-  const [keys, setKeys] = useState(storeKeys?.keyList);
+  const storeKeys = useAppSelector((state) => state.keys);
+  // const filteredKeys = useAppSelector((state) => state.keys.filteredList);
   const dispatch = useAppDispatch();
+  const [keys, setKeys] = useState(storeKeys?.keyList);
+
   const handleSearch = () => {
     if (search !== "") {
       dispatch(searchKey(search));
@@ -19,11 +25,6 @@ const KeyToolbar = () => {
     }
   };
 
-  const handleClear = () => {
-    // dispatch(clearSearch());
-    setKeys(storeKeys?.keyList);
-    setSearch("");
-  };
   return (
     <div className="rounded-md  w-full flex flex-row justify-between items-center my-1 py-2">
         <div>
@@ -53,7 +54,7 @@ const KeyToolbar = () => {
           </button>
           {search !== "" ? (
             <button
-              onClick={handleClear}
+              onClick={props.handleClear}
               className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
             >
               <FontAwesomeIcon icon={faSync} height={25} />

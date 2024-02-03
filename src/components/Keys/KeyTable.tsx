@@ -33,10 +33,17 @@ const KeyTable = () => {
     setLoaded(true);
   }, [storeKeys.filteredList]);
 
+  const [search, setSearch] = useState("");
+
+  const handleClear = () => {
+    // dispatch(clearSearch());
+    setKeys(storeKeys?.keyList);
+    setSearch("");
+  };
 
   return (
     <div className="flex flex-col items-center">
-      <KeyToolbar/>
+      <KeyToolbar handleClear={handleClear}/>
       {isLoaded ? (
         <div className="overflow-x-auto shadow-md rounded-sm w-full">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
