@@ -8,6 +8,7 @@ import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React, { useState } from "react";
+import ComboBox from "../ComboBox/ComboBox";
 
 interface KeyToolbarProps {
   handleClear(): void;
@@ -41,18 +42,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           <span className="hidden md:inline-block">Nova chave!</span>
         </Link>
         <div>
-          <select
-            className="rounded-sm border-2 bg-gray-100 block mx-1 text-gray-700"
-            id="manufactor"
-            // value={}
-            // onChange={}
-          >
-            {manufactors.map((el, key) => (
-              <option className="rounded-sm border-2 bg-gray-100" key={key}>
-                {el}
-              </option>
-            ))}
-          </select>
+         <ComboBox list={manufactors} value={"none"} onChange={() => {}}/>
         </div>
         <div>
           <select
