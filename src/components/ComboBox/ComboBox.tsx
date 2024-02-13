@@ -2,8 +2,7 @@ import React, { SelectHTMLAttributes } from 'react'
 
 interface ComboBoxProps{
   list: Array<string>
-  value: string,
-  onChange(): void
+  onChange(e: any): void
 }
 
 const ComboBox = (props: ComboBoxProps) => {
@@ -12,7 +11,7 @@ const ComboBox = (props: ComboBoxProps) => {
     <select
       className="rounded-sm border-2 bg-gray-100 block mx-1 text-gray-700"
       id="manufactor"
-      value={props.value}
+      // value={props.value}
       onChange={props.onChange}
     >
       {props.list.map((el, key) => (

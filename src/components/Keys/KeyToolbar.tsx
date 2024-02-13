@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ComboBox from "../ComboBox/ComboBox";
 
 interface KeyToolbarProps {
@@ -20,6 +20,10 @@ const KeyToolbar = (props: KeyToolbarProps) => {
   // const filteredKeys = useAppSelector((state) => state.keys.filteredList);
   const dispatch = useAppDispatch();
   const [keys, setKeys] = useState(storeKeys?.keyList);
+  const [manufactor, setManufactor] = useState("");
+  const [keyType, setKeyType] = useState("");
+  const [bladeType, setBladeType] = useState("");
+  const [serviceType, setServiceType] = useState("");
 
   const handleSearch = () => {
     if (search !== "") {
@@ -42,77 +46,56 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           <span className="hidden md:inline-block">Nova chave!</span>
         </Link>
         <div>
-         <ComboBox list={manufactors} value={"none"} onChange={() => {}}/>
+          <ComboBox
+            list={manufactors}
+            onChange={(e) => setManufactor(e.target.value)}
+          />
         </div>
         <div>
-          <select
-            className="rounded-sm border-2 bg-gray-100 block mx-1 text-gray-700"
-            id="keyType"
-            // value={}
-            // onChange={}
-          >
-            {keyTypes.map((el, key) => (
-              <option className="rounded-sm border-2 bg-gray-100" key={key}>
-                {el}
-              </option>
-            ))}
-          </select>
+          <ComboBox
+            list={keyTypes}
+            onChange={(e) => setKeyType(e.target.value)}
+          />
         </div>
         <div>
-          <select
-            className="rounded-sm border-2 bg-gray-100 block mx-1 text-gray-700"
-            id="bladeType"
-            // value={}
-            // onChange={}
-          >
-            {bladeTypes.map((el, key) => (
-              <option className="rounded-sm border-2 bg-gray-100" key={key}>
-                {el}
-              </option>
-            ))}
-          </select>
+          <ComboBox
+            list={bladeTypes}
+            onChange={(e) => setBladeType(e.target.value)}
+          />
         </div>
         <div>
-          <select
-            className="rounded-sm border-2 bg-gray-100 block mx-1 text-gray-700"
-            id="serviceType"
-            // value={}
-            // onChange={}
-          >
-            {serviceTypes.map((el, key) => (
-              <option className="rounded-sm border-2 bg-gray-100" key={key}>
-                {el}
-              </option>
-            ))}
-          </select>
+          <ComboBox
+            list={serviceTypes}
+            onChange={(e) => setServiceType(e.target.value)}
+          />
         </div>
-      </div>
 
-      <div className="flex flex-row items-stretch">
-        <input
-          type="text"
-          placeholder="Pesquisar por modelo"
-          className="rounded-md border-2 block w-52 lg:w-full p-0.5 text-sm"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button
-          onClick={handleSearch}
-          className="rounded-sm shadow-lg bg-green-500 mx-1 py-1 px-3 text-sm text-white hover:bg-green-600"
-        >
-          <FontAwesomeIcon icon={faSearch} height={25} />
-        </button>
-        {search !== "" ? (
+        <div className="flex flex-row items-stretch">
+          <input
+            type="text"
+            placeholder="Pesquisar por modelo"
+            className="rounded-md border-2 block w-52 lg:w-full p-0.5 text-sm"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <button
-            onClick={() => {
-              props.handleClear();
-              setSearch("");
-            }}
-            className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
+            onClick={handleSearch}
+            className="rounded-sm shadow-lg bg-green-500 mx-1 py-1 px-3 text-sm text-white hover:bg-green-600"
           >
-            <FontAwesomeIcon icon={faSync} height={25} />
+            <FontAwesomeIcon icon={faSearch} height={25} />
           </button>
-        ) : null}
+          {search !== "" ? (
+            <button
+              onClick={() => {
+                props.handleClear();
+                setSearch("");
+              }}
+              className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
+            >
+              <FontAwesomeIcon icon={faSync} height={25} />
+            </button>
+          ) : null}
+        </div>
       </div>
     </div>
   );
