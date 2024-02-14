@@ -2,7 +2,7 @@ import axios, { InternalAxiosRequestConfig} from "axios";
 import { getSession } from "next-auth/react";
 
 const urls = {
-  "dev": "http://10.0.10.250:5003",
+  "dev": "http://localhost:5003",
   "prod": "https://doctorkeyapi.azurewebsites.net",
 }
 
@@ -10,7 +10,7 @@ export const apiUrl = process.env.NODE_ENV === 'production' ? urls.prod : urls.d
 
 const api = axios.create({
   baseURL: apiUrl,
-  timeout: 10000
+  timeout: 5000
 })
 
 api.interceptors.request.use(
@@ -38,6 +38,9 @@ api.interceptors.response.use(
   (error) => {
     if(error.response.status === 401){
       window.location.pathname = '/login'
+    }
+    else if(error.response.status === 408){
+      alert("Houve algum problema em nossos servidores! Tente mais tarde.")
     }
   }
 )
