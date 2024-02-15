@@ -14,6 +14,13 @@ interface KeyState {
   filteredList: Array<Key>;
 }
 
+interface KeySearch{
+  manufactor: string,
+  keyType: string,
+  bladeType: string,
+  serviceType: string
+}
+
 const initialState: KeyState = {
   key: {
     id: "",
@@ -90,7 +97,7 @@ export const deleteKey = createAsyncThunk(
 export const KeySlice = createSlice({
   name: "Keys",
   initialState,
-  reducers: {
+  reducers: { 
     readKey: (state, action: PayloadAction<string>) => {
       if (state.keyList.length === 0) {
         getAllKeys();
@@ -99,14 +106,24 @@ export const KeySlice = createSlice({
         state.keyList.find((key) => key.id === action.payload) as Key
       );
     },
-    searchManufactor: (state, action: PayloadAction<string>) => {
-      let filtered = state.keyList.filter((key) => 
-        key.manufactor === action.payload);
-      console.log(filtered);
-      console.log(action.payload);
+    searchKey: (state, action: PayloadAction<KeySearch>) => {
+      let filtered = state.keyList.filter((key) => {
+        if(action.payload.manufactor.length > 0)
+          key.manufactor === action.payload.manufactor
+        
+        else if(action.payload.keyType.length > 0)
+          key.keyType === action.payload.keyType
+        
+        else if(action.payload.bladeType.length > 0)
+          key.bladeType === action.payload.bladeType
+        
+        else if(action.payload.bladeType.length > 0)
+          key.serviceType === action.payload.serviceType})
+        
+      console.log(action.payload)
       state.filteredList = filtered;
     },
-    searchKey: (state, action: PayloadAction<string>) => {
+    searchKeyByName: (state, action: PayloadAction<string>) => {
       let filtered = state.keyList.filter((key) =>
         key.model.toLowerCase().startsWith(action.payload.toLowerCase())
       );
@@ -127,4 +144,4 @@ export const KeySlice = createSlice({
 });
 
 export default KeySlice.reducer;
-export const { readKey, searchKey, clearSearch, searchManufactor } = KeySlice.actions;
+export const { readKey, searchKey, searchKeyByName, clearSearch } = KeySlice.actions;

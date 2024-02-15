@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllKeys, searchKey } from "@/store/features/keySlice";
+import { getAllKeys, searchKeyByName } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect, useState } from "react";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";

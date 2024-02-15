@@ -2,7 +2,7 @@ import bladeTypes from "@/models/constants/bladeTypes";
 import keyTypes from "@/models/constants/keyTypes";
 import manufactors from "@/models/constants/manufactors";
 import serviceTypes from "@/models/constants/serviceTypes";
-import { searchKey, searchManufactor } from "@/store/features/keySlice";
+import { searchKeyByName, searchKey } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +27,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
 
   const handleSearch = () => {
     if (search !== "") {
-      dispatch(searchKey(search));
+      dispatch(searchKeyByName(search));
       setKeys(storeKeys?.filteredList);
     } else {
       setKeys(storeKeys?.keyList);
@@ -35,8 +35,8 @@ const KeyToolbar = (props: KeyToolbarProps) => {
   };
 
   useEffect(() => {
-    dispatch(searchManufactor(manufactor));
-  }, [manufactor]);
+    dispatch(searchKey({ manufactor, keyType, bladeType, serviceType }));
+  }, [manufactor, keyType, bladeType, serviceType]);
 
   return (
     <div className="rounded-md my-1 py-2 flex flex-col lg:flex-row justify-between">
@@ -53,24 +53,28 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           <ComboBox
             list={manufactors}
             onChange={(e) => setManufactor(e.target.value)}
+            placeholder="Fabricante"
           />
         </div>
         <div>
           <ComboBox
             list={keyTypes}
             onChange={(e) => setKeyType(e.target.value)}
+            placeholder="Tipo"
           />
         </div>
         <div>
           <ComboBox
             list={bladeTypes}
             onChange={(e) => setBladeType(e.target.value)}
+            placeholder="Lâmina"
           />
         </div>
         <div>
           <ComboBox
             list={serviceTypes}
             onChange={(e) => setServiceType(e.target.value)}
+            placeholder="Serviço"
           />
         </div>
 
