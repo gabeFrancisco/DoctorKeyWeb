@@ -99,6 +99,13 @@ export const KeySlice = createSlice({
         state.keyList.find((key) => key.id === action.payload) as Key
       );
     },
+    searchManufactor: (state, action: PayloadAction<string>) => {
+      let filtered = state.keyList.filter((key) => 
+        key.manufactor === action.payload);
+      console.log(filtered);
+      console.log(action.payload);
+      state.filteredList = filtered;
+    },
     searchKey: (state, action: PayloadAction<string>) => {
       let filtered = state.keyList.filter((key) =>
         key.model.toLowerCase().startsWith(action.payload.toLowerCase())
@@ -120,4 +127,4 @@ export const KeySlice = createSlice({
 });
 
 export default KeySlice.reducer;
-export const { readKey, searchKey, clearSearch } = KeySlice.actions;
+export const { readKey, searchKey, clearSearch, searchManufactor } = KeySlice.actions;

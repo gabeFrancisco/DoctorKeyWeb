@@ -2,7 +2,7 @@ import bladeTypes from "@/models/constants/bladeTypes";
 import keyTypes from "@/models/constants/keyTypes";
 import manufactors from "@/models/constants/manufactors";
 import serviceTypes from "@/models/constants/serviceTypes";
-import { searchKey } from "@/store/features/keySlice";
+import { searchKey, searchManufactor } from "@/store/features/keySlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,6 +33,10 @@ const KeyToolbar = (props: KeyToolbarProps) => {
       setKeys(storeKeys?.keyList);
     }
   };
+
+  useEffect(() => {
+    dispatch(searchManufactor(manufactor));
+  }, [manufactor]);
 
   return (
     <div className="rounded-md my-1 py-2 flex flex-col lg:flex-row justify-between">
@@ -84,17 +88,15 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           >
             <FontAwesomeIcon icon={faSearch} height={25} />
           </button>
-          {search !== "" ? (
-            <button
-              onClick={() => {
-                props.handleClear();
-                setSearch("");
-              }}
-              className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
-            >
-              <FontAwesomeIcon icon={faSync} height={25} />
-            </button>
-          ) : null}
+          <button
+            onClick={() => {
+              props.handleClear();
+              setSearch("");
+            }}
+            className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
+          >
+            <FontAwesomeIcon icon={faSync} height={25} />
+          </button>
         </div>
       </div>
     </div>
