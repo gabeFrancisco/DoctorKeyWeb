@@ -2,6 +2,7 @@ import {
   createAsyncThunk,
   createSlice,
   current,
+  original,
   PayloadAction,
 } from "@reduxjs/toolkit";
 
@@ -14,11 +15,11 @@ interface KeyState {
   filteredList: Array<Key>;
 }
 
-interface KeySearch{
-  manufactor: string,
-  keyType: string,
-  bladeType: string,
-  serviceType: string
+interface KeySearch {
+  manufactor: string;
+  keyType: string;
+  bladeType: string;
+  serviceType: string;
 }
 
 const initialState: KeyState = {
@@ -41,18 +42,19 @@ const initialState: KeyState = {
 
 export const getAllKeys = createAsyncThunk(
   "keys/getAll",
-  async () => await api.get("/api/keys").then((res) => {
-    if(res.status === 200){
-      return res.data;
-    }
-  })
+  async () =>
+    await api.get("/api/keys").then((res) => {
+      if (res.status === 200) {
+        return res.data;
+      }
+    })
 );
 
 export const getAllByModel = createAsyncThunk(
   "keys/getAllByModel",
   async (id: string) =>
     await api.get(`/api/keys/byModel/${id}`).then((res) => {
-      if(res.status === 200){
+      if (res.status === 200) {
         return res.data;
       }
     })
@@ -97,7 +99,7 @@ export const deleteKey = createAsyncThunk(
 export const KeySlice = createSlice({
   name: "Keys",
   initialState,
-  reducers: { 
+  reducers: {
     readKey: (state, action: PayloadAction<string>) => {
       if (state.keyList.length === 0) {
         getAllKeys();
@@ -107,20 +109,46 @@ export const KeySlice = createSlice({
       );
     },
     searchKey: (state, action: PayloadAction<KeySearch>) => {
-      let filtered = state.keyList.filter((key) => {
-        if(action.payload.manufactor.length > 0)
-          key.manufactor === action.payload.manufactor
-        
-        else if(action.payload.keyType.length > 0)
-          key.keyType === action.payload.keyType
-        
-        else if(action.payload.bladeType.length > 0)
-          key.bladeType === action.payload.bladeType
-        
-        else if(action.payload.bladeType.length > 0)
-          key.serviceType === action.payload.serviceType})
-        
-      console.log(action.payload)
+      let filtered = new Array();
+
+      // if (action.payload.manufactor.length > 0)
+      //   filtered = state.keyList.filter(
+      //       (x) => x.manufactor === action.payload.manufactor
+      //     )
+
+      // else if (action.payload.keyType.length > 0)
+      //   filtered.concat(
+      //     state.keyList.filter((x) => x.keyType === action.payload.keyType)
+      //   );
+      // else if (action.payload.bladeType.length > 0)
+      //   filtered.concat(
+      //     state.keyList.filter((x) => x.bladeType === action.payload.bladeType)
+      //   );
+      // else if (action.payload.serviceType.length > 0) {
+      //   filtered.concat(
+      //     state.keyList.filter(
+      //       (x) => x.serviceType === action.payload.serviceType
+      //     )
+      //   );
+      // }
+
+      var payload = action.payload;
+      filtered = state.keyList
+        .filter((x) => x.manufactor === payload.manufactor)
+        .filter((x) =>
+          payload.keyType.length > 0 ? x.keyType === payload.keyType : x
+        )
+        .filter((x) =>
+          payload.bladeType.length > 0 ? x.bladeType === payload.bladeType : x
+        )
+        .filter((x) =>
+          payload.serviceType.length > 0
+            ? x.serviceType === payload.serviceType
+            : x
+        );
+
+      // console.log(action.payload);
+      // console.log(filtered);
       state.filteredList = filtered;
     },
     searchKeyByName: (state, action: PayloadAction<string>) => {
@@ -139,9 +167,10 @@ export const KeySlice = createSlice({
     });
     builder.addCase(getAllByModel.fulfilled, (state, action) => {
       state.keyList = action.payload;
-    })
+    });
   },
 });
 
 export default KeySlice.reducer;
-export const { readKey, searchKey, searchKeyByName, clearSearch } = KeySlice.actions;
+export const { readKey, searchKey, searchKeyByName, clearSearch } =
+  KeySlice.actions;

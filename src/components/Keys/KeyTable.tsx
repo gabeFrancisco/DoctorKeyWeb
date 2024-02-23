@@ -5,11 +5,8 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect, useState } from "react";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 import KeyRow from "./KeyRow";
-import { faPlus, faSearch, faSync } from "@fortawesome/free-solid-svg-icons";
 
 import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import KeyToolbar from "./KeyToolbar";
 
 const KeyTable = () => {

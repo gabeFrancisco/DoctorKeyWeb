@@ -82,7 +82,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           <input
             type="text"
             placeholder="Pesquisar por modelo"
-            className="rounded-md border-2 block w-52 lg:w-full p-0.5 text-sm"
+            className="rounded-sm border-2 block w-52 lg:w-full p-0.5 text-sm"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
