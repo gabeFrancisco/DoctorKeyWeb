@@ -134,7 +134,9 @@ export const KeySlice = createSlice({
 
       var payload = action.payload;
       filtered = state.keyList
-        .filter((x) => x.manufactor === payload.manufactor)
+        .filter((x) => 
+          payload.manufactor.length > 0 ? x.manufactor === payload.manufactor : x
+        )
         .filter((x) =>
           payload.keyType.length > 0 ? x.keyType === payload.keyType : x
         )

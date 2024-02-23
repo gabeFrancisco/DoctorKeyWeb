@@ -3,7 +3,8 @@ import React, { SelectHTMLAttributes } from "react";
 interface ComboBoxProps {
   list: Array<string>;
   onChange(e: any): void;
-  placeholder: string
+  placeholder: string;
+  value: string;
 }
 
 const ComboBox = (props: ComboBoxProps) => {
@@ -13,7 +14,12 @@ const ComboBox = (props: ComboBoxProps) => {
         className="rounded-sm border-2 bg-gray-100 block mx-1 text-gray-700"
         onChange={props.onChange}
         placeholder={props.placeholder}
+        value={props.value}
+        required
       >
+        <option style={{color: "#888"}} selected>
+          {props.placeholder}
+        </option>
         {props.list.map((el, key) => (
           <option className="rounded-sm border-2 bg-gray-100" key={key}>
             {el}

@@ -17,6 +17,7 @@ interface KeyToolbarProps {
 const KeyToolbar = (props: KeyToolbarProps) => {
   const [search, setSearch] = useState("");
   const storeKeys = useAppSelector((state) => state.keys);
+
   // const filteredKeys = useAppSelector((state) => state.keys.filteredList);
   const dispatch = useAppDispatch();
   const [keys, setKeys] = useState(storeKeys?.keyList);
@@ -54,6 +55,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
             list={manufactors}
             onChange={(e) => setManufactor(e.target.value)}
             placeholder="Fabricante"
+            value={manufactor}
           />
         </div>
         <div>
@@ -61,6 +63,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
             list={keyTypes}
             onChange={(e) => setKeyType(e.target.value)}
             placeholder="Tipo"
+            value={keyType}
           />
         </div>
         <div>
@@ -68,6 +71,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
             list={bladeTypes}
             onChange={(e) => setBladeType(e.target.value)}
             placeholder="Lâmina"
+            value={bladeType}
           />
         </div>
         <div>
@@ -75,6 +79,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
             list={serviceTypes}
             onChange={(e) => setServiceType(e.target.value)}
             placeholder="Serviço"
+            value={serviceType}
           />
         </div>
 
@@ -94,8 +99,12 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           </button>
           <button
             onClick={() => {
-              props.handleClear();
+              setManufactor("");
+              setKeyType("");
+              setBladeType("");
+              setServiceType("");
               setSearch("");
+              props.handleClear();
             }}
             className="rounded-sm shadow-lg bg-blue-500 mx-1 py-1 px-3 text-sm text-white hover:bg-blue-600"
           >
