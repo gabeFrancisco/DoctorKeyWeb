@@ -13,8 +13,10 @@ const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Doctor Key",
-  description: "Gerenciador de chaves automotivas inteligente.",
+  description: "Seu gerenciador de chaves automotivas moderno e inteligente.",
   icons: ["favicon.ico"],
+  manifest: 'manifest.json',
+  themeColor: "#22C55E"
 };
 
 export default function RootLayout({
