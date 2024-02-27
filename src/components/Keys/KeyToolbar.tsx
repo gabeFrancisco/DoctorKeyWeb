@@ -44,10 +44,10 @@ const KeyToolbar = (props: KeyToolbarProps) => {
       <div className="my-2 lg:my-0 flex flex-wrap flex-row items- justify-between">
         <Link
           href="chaves/adicionar"
-          className="rounded-sm shadow-lg bg-green-500 py-1 px-3 text-sm text-white hover:bg-green-600"
+          className="rounded-sm shadow-lg bg-green-500  my-1 text-sm text-white hover:bg-green-600 p-0.5 px-3"
         >
           {/* New key button */}
-          <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />
+          <FontAwesomeIcon icon={faPlus} className="mx-1" height={25} />
           <span className="hidden md:inline-block">Nova chave!</span>
         </Link>
         <div>
@@ -74,7 +74,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
             value={bladeType}
           />
         </div>
-        <div className="my-2">
+        <div className="my-2 lg:my-0">
           <ComboBox
             list={serviceTypes}
             onChange={(e) => setServiceType(e.target.value)}
@@ -83,17 +83,17 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           />
         </div>
 
-        <div className="flex flex-row items-stretch flex-wrap my-2 lg:my-0">
+        <div className="flex flex-row items-stretch my-2 lg:my-0">
           <input
             type="text"
             placeholder="Pesquisar por modelo"
-            className="rounded-sm border-2 block w-52 mt-1 lg:w-full p-0.5 text-sm"
+            className="rounded-sm border-2 block w-52 h-6 mt-1 lg:w-full p-0.5 text-sm"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <button
             onClick={handleSearch}
-            className="rounded-sm shadow-lg bg-green-500 mx-1 py-1 px-3 text-sm text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-500 mx-1 py-0.5 h-6 my-1 px-3 text-sm text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faSearch} height={25} />
           </button>
@@ -106,7 +106,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
               setSearch("");
               props.handleClear();
             }}
-            className="rounded-sm shadow-lg bg-blue-500 mx-1 px-3 text-sm text-white hover:bg-blue-600"
+            className="rounded-sm shadow-lg bg-blue-500 mx-1 px-3 my-1 h-6 text-sm text-white hover:bg-blue-600"
           >
             <FontAwesomeIcon icon={faSync} height={25} />
           </button>
