@@ -25,25 +25,25 @@ const page = () => {
             description="Chaves cadastradas"
             data={data.keyCount}
             delay={0.4}
-            className="bg-gradient-to-tr from-green-600 to-green-400"
+            className="bg-gradient-to-tr from-green-400 to-green-200 font-bold"
           />
           <DataCard
             description="Ordens de serviço"
             data={data.serviceOrderCount}
             delay={0.8}
-            className="bg-gradient-to-tr from-blue-600 to-blue-400"
+            className="bg-gradient-to-tr from-blue-400 to-blue-200 font-bold"
           />
           <DataCard
             description="Total de clientes"
             data={data.customerCount}
             delay={1.2}
-            className="bg-gradient-to-tr from-yellow-500 to-yellow-300"
+            className="bg-gradient-to-tr from-yellow-400 to-yellow-200 font-bold"
           />
           <DataCard
             description="Checklists ativos"
             data={data.checklistCount}
             delay={1.4}
-            className="bg-gradient-to-tr from-red-500 to-red-300"
+            className="bg-gradient-to-tr from-red-400 to-red-200 font-bold"
           />
         </div>
       ) : null}
