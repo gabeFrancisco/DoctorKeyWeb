@@ -16,15 +16,15 @@ interface SidebarItemProps {
 
 const SidebarItem = (props: SidebarItemProps) => {
   return (
-    <li className="my-3 ml-5 p-1 text-white">
+    <li className="my-3 ml-5 p-1 text-gray-500">
       <Link
-        className="font-normal tracking-widest text-sm lg:text-md p-0 w-1 hover:text-slate-200"
+        className="font-normal tracking-widest text-sm lg:text-md p-0 w-1 hover:text-green-400"
         href={props.url}
       >
         <motion.div whileHover={{ x: 5 }}>
-          <FontAwesomeIcon className=" mr-3 text-xl" icon={props.icon} />
+          <FontAwesomeIcon className={`mr-3 ${props.toggle ? 'text-lg' : 'text-md' } text-slate-400`} icon={props.icon} />
           {props.toggle ? null : (
-            <span className="hidden lg:inline">{props.title}</span>
+            <span className="hidden lg:inline text-slate-700">{props.title}</span>
           )}
         </motion.div>
       </Link>

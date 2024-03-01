@@ -6,7 +6,6 @@ import { signOut, useSession } from "next-auth/react";
 import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
-  faChartBar,
   faChartColumn,
   faKey,
   faList,
@@ -62,10 +61,15 @@ const Sidebar = () => {
 
   const [toggle, setToggle] = useState(false);
   const toggleSidebar = () => {
-    toggle ? setToggle(false) : setToggle(true)
+    toggle ? setToggle(false) : setToggle(true);
   };
   return (
-    <aside id="sidebar" className={`overflow-y-auto overflow-x-hidden flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-500 ${toggle ? '' : 'lg:w-1/4'} lg:h-screen sticky top-0 text-white shadow-2x`}>
+    <aside
+      id="sidebar"
+      className={`overflow-y-auto overflow-x-hidden flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-white ${
+        toggle ? "" : "lg:w-1/4"
+      } lg:h-screen sticky top-0 text-slate-700 shadow-2x border-r`}
+    >
       {!toggle ? (
         <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
           {status === "authenticated" && data !== null && (
@@ -93,7 +97,7 @@ const Sidebar = () => {
         </div>
       ) : null}
 
-      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-green-500">
+      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-white">
         {links.map((link, key) => (
           <SidebarItem
             key={key}
@@ -104,17 +108,15 @@ const Sidebar = () => {
           />
         ))}
         <div
-          className="hidden lg:block my-10 ml-5 p-1 text-white cursor-pointer bg-green-500"
+          className="hidden lg:block my-10 ml-5 p-1 cursor-pointer bg-white"
           onClick={toggleSidebar}
         >
           <motion.div whileHover={{ x: 5 }}>
             <FontAwesomeIcon
-              className=" mr-3 text-xl"
+              className=" mr-3 text-xl text-slate-400"
               icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}
             />
-            <span>
-              {toggle ? null : "Recolher Menu"}
-            </span>
+            <span className="text-slate-700">{toggle ? null : "Recolher Menu"}</span>
           </motion.div>
         </div>
       </ul>

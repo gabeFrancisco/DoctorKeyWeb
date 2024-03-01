@@ -24,7 +24,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 
 /* Track */
@@ -34,12 +34,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #26b259
+  background: #c7c7c7;
 } 
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #24a955
+  background: #858484;
 }
 
 .landing-home{
