@@ -3,27 +3,29 @@ import * as signalR from "@microsoft/signalr";
 import { dashboardActions } from "../features/dashboardSlice";
 import { apiUrl } from "@/services/api";
 
-const socketMiddleware: Middleware = (store) => (next) => (action) => {
+const socketMiddleware: Middleware = (store) => {
   // if (!dashboardActions.startConnecting.match(action)) {
   //   return next(action);
   // }
 
   const connection = new signalR.HubConnectionBuilder()
     .withUrl(`${apiUrl}/socket/dashboard`)
-    .configureLogging(signalR.LogLevel.Information)
+    .configureLogging(signalR.LogLevel.Information) 
     .build();
-        
-    connection.start();
+
+  connection.start();
+
+  return (next) => (action) => {
     connection.on("ReceiveInitialData", (data) => {
       store.dispatch(dashboardActions.loadData(JSON.parse(data)));
     });
 
     connection.on("KeyCount", (data) => {
-      store.dispatch(dashboardActions.loadKeyCount(data))
-    })
-  
+      store.dispatch(dashboardActions.loadKeyCount(data));
+    });
 
-  next(action);
+    next(action);
+  };
 };
 
 export default socketMiddleware;
