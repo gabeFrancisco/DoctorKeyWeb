@@ -17,41 +17,48 @@ import User from "../../../public/user.png";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-
-const links = [
-  {
-    title: "Painel",
-    url: "/painel",
-    icon: faChartColumn,
-  },
-  {
-    title: "Chaves",
-    url: "/painel/chaves",
-    icon: faKey,
-  },
-  {
-    title: "Ordens de Serviço",
-    url: "/painel/ordens",
-    icon: faSheetPlastic,
-  },
-  {
-    title: "Checklists",
-    url: "/painel/checklists",
-    icon: faList,
-  },
-  {
-    title: "Clientes",
-    url: "/painel/clientes",
-    icon: faUserFriends,
-  },
-  {
-    title: "Serviços",
-    url: "/painel/servicos",
-    icon: faWrench,
-  },
-];
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
+  const [links, setLinks] = useState([
+    {
+      title: "Painel",
+      url: "/painel",
+      icon: faChartColumn,
+      selected: false,
+    },
+    {
+      title: "Chaves",
+      url: "/painel/chaves",
+      icon: faKey,
+      selected: false
+    },
+    {
+      title: "Ordens de Serviço",
+      url: "/painel/ordens",
+      icon: faSheetPlastic,
+      selected: false
+    },
+    {
+      title: "Checklists",
+      url: "/painel/checklists",
+      icon: faList,
+      selected: false
+    },
+    {
+      title: "Clientes",
+      url: "/painel/clientes",
+      icon: faUserFriends,
+      selected: false
+    },
+    {
+      title: "Serviços",
+      url: "/painel/servicos",
+      icon: faWrench,
+      selected: false
+    },
+  ]);
+  const pathname = usePathname();
   const { data, status } = useSession();
   // useEffect(() => {
   //   if (status !== "authenticated") {
@@ -63,6 +70,20 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     toggle ? setToggle(false) : setToggle(true);
   };
+
+  useEffect(() => {
+    let newLinks = links.map((el) => {
+      // el.selected = false
+      if(pathname === el.url){
+        el.selected = true
+      }
+      else{
+        el.selected = false
+      }
+      return el;
+    })
+    setLinks(newLinks)
+  }, [pathname])
   return (
     <aside
       id="sidebar"
@@ -105,10 +126,11 @@ const Sidebar = () => {
             url={link.url}
             icon={link.icon}
             toggle={toggle}
+            selected={link.selected}
           />
         ))}
         <div
-          className="hidden lg:block my-10 ml-5 p-1 cursor-pointer bg-green-400"
+          className="hidden lg:block px-5 my-10 cursor-pointer bg-green-400"
           onClick={toggleSidebar}
         >
           <motion.div whileHover={{ x: 5 }}>
