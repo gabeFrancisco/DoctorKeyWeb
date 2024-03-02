@@ -44,7 +44,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
       <div className="my-2 lg:my-0 flex flex-wrap flex-row items- justify-between">
         <Link
           href="chaves/adicionar"
-          className="rounded-sm shadow-lg bg-green-500  my-1 text-sm text-white hover:bg-green-600 p-0.5 px-3"
+          className="rounded-sm shadow-lg bg-green-400  my-1 text-sm text-white hover:bg-green-600 p-0.5 px-3"
         >
           {/* New key button */}
           <FontAwesomeIcon icon={faPlus} className="mx-1" height={25} />
@@ -93,7 +93,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           />
           <button
             onClick={handleSearch}
-            className="rounded-sm shadow-lg bg-green-500 mx-1 py-0.5 h-6 my-1 px-3 text-sm text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-400 mx-1 py-0.5 h-6 my-1 px-3 text-sm text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faSearch} height={25} />
           </button>
@@ -106,7 +106,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
               setSearch("");
               props.handleClear();
             }}
-            className="rounded-sm shadow-lg bg-blue-500 mx-1 px-3 my-1 h-6 text-sm text-white hover:bg-blue-600"
+            className="rounded-sm shadow-lg bg-blue-400 mx-1 px-3 my-1 h-6 text-sm text-white hover:bg-blue-600"
           >
             <FontAwesomeIcon icon={faSync} height={25} />
           </button>

@@ -11,7 +11,7 @@ interface Props {
 const DropdownItem = (props: Props) => {
   return (
     <li
-      className="px-2 py-1 text-gray-700 hover:bg-green-500 hover:text-white cursor-pointer"
+      className="px-2 py-1 text-gray-700 hover:bg-green-400 hover:text-white cursor-pointer"
       onClick={props.onClick}
     >
       <i className="mr-2">

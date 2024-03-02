@@ -13,7 +13,7 @@ const CustomerCard = (props: Props) => {
       animate={{ opacity: 1 }}
       className="m-0 lg:m-5 border-0 rounded-sm shadow-lg"
     >
-      <div className="flex flex-row items-center justify-evenly align-baseline p-1 text-white bg-green-500 rounded-tl-sm rounded-tr-sm">
+      <div className="flex flex-row items-center justify-evenly align-baseline p-1 text-white bg-green-400 rounded-tl-sm rounded-tr-sm">
       <h2 className="text-lg lg:text-2xl font-bold mx-10 my-1">
           {props.customer.name}
         </h2>

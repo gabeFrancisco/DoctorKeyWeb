@@ -42,7 +42,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       ) : null}
 
       <th
-        className="px-2 lg:px-6 py-1 resize-none text-green-500 underline cursor-pointer overflow-ellipsis border-r"
+        className="px-2 lg:px-6 py-1 resize-none text-green-400 underline cursor-pointer overflow-ellipsis border-r"
         onClick={handleRead}
       >
         {_key.model}
@@ -54,7 +54,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       <td className="hidden lg:table-cell px-2 lg:px-6 py-1">
         {_key.bladeType}
       </td>
-      <td className="px-2 lg:px-6 py-1 text-green-600 font-bold">
+      <td className="px-2 lg:px-6 py-1 text-green-400 font-bold">
         R${_key.price.toFixed(2)}
       </td>
       <td className="px-2 lg:px-6 py-1">

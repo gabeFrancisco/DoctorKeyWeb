@@ -25,7 +25,7 @@ const CustomerTable = () => {
         <div>
           <Link
             href="clientes/adicionar"
-            className="rounded-sm shadow-lg bg-green-500 py-2 px-3 text-sm text-white hover:bg-green-600"
+            className="rounded-sm shadow-lg bg-green-400 py-2 px-3 text-sm text-white hover:bg-green-600"
           >
             <FontAwesomeIcon icon={faPlus} className="mx-2" height={25} />
             <span className="hidden md:inline-block">Novo cliente!</span>
@@ -36,7 +36,7 @@ const CustomerTable = () => {
         <div className="overflow-x-auto shadow-md rounded-sm w-full my-2">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <table className="w-full text-sm text-left text-gray-500 rounded-md">
-              <thead className="border-0 rounded-md text-md text-white bg-green-500">
+              <thead className="border-0 rounded-md text-md text-white bg-green-400">
                 <tr>
                   <th className="px-2 lg:px-6 py-2 m-1">Nome</th>
                   <th className="px-2 lg:px-6 py-2 m-1">Telefone</th>

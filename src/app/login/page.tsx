@@ -108,7 +108,7 @@ const page = () => {
               <motion.button
                 whileHover={{ translateY: -3 }}
                 onClick={() => formik.handleSubmit()}
-                className="rounded-lg px-7 py-2 mx-5 mb-5 bg-green-500 text-white"
+                className="rounded-lg px-7 py-2 mx-5 mb-5 bg-green-400 text-white"
                 type="button"
               >
                 {loading ? <LoadingSkeletonButton /> : "Acessar!"}

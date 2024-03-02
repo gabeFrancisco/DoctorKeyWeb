@@ -34,7 +34,7 @@ const KeyCard = (props: Props) => {
           return
         />
       ) : null}
-      <div className="flex flex-row align-baseline p-2 text-white bg-green-500 rounded-tl-sm rounded-tr-sm">
+      <div className="flex flex-row align-baseline p-2 text-white bg-green-400 rounded-tl-sm rounded-tr-sm">
         <h2 className="text-lg lg:text-2xl font-bold mx-2 my-1">
           {props.keyModel.manufactor}
         </h2>
@@ -65,7 +65,7 @@ const KeyCard = (props: Props) => {
             <div className="border-b my-3"></div>
             <button
               onClick={() => navigate.back()}
-              className="border border-green-500 rounded-sm text-green-500 bg-white shadow-lg py-1 px-5 mr-1 hover:bg-green-500 hover:text-white"
+              className="border border-green-500 rounded-sm text-green-500 bg-white shadow-lg py-1 px-5 mr-1 hover:bg-green-400 hover:text-white"
             >
               Voltar
             </button>
