@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect } from "react";
 import { dashboardActions, getAllData } from "@/store/features/dashboardSlice";
 
+import { Chart } from "react-google-charts";
+
 const page = () => {
   const data = useAppSelector((state) => state.dashboard.data);
   const dispatch = useAppDispatch();
@@ -44,6 +46,18 @@ const page = () => {
             data={data.checklistCount}
             delay={1.4}
             className="bg-gradient-to-tr from-red-400 to-red-200 font-bold"
+          />
+
+          <Chart
+            chartType="ScatterChart"
+            data={[
+              ["Age", "Weight"],
+              [4, 5.5],
+              [8, 12],
+            ]}
+            width="100%"
+            height="400px"
+            legendToggle
           />
         </div>
       ) : null}
