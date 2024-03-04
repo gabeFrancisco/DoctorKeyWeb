@@ -31,31 +31,31 @@ const Sidebar = () => {
       title: "Chaves",
       url: "/painel/chaves",
       icon: faKey,
-      selected: false
+      selected: false,
     },
     {
       title: "Ordens de Serviço",
       url: "/painel/ordens",
       icon: faSheetPlastic,
-      selected: false
+      selected: false,
     },
     {
       title: "Checklists",
       url: "/painel/checklists",
       icon: faList,
-      selected: false
+      selected: false,
     },
     {
       title: "Clientes",
       url: "/painel/clientes",
       icon: faUserFriends,
-      selected: false
+      selected: false,
     },
     {
       title: "Serviços",
       url: "/painel/servicos",
       icon: faWrench,
-      selected: false
+      selected: false,
     },
   ]);
   const pathname = usePathname();
@@ -74,24 +74,23 @@ const Sidebar = () => {
   useEffect(() => {
     let newLinks = links.map((el) => {
       // el.selected = false
-      if(pathname === el.url){
-        el.selected = true
-      }
-      else{
-        el.selected = false
+      if (pathname === el.url) {
+        el.selected = true;
+      } else {
+        el.selected = false;
       }
       return el;
-    })
-    setLinks(newLinks)
-  }, [pathname])
+    });
+    setLinks(newLinks);
+  }, [pathname]);
   return (
     <aside
       id="sidebar"
-      className={`overflow-y-auto overflow-x-hidden flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-400 ${
-        toggle ? "" : "lg:w-1/4"
-      } lg:h-screen sticky top-0 text-white shadow-lg border-r`}
+      className={`overflow-x-hidden pt-12 md:pt-24 overflow-y-auto overflow-x-h shadow-none lg:drop-shadow-lg flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-400 ${
+        toggle ? "" : "lg:w-1/5"
+      } lg:h-screen sticky top-0 text-white lg:shadow border-b border-white lg:border-0`}
     >
-      {!toggle ? (
+      {/* {!toggle ? (
         <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
           {status === "authenticated" && data !== null && (
             <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
@@ -116,7 +115,7 @@ const Sidebar = () => {
             </div>
           )}
         </div>
-      ) : null}
+      ) : null} */}
 
       <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-green-400">
         {links.map((link, key) => (
@@ -138,7 +137,9 @@ const Sidebar = () => {
               className=" mr-3 text-xl text-white"
               icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}
             />
-            <span className="text-white">{toggle ? null : "Recolher Menu"}</span>
+            <span className="text-white">
+              {toggle ? null : "Recolher Menu"}
+            </span>
           </motion.div>
         </div>
       </ul>

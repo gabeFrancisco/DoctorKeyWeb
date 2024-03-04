@@ -18,7 +18,7 @@ interface SidebarItemProps {
 const SidebarItem = (props: SidebarItemProps) => {
   return (
     <li
-      className={`lg:my-1 py-5 lg:py-2 px-5 w-full text-white ${
+      className={`lg:my-1 py-5 lg:py-1 px-5 w-full text-white overflow-x-hidden ${
         props.selected ? "bg-white text-green-400 py-1" : "font-normal text-white"
       }`}
     >
@@ -34,7 +34,7 @@ const SidebarItem = (props: SidebarItemProps) => {
               props.selected
                 ? "lg:font-bold text-green-400"
                 : "font-normal text-white"
-            }`}
+            } lg:py-2`}
             icon={props.icon}
           />
           {props.toggle ? null : (
