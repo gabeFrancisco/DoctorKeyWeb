@@ -27,7 +27,7 @@ const Dropdown = (props: Props) => {
       {isDrop ? (
         <div ref={ref}>
           <ul
-            className="absolute rounded-sm flex flex-col border border-gray-300 z-30 bg-gray-50 shadow right-10"
+            className="absolute rounded flex flex-col border border-gray-300 z-30 bg-gray-50 shadow right-10"
             id="dropbox"
           >
             {React.Children.map(props.children, (child) => child)}
