@@ -9,7 +9,7 @@ const socketMiddleware: Middleware = (store) => {
   // }
 
   const connection = new signalR.HubConnectionBuilder()
-    .withUrl(`${apiUrl}/socket/dashboard`)
+    .withUrl(`${apiUrl}/socket/apphub`)
     .configureLogging(signalR.LogLevel.Information) 
     .build();
 
@@ -20,9 +20,13 @@ const socketMiddleware: Middleware = (store) => {
       store.dispatch(dashboardActions.loadData(JSON.parse(data)));
     });
 
-    connection.on("KeyCount", (data) => {
-      store.dispatch(dashboardActions.loadKeyCount(data));
-    });
+    // connection.on("KeyCount", (data) => {
+    //   store.dispatch(dashboardActions.loadKeyCount(data));
+    // });
+
+    connection.on("NotificationAdd", data => {
+      console.log(`Data: ${data}`)
+    })
 
     next(action);
   };

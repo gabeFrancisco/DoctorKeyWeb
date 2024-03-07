@@ -6,7 +6,6 @@ import {
 } from "@reduxjs/toolkit";
 
 import { Customer } from "@/models/Customer";
-import { Address } from "@/models/Address";
 import api from "@/services/api";
 
 interface CustomerState {
