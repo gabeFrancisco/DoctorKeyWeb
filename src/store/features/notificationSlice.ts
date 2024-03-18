@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Notification } from "@/models/Notification";
 
 interface NotificationState{
@@ -19,8 +19,12 @@ const initialState: NotificationState = {
 export const NotificationSlice = createSlice({
   name: "Notifications",
   initialState,
-  reducers: {}
+  reducers: {
+    addNotification: (state, action: PayloadAction<Notification>) => {
+      state.notificationList.push(action.payload);  
+    }
+  }
 })
 
 export default NotificationSlice.reducer;
-export const { } = NotificationSlice.actions;
+export const notificationActions = NotificationSlice.actions;

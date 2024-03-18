@@ -1,6 +1,7 @@
 import { Middleware } from "@reduxjs/toolkit";
 import * as signalR from "@microsoft/signalr";
 import { dashboardActions } from "../features/dashboardSlice";
+import { notificationActions } from "../features/notificationSlice";
 import { apiUrl } from "@/services/api";
 
 const socketMiddleware: Middleware = (store) => {
@@ -10,25 +11,30 @@ const socketMiddleware: Middleware = (store) => {
 
   const connection = new signalR.HubConnectionBuilder()
     .withUrl(`${apiUrl}/socket/apphub`)
-    .configureLogging(signalR.LogLevel.Information) 
+    .configureLogging(signalR.LogLevel.Information)
     .build();
 
   connection.start();
 
-  return (next) => (action) => {
-    connection.on("ReceiveInitialData", (data) => {
-      store.dispatch(dashboardActions.loadData(JSON.parse(data)));
-    });
+  return (next) => {
+    // connection.on("ReceiveInitialData", (data) => {
+    //   store.dispatch(dashboardActions.loadData(JSON.parse(data)));
+    // });
 
     // connection.on("KeyCount", (data) => {
     //   store.dispatch(dashboardActions.loadKeyCount(data));
     // });
 
-    connection.on("NotificationAdd", data => {
-      console.log(`Data: ${data}`)
-    })
+    connection.on("NotificationAdd", async (data) => {
+      let notification = JSON.stringify(data);
+      store.dispatch(
+        notificationActions.addNotification(JSON.parse(notification))
+      );
+    });
 
-    next(action);
+    return (action) => {
+      next(action);
+    };
   };
 };
 
