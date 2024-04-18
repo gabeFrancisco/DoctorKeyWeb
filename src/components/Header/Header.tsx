@@ -14,6 +14,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex flex-row items-center mx-10">
+      
         {status === 'authenticated' && data !== null && (<p>{data.user?.name}</p>)}
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}

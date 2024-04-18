@@ -10,7 +10,9 @@ const socketMiddleware: Middleware = (store) => {
   // }
 
   const connection = new signalR.HubConnectionBuilder()
-    .withUrl(`${apiUrl}/socket/apphub`)
+    .withUrl(
+      `${apiUrl}/socket/apphub?workGroup=${"6969db51-a650-43ea-9402-8367efa0f4f7"}`
+    )
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
