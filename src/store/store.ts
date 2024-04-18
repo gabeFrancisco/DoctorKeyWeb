@@ -1,17 +1,19 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { KeySlice } from "./features/keySlice";
 import { CustomerSlice } from "./features/customerSlice";
 import { DashboardSlice } from "./features/dashboardSlice";
 import socketMiddleware from "./middlewares/socketMiddleware";
 import { NotificationSlice } from "./features/notificationSlice";
+import { WorkGroupSlice } from "./features/workGroupSlice";
 
 export const store = configureStore({
   reducer: {
     dashboard: DashboardSlice.reducer,
     keys: KeySlice.reducer,
     customers: CustomerSlice.reducer,
-    notifications: NotificationSlice.reducer
+    notifications: NotificationSlice.reducer,
+    workGroups: WorkGroupSlice.reducer
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>{
