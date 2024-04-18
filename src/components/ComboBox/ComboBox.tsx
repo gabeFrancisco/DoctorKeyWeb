@@ -11,7 +11,7 @@ const ComboBox = (props: ComboBoxProps) => {
   return (
     <div>
       <select
-        className="rounded-sm border-2 bg-gray-100 my-1  block lg:mx-1 text-gray-700"
+        className="rounded-sm border bg-white my-1 py-0.5  block lg:mx-1 text-gray-700"
         onChange={props.onChange}
         placeholder={props.placeholder}
         value={props.value}
@@ -21,7 +21,7 @@ const ComboBox = (props: ComboBoxProps) => {
           {props.placeholder}
         </option>
         {props.list.map((el, key) => (
-          <option className="rounded-sm border-2 bg-gray-100" key={key}>
+          <option className="rounded-sm border-2 bg-white" key={key}>
             {el}
           </option>
         ))}
