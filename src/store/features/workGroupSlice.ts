@@ -28,6 +28,17 @@ export const getAllWorkGroups = createAsyncThunk(
   }
 )
 
+export const getActualWorkGroup = createAsyncThunk(
+  "workGroups/getActual",
+  async () => {
+    return await api.get('/api/workGroups/actual').then((res) => {
+      if(res.status === 200){
+        return res.data;
+      }
+    })
+  }
+)
+
 export const WorkGroupSlice = createSlice({
  name: "WorkGroup",
  initialState,
@@ -35,6 +46,9 @@ export const WorkGroupSlice = createSlice({
  extraReducers: (builder) => {
   builder.addCase(getAllWorkGroups.fulfilled, (state, action) => {
     state.workGroupList = action.payload;
+  }),
+  builder.addCase(getActualWorkGroup.fulfilled, (state, action) => {
+    state.workGroup = action.payload;
   })
  }
 })
