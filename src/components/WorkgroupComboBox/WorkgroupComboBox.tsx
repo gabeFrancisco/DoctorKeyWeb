@@ -1,13 +1,14 @@
+import { WorkGroup } from "@/models/WorkGroup";
 import React, { SelectHTMLAttributes } from "react";
 
-interface ComboBoxProps {
-  list: Array<string>;
+interface WorkgroupComboBoxProps {
+  list: Array<WorkGroup>;
   onChange(e: any): void;
   placeholder: string;
   value: string;
 }
 
-const ComboBox = (props: ComboBoxProps) => {
+const WorkgroupComboBox = (props: WorkgroupComboBoxProps) => {
   return (
     <div>
       <select
@@ -20,9 +21,9 @@ const ComboBox = (props: ComboBoxProps) => {
         <option style={{color: "#888"}} selected>
           {props.placeholder}
         </option>
-        {props.list.map((el, key) => (
-          <option className="rounded-sm border-2 bg-white" key={key}>
-            {el}
+        {props.list.map((el) => (
+          <option className="rounded-sm border-2 bg-white" data-id={el.id}>
+            {el.title}
           </option>
         ))}
       </select>
@@ -30,4 +31,4 @@ const ComboBox = (props: ComboBoxProps) => {
   );
 };
 
-export default ComboBox;
+export default WorkgroupComboBox;
