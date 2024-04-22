@@ -5,6 +5,7 @@ interface ComboBoxProps {
   onChange(e: any): void;
   placeholder: string;
   value: string;
+  id?: string
 }
 
 const ComboBox = (props: ComboBoxProps) => {

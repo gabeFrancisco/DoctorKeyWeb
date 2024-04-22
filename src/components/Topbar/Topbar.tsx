@@ -6,7 +6,7 @@ import Image from "next/image";
 import UserProfile from "../UserProfile/UserProfile";
 import ComboBox from "../ComboBox/ComboBox";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { getActualWorkGroup, getAllWorkGroups } from "@/store/features/workGroupSlice";
+import { getActualWorkGroup, getAllWorkGroups, selectWorkGroup } from "@/store/features/workGroupSlice";
 
 const Topbar = () => {
   const workGroups = useAppSelector(state => state.workGroups);
@@ -22,7 +22,8 @@ const Topbar = () => {
 
   useEffect(() => {
     if(confirm("Tem certeza que deseja mudar o grupo de serviço?")){
-      alert("Mudou!")
+      dispatch(selectWorkGroup(workGroups.workGroup.id!))
+      window.location.reload();
     }
     else{
       alert("Not now!");

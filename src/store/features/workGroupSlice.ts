@@ -39,6 +39,17 @@ export const getActualWorkGroup = createAsyncThunk(
   }
 )
 
+export const selectWorkGroup = createAsyncThunk(
+  "workGroups/select",
+  async (data: string) => {
+    return await api.post(`/api/workGroups/${data}`).then(res => {
+      // if(res.status === 200){
+      //   window.location.reload();
+      // }
+    })
+  }
+)
+
 export const WorkGroupSlice = createSlice({
  name: "WorkGroup",
  initialState,
