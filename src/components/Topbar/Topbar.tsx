@@ -15,7 +15,7 @@ import WorkgroupComboBox from "../WorkgroupComboBox/WorkgroupComboBox";
 
 const Topbar = () => {
   const workGroups = useAppSelector((state) => state.workGroups);
-  const [selectedWorkGroup, setSelectedWorkGroup] = useState("");
+  const [selectedWorkGroup, setSelectedWorkGroup] = useState<string | null>(null);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getAllWorkGroups());
@@ -27,12 +27,8 @@ const Topbar = () => {
 
   useEffect(() => {
     if (confirm("Tem certeza que deseja mudar o grupo de serviço?")) {
-      dispatch(selectWorkGroup(selectedWorkGroup)).then(() => {
-        alert(selectedWorkGroup);
-      });
+      dispatch(selectWorkGroup(selectedWorkGroup!))
       window.location.reload();
-    } else {
-      // alert("Not now!");
     }
   }, [selectedWorkGroup]);
 
@@ -44,7 +40,7 @@ const Topbar = () => {
       <div className="flex flex-row items-center">
         <WorkgroupComboBox
           list={workGroups.workGroupList}
-          onChange={(e) => setSelectedWorkGroup(e.target.dataset.id)}
+          onChange={(e) => setSelectedWorkGroup(e.target.selectedOptions[0].dataset.id)}
           placeholder="Grupos de trabalho"
           value={workGroups.workGroup.title}
         />

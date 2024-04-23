@@ -22,7 +22,7 @@ const WorkgroupComboBox = (props: WorkgroupComboBoxProps) => {
           {props.placeholder}
         </option>
         {props.list.map((el) => (
-          <option className="rounded-sm border-2 bg-white" data-id={el.id}>
+          <option className="rounded-sm border-2 bg-white" data-id={el.id!}>
             {el.title}
           </option>
         ))}
