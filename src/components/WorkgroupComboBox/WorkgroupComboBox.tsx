@@ -10,11 +10,10 @@ interface WorkgroupComboBoxProps {
 
 const WorkgroupComboBox = (props: WorkgroupComboBoxProps) => {
   return (
-    <div>
       <select
-        className="rounded-sm border bg-white my-1 py-0.5  block lg:mx-1 text-gray-700"
-        onChange={props.onChange}
         placeholder={props.placeholder}
+        className="border rounded-md border-white py-0.5 bg-green-400 my-1 w-2/3 md:3/5 mx-5 block lg:mx-1 text-sm text-white font-bold"
+        onChange={props.onChange}
         value={props.value}
         required
       >
@@ -22,12 +21,11 @@ const WorkgroupComboBox = (props: WorkgroupComboBoxProps) => {
           {props.placeholder}
         </option>
         {props.list.map((el) => (
-          <option className="rounded-sm border-2 bg-white" data-id={el.id!}>
+          <option className="rounded-sm border-2 bg-green-400" data-id={el.id!}>
             {el.title}
           </option>
         ))}
       </select>
-    </div>
   );
 };
 
