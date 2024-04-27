@@ -2,16 +2,18 @@ import { Middleware } from "@reduxjs/toolkit";
 import * as signalR from "@microsoft/signalr";
 import { dashboardActions } from "../features/dashboardSlice";
 import { notificationActions } from "../features/notificationSlice";
-import { apiUrl } from "@/services/api";
+import api, { apiUrl } from "@/services/api";
+import { getSession } from "next-auth/react";
 
 const socketMiddleware: Middleware = (store) => {
   // if (!dashboardActions.startConnecting.match(action)) {
   //   return next(action);
   // }
-
+  const session = getSession()
+  const token = session.then(s => s?.user.accessToken);
   const connection = new signalR.HubConnectionBuilder()
     .withUrl(
-      `${apiUrl}/socket/apphub?workGroup=${"6969db51-a650-43ea-9402-8367efa0f4f7"}`
+      `${apiUrl}/socket/apphub?workgroup=${token}`
     )
     .configureLogging(signalR.LogLevel.Information)
     .build();
