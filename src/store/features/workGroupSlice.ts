@@ -2,10 +2,13 @@ import {createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import api from "@/services/api";
 import { WorkGroup } from '@/models/WorkGroup';
+import { getSession } from 'next-auth/react';
 
 interface WorkGroupState{
   workGroup: WorkGroup;
   workGroupList: Array<WorkGroup>;
+  webSocketConnection: boolean,
+  workGroupSocketId: string
 }
 
 const initialState: WorkGroupState = {
@@ -14,7 +17,9 @@ const initialState: WorkGroupState = {
     description: "",
     userId: ""
   },
-  workGroupList: new Array<WorkGroup>()
+  workGroupList: new Array<WorkGroup>(),
+  webSocketConnection: false,
+  workGroupSocketId: ""
 }
 
 export const getAllWorkGroups = createAsyncThunk(
@@ -50,6 +55,17 @@ export const selectWorkGroup = createAsyncThunk(
   }
 )
 
+export const connectToWebSocket = createAsyncThunk(
+  "workGroups/connectToWebSocket",
+  async () => {
+    return await api.get("/api/workGroups/actualId").then(res => {
+      if(res.status === 200){
+        return res.data;
+      }
+    })
+  }
+)
+
 export const WorkGroupSlice = createSlice({
  name: "WorkGroup",
  initialState,
@@ -60,6 +76,10 @@ export const WorkGroupSlice = createSlice({
   }),
   builder.addCase(getActualWorkGroup.fulfilled, (state, action) => {
     state.workGroup = action.payload;
+  })
+  builder.addCase(connectToWebSocket.fulfilled, (state,action) => {
+    state.workGroupSocketId = action.payload!;
+    state.webSocketConnection = true;
   })
  }
 })

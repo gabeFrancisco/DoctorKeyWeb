@@ -10,7 +10,7 @@ export const apiUrl = process.env.NODE_ENV === 'production' ? urls.prod : urls.d
 
 const api = axios.create({
   baseURL: apiUrl,
-  timeout: 5000
+  timeout: 5000,
 })
 
 api.interceptors.request.use(
