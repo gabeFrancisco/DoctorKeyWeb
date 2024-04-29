@@ -4,24 +4,27 @@ import { dashboardActions } from "../features/dashboardSlice";
 import { notificationActions } from "../features/notificationSlice";
 import api, { apiUrl } from "@/services/api";
 import { getSession } from "next-auth/react";
-import workGroupSlice from "../features/workGroupSlice";
+import workGroupSlice, { setConnecting } from "../features/workGroupSlice";
 
 const socketMiddleware: Middleware = (store) => (next) => (action) => {
   // if (!dashboardActions.startConnecting.match(action)) {
   //   return next(action);
   // }
-  if (store.getState().workGroups.webSocketConnection) {
-    let token;
-    console.log(getSession().then((s) => (token = s?.user.accessToken)));
-
+  let isConnected = store.getState().workGroups.isWebSocketConnected;
+  let isConnecting = store.getState().workGroups.isWebSocketConnecting;
+  let token = store.getState().workGroups.workGroupSocketId;
+  console.log(token)
+  // store.dispatch(setConnecting(true));
+  if (isConnecting) {
+    store.dispatch(setConnecting(false));
     var connection = new signalR.HubConnectionBuilder()
       .withUrl(`${apiUrl}/socket/apphub?workgroup=${token}`)
       .configureLogging(signalR.LogLevel.Information)
       .build();
     {
-      // connection.on("ReceiveInitialData", (data) => {
-      //   store.dispatch(dashboardActions.loadData(JSON.parse(data)));
-      // });
+      connection.on("ReceiveInitialData", (data) => {
+        store.dispatch(dashboardActions.loadData(JSON.parse(data)));
+      });
 
       // connection.on("KeyCount", (data) => {
       //   store.dispatch(dashboardActions.loadKeyCount(data));
@@ -35,11 +38,11 @@ const socketMiddleware: Middleware = (store) => (next) => (action) => {
       });
 
       connection.start();
-      next(action);
+      // next(action);
     }
-  }
 
-  next(action);
+    next(action);
+  }
 };
 
 export default socketMiddleware;

@@ -7,7 +7,8 @@ import { getSession } from 'next-auth/react';
 interface WorkGroupState{
   workGroup: WorkGroup;
   workGroupList: Array<WorkGroup>;
-  webSocketConnection: boolean,
+  isWebSocketConnected: boolean,
+  isWebSocketConnecting: boolean,
   workGroupSocketId: string
 }
 
@@ -18,7 +19,8 @@ const initialState: WorkGroupState = {
     userId: ""
   },
   workGroupList: new Array<WorkGroup>(),
-  webSocketConnection: false,
+  isWebSocketConnected: false,
+  isWebSocketConnecting: false,
   workGroupSocketId: ""
 }
 
@@ -57,7 +59,7 @@ export const selectWorkGroup = createAsyncThunk(
 
 export const connectToWebSocket = createAsyncThunk(
   "workGroups/connectToWebSocket",
-  async () => {
+  async (data: boolean) => {
     return await api.get("/api/workGroups/actualId").then(res => {
       if(res.status === 200){
         return res.data;
@@ -69,7 +71,11 @@ export const connectToWebSocket = createAsyncThunk(
 export const WorkGroupSlice = createSlice({
  name: "WorkGroup",
  initialState,
- reducers: {},
+ reducers: {
+  setConnecting: (state, action: PayloadAction<boolean>) => {
+    state.isWebSocketConnecting = action.payload
+  }
+ },
  extraReducers: (builder) => {
   builder.addCase(getAllWorkGroups.fulfilled, (state, action) => {
     state.workGroupList = action.payload;
@@ -79,11 +85,11 @@ export const WorkGroupSlice = createSlice({
   })
   builder.addCase(connectToWebSocket.fulfilled, (state,action) => {
     state.workGroupSocketId = action.payload!;
-    state.webSocketConnection = true;
+    state.isWebSocketConnected = true;
   })
  }
 })
 
 export default WorkGroupSlice.reducer;
-export const { } = WorkGroupSlice.actions;
+export const { setConnecting } = WorkGroupSlice.actions;
 

@@ -16,9 +16,9 @@ export const store = configureStore({
     workGroups: WorkGroupSlice.reducer
   },
   devTools: true,
-  middleware: (getDefaultMiddleware) =>{
-    return getDefaultMiddleware().concat([socketMiddleware])
-  }
+  // middleware: (getDefaultMiddleware) =>{
+  //   return getDefaultMiddleware().concat([socketMiddleware])
+  // }
 });
 
 export const useAppDispatch: () => typeof store.dispatch = useDispatch;

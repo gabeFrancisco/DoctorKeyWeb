@@ -2,24 +2,53 @@
 
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Topbar from "@/components/Topbar/Topbar";
-import { connectToWebSocket } from "@/store/features/workGroupSlice";
+import {
+  connectToWebSocket,
+  setConnecting,
+} from "@/store/features/workGroupSlice";
 import { useAppDispatch } from "@/store/store";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import React, { ReactNode, useEffect, useState } from "react";
+import * as signalR from "@microsoft/signalr";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
+import { apiUrl } from "@/services/api";
 
 // const SignalRContext = createSignalRContext();
 
 const layout = async ({ children }: { children: ReactNode }) => {
   const session = useSession();
   const dispatch = useAppDispatch();
+  const [connection, setConnection] = useState<null | signalR.HubConnection>(
+    null
+  );
   if (!session) {
     redirect("/login");
   }
 
   useEffect(() => {
-    dispatch(connectToWebSocket())
-  }, [])
+    const token = session.data?.user.accessToken;
+    if (token) {
+      console.log(token)
+      const connect = new signalR.HubConnectionBuilder()
+        .withUrl(`${apiUrl}/socket/apphub?workgroup=${token}`)
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+      setConnection(connect);
+    }
+  }, []);
+
+  useEffect(() => {
+    const token = session.data?.user.accessToken;
+
+    if (connection) {
+      console.log("Connection ready!");
+      connection.start().then(() => {
+        connection.on("ReceiveInitialData", (data) => {
+          // store.dispatch(dashboardActions.loadData(JSON.parse(data)));
+        });
+      });
+    }
+  }, [connection]);
 
   return (
     <div className="bg-white w-full h-full">
