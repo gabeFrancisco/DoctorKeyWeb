@@ -12,43 +12,33 @@ import { redirect } from "next/navigation";
 import * as signalR from "@microsoft/signalr";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { apiUrl } from "@/services/api";
+import { AppHubService } from "@/services/appHubService";
 
 // const SignalRContext = createSignalRContext();
 
 const layout = async ({ children }: { children: ReactNode }) => {
   const session = useSession();
   const dispatch = useAppDispatch();
-  const [connection, setConnection] = useState<null | signalR.HubConnection>(
-    null
-  );
+  const token = session.data?.user.accessToken;
+  let connection: signalR.HubConnection;
   if (!session) {
     redirect("/login");
   }
 
   useEffect(() => {
-    const token = session.data?.user.accessToken;
-    if (token) {
-      console.log(token)
-      const connect = new signalR.HubConnectionBuilder()
+    if (session.status == "authenticated") {
+      connection = new signalR.HubConnectionBuilder()
         .withUrl(`${apiUrl}/socket/apphub?workgroup=${token}`)
+        .withAutomaticReconnect()
         .configureLogging(signalR.LogLevel.Information)
         .build();
-      setConnection(connect);
-    }
-  }, []);
 
-  useEffect(() => {
-    const token = session.data?.user.accessToken;
-
-    if (connection) {
-      console.log("Connection ready!");
       connection.start().then(() => {
-        connection.on("ReceiveInitialData", (data) => {
-          // store.dispatch(dashboardActions.loadData(JSON.parse(data)));
-        });
+        const appHub = new AppHubService(connection);
+        appHub.sendMessage();
       });
     }
-  }, [connection]);
+  }, [session]);
 
   return (
     <div className="bg-white w-full h-full">
