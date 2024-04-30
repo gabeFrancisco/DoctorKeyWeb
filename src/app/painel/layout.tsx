@@ -26,18 +26,7 @@ const layout = async ({ children }: { children: ReactNode }) => {
   }
 
   useEffect(() => {
-    if (session.status == "authenticated") {
-      connection = new signalR.HubConnectionBuilder()
-        .withUrl(`${apiUrl}/socket/apphub?workgroup=${token}`)
-        .withAutomaticReconnect()
-        .configureLogging(signalR.LogLevel.Information)
-        .build();
-
-      connection.start().then(() => {
-        const appHub = new AppHubService(connection);
-        appHub.sendMessage();
-      });
-    }
+    session.status == "authenticated" ? new AppHubService(token!) : null
   }, [session]);
 
   return (
