@@ -17,7 +17,11 @@ const ComboBox = (props: ComboBoxProps) => {
         value={props.value}
         required
       >
-        <option style={{color: "#888"}} selected>
+        <option
+          style={{ color: "#888" }}
+          defaultValue={props.placeholder}
+          disabled
+        >
           {props.placeholder}
         </option>
         {props.list.map((el, key) => (

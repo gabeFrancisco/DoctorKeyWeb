@@ -10,7 +10,7 @@ import { KeyDeleteModal } from "./KeyDeleteModal";
 import Dropdown from "../Dropdown/Dropdown";
 import DropdownItem from "../Dropdown/DropdownItem";
 
-const KeyRow = ({ _key }: { _key: Key }) => {
+const KeyRow = ({ _key, index }: { _key: Key, index: number }) => {
   const navigate = useRouter();
   const handleRead = () => {
     navigate.push(`/painel/chaves/${_key.id}`);
@@ -30,7 +30,7 @@ const KeyRow = ({ _key }: { _key: Key }) => {
       // animate={{ opacity: 1, x: 0 }}
       // transition={{ duration: 0.3 }}
       className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200 text-sm"
-      key={_key.id}
+      key={index}
     >
       {removalModal ? (
         <KeyDeleteModal

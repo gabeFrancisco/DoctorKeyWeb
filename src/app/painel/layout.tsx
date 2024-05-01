@@ -20,14 +20,13 @@ const layout = async ({ children }: { children: ReactNode }) => {
   const session = useSession();
   const dispatch = useAppDispatch();
   const token = session.data?.user.accessToken;
-  let connection: signalR.HubConnection;
   if (!session) {
     redirect("/login");
   }
 
   useEffect(() => {
-    session.status == "authenticated" ? new AppHubService(token!) : null
-  }, [session]);
+    session.status === "authenticated" && token ? new AppHubService(token!) : null
+  }, [session.status === "authenticated"]);
 
   return (
     <div className="bg-white w-full h-full">

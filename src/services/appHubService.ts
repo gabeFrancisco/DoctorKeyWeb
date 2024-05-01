@@ -4,7 +4,7 @@ import { apiUrl } from "./api";
 export class AppHubService{
   private connection: signalR.HubConnection;
   /**
-   *
+   *work
    */
   constructor(token: string) {
     this.connection = new signalR.HubConnectionBuilder()

@@ -44,7 +44,6 @@ const KeyTable = () => {
       <div className="flex flex-col items-center">
         {isLoaded ? (
           <div className="overflow-x-auto shadow-md rounded-sm w-full">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <table className="w-full text-sm text-left text-gray-500 rounded-sm">
                 <thead className="border-0 rounded-sm text-md text-white bg-green-400">
                   <tr>
@@ -68,11 +67,10 @@ const KeyTable = () => {
                 </thead>
                 <tbody>
                   {keys.map((el, key) => (
-                    <KeyRow _key={el} />
+                    <KeyRow _key={el} index={key} />
                   ))}
                 </tbody>
               </table>
-            </motion.div>
           </div>
         ) : (
           <LoadingSkeleton />
