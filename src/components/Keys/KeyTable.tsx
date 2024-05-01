@@ -67,7 +67,7 @@ const KeyTable = () => {
                 </thead>
                 <tbody>
                   {keys.map((el, key) => (
-                    <KeyRow _key={el} index={key} />
+                    <KeyRow _key={el} key={key} />
                   ))}
                 </tbody>
               </table>

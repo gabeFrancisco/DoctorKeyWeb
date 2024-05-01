@@ -6,9 +6,9 @@ export class AppHubService{
   /**
    *work
    */
-  constructor(token: string) {
+  constructor(token: string, workgroupId: string) {
     this.connection = new signalR.HubConnectionBuilder()
-    .withUrl(`${apiUrl}/socket/apphub?workgroup=${token}`, { accessTokenFactory: () => token})
+    .withUrl(`${apiUrl}/socket/apphub?workgroup=${workgroupId}`, { accessTokenFactory: () => token})
     .withAutomaticReconnect()
     .configureLogging(signalR.LogLevel.Information)
     .build();

@@ -1,16 +1,14 @@
 import { Key } from "@/models/Key";
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import { KeyDeleteModal } from "./KeyDeleteModal";
 import Dropdown from "../Dropdown/Dropdown";
 import DropdownItem from "../Dropdown/DropdownItem";
 
-const KeyRow = ({ _key, index }: { _key: Key, index: number }) => {
+const KeyRow = ({ _key }: { _key: Key }) => {
   const navigate = useRouter();
   const handleRead = () => {
     navigate.push(`/painel/chaves/${_key.id}`);
@@ -30,7 +28,7 @@ const KeyRow = ({ _key, index }: { _key: Key, index: number }) => {
       // animate={{ opacity: 1, x: 0 }}
       // transition={{ duration: 0.3 }}
       className=" hover:bg-slate-100 text-slate-600 border-b border-double border-slate-200 text-sm"
-      key={index}
+      key={_key.id}
     >
       {removalModal ? (
         <KeyDeleteModal
