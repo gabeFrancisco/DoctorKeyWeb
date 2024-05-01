@@ -1,7 +1,8 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Notification } from "@/models/Notification";
+import api from "@/services/api";
 
-interface NotificationState{
+interface NotificationState {
   notification: Notification;
   notificationList: Array<Notification>;
 }
@@ -11,21 +12,35 @@ const initialState: NotificationState = {
     id: "",
     title: "",
     message: "",
-    workGroupId: ""
+    workGroupId: "",
   },
-  notificationList: new Array<Notification>()
-}
+  notificationList: new Array<Notification>(),
+};
+
+export const getAllNotifications = createAsyncThunk(
+  "notifications/getAll",
+  async () =>
+    await api.get("/api/notifications").then((res) => {
+      if (res.status === 200) {
+        return res.data;
+      }
+    })
+);
 
 export const NotificationSlice = createSlice({
   name: "Notifications",
   initialState,
   reducers: {
     addNotification: (state, action: PayloadAction<Notification>) => {
-      console.log(action.payload)
-      state.notificationList.push(action.payload);  
-    }
-  }
-})
+      state.notificationList.push(action.payload);
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getAllNotifications.fulfilled, (state, action) => {
+      state.notificationList = action.payload;
+    });
+  },
+});
 
 export default NotificationSlice.reducer;
 export const notificationActions = NotificationSlice.actions;

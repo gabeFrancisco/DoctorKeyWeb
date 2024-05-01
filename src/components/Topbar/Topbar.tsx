@@ -12,10 +12,13 @@ import {
   selectWorkGroup,
 } from "@/store/features/workGroupSlice";
 import WorkgroupComboBox from "../WorkgroupComboBox/WorkgroupComboBox";
+import NotificationBell from "../NotificationBell/NotificationBell";
 
 const Topbar = () => {
   const workGroups = useAppSelector((state) => state.workGroups);
-  const [selectedWorkGroup, setSelectedWorkGroup] = useState<string|null>(null);
+  const [selectedWorkGroup, setSelectedWorkGroup] = useState<string | null>(
+    null
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getAllWorkGroups());
@@ -26,9 +29,9 @@ const Topbar = () => {
   }, []);
 
   useEffect(() => {
-    if(selectedWorkGroup !== null){
+    if (selectedWorkGroup !== null) {
       if (confirm("Tem certeza que deseja mudar o grupo de serviço?")) {
-        dispatch(selectWorkGroup(selectedWorkGroup!))
+        dispatch(selectWorkGroup(selectedWorkGroup!));
         window.location.reload();
       }
     }
@@ -42,10 +45,13 @@ const Topbar = () => {
       <div className="flex flex-row items-center">
         <WorkgroupComboBox
           list={workGroups.workGroupList}
-          onChange={(e) => setSelectedWorkGroup(e.target.selectedOptions[0].dataset.id)}
+          onChange={(e) =>
+            setSelectedWorkGroup(e.target.selectedOptions[0].dataset.id)
+          }
           placeholder="Grupos de trabalho"
           value={workGroups.workGroup.title}
         />
+        <NotificationBell />
         <UserProfile />
       </div>
     </div>

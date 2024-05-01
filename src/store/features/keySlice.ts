@@ -2,7 +2,6 @@ import {
   createAsyncThunk,
   createSlice,
   current,
-  original,
   PayloadAction,
 } from "@reduxjs/toolkit";
 
@@ -134,8 +133,10 @@ export const KeySlice = createSlice({
 
       var payload = action.payload;
       filtered = state.keyList
-        .filter((x) => 
-          payload.manufactor.length > 0 ? x.manufactor === payload.manufactor : x
+        .filter((x) =>
+          payload.manufactor.length > 0
+            ? x.manufactor === payload.manufactor
+            : x
         )
         .filter((x) =>
           payload.keyType.length > 0 ? x.keyType === payload.keyType : x
@@ -176,4 +177,3 @@ export const KeySlice = createSlice({
 export default KeySlice.reducer;
 export const { readKey, searchKey, searchKeyByName, clearSearch } =
   KeySlice.actions;
-

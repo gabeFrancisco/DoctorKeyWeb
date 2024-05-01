@@ -5,8 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import User from "../../../public/user.png";
 import { signOut, useSession } from "next-auth/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import NotificationBell from "../NotificationBell/NotificationBell";
 
 const UserProfile = () => {
   const [isDrop, setIsDrop] = useState(false);
@@ -14,13 +13,6 @@ const UserProfile = () => {
   const { data, status } = useSession();
   return (
     <div className="cursor-pointer flex flex-row justify-center items-center">
-      <div className="hover:bg-green-300 rounded-lg p-1 mx-2">
-        <small className="text- absolute top-1 bg-red-400 px-1 rounded-full scale-90">1</small>
-        <FontAwesomeIcon
-          className="text-center ml-1  text-2xl"
-          icon={faBell}
-        />
-      </div>
       <div
         className="flex flex-row p-1 hover:bg-green-300 rounded-lg"
         onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
