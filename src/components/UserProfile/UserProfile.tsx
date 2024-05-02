@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import User from "../../../public/user.png";
 import { signOut, useSession } from "next-auth/react";
-import NotificationBell from "../NotificationBell/NotificationBell";
+import NotificationBell from "../Notification/NotificationBell";
 
 const UserProfile = () => {
   const [isDrop, setIsDrop] = useState(false);

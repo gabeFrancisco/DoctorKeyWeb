@@ -5,6 +5,6 @@ export interface Notification extends BaseEntity {
   title: string;
   message: string;
   readed: boolean;
-  user: User;
+  username: string;
   workGroupId: string;
 }
