@@ -12,7 +12,7 @@ import {
   selectWorkGroup,
 } from "@/store/features/workGroupSlice";
 import WorkgroupComboBox from "../WorkgroupComboBox/WorkgroupComboBox";
-import NotificationBell from "../NotificationBell/NotificationBell";
+import NotificationBell from "../Notification/NotificationBell";
 
 const Topbar = () => {
   const workGroups = useAppSelector((state) => state.workGroups);
