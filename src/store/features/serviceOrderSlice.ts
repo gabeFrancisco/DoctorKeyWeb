@@ -35,11 +35,26 @@ const initialState: ServiceOrderState = {
   serviceOrderList: new Array<ServiceOrder>(),
 };
 
+export const getAllServiceOrders = createAsyncThunk(
+  "serviceOrders/getAll",
+  async () => {
+    return await api.get("/api/serviceOrders").then((res) => {
+      if (res.status === 200) {
+        return res.data;
+      }
+    });
+  }
+);
+
 export const ServiceOrderSlice = createSlice({
   name: "ServiceOrders",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllServiceOrders.fulfilled, (state, action) => {
+      state.serviceOrderList = action.payload;
+    });
+  },
 });
 
 export default ServiceOrderSlice.reducer;
