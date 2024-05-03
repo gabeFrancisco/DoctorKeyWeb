@@ -6,6 +6,7 @@ import { DashboardSlice } from "./features/dashboardSlice";
 import socketMiddleware from "./middlewares/socketMiddleware";
 import { NotificationSlice } from "./features/notificationSlice";
 import { WorkGroupSlice } from "./features/workGroupSlice";
+import { ServiceOrderSlice } from "./features/serviceOrderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     keys: KeySlice.reducer,
     customers: CustomerSlice.reducer,
     notifications: NotificationSlice.reducer,
-    workGroups: WorkGroupSlice.reducer
+    workGroups: WorkGroupSlice.reducer,
+    serviceOrders: ServiceOrderSlice.reducer,
   },
   devTools: true,
   // middleware: (getDefaultMiddleware) =>{
