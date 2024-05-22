@@ -4,7 +4,9 @@ import React from "react";
 const ServiceOrderRow = ({ serviceOrder }: { serviceOrder: ServiceOrder }) => {
   return (
     <tr>
-      <th className="px-2">A</th>
+      <th>{serviceOrder.id}</th>
+      <td>{serviceOrder.title}</td>
+      <td>{serviceOrder.description}</td>
     </tr>
   );
 };

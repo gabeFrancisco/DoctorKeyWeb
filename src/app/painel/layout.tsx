@@ -21,17 +21,15 @@ const layout = ({ children }: { children: ReactNode }) => {
   const session = useSession();
   const dispatch = useAppDispatch();
   const token = session.data?.user.accessToken;
-  const workgroupId = useAppSelector(
-    (state) => state.workGroups.workGroup.id
-  );
+  const workgroupId = useAppSelector((state) => state.workGroups.workGroup.id);
 
   if (!session) {
     redirect("/login");
   }
-  
+
   useEffect(() => {
     dispatch(getActualWorkGroup());
-  }, [])
+  }, []);
 
   useEffect(() => {
     session.status === "authenticated" && token && workgroupId
@@ -46,7 +44,9 @@ const layout = ({ children }: { children: ReactNode }) => {
         <Topbar />
         <div className="flex flex-col lg:flex-row">
           <Sidebar />
-          <div className="px-5 lg:p-2 lg:mx-7  mt-16 w-full">{children}</div>
+          <div className="px-5 lg:p-2 lg:mx-7 mt-3 lg:mt-12 w-full">
+            {children}
+          </div>
         </div>
       </div>
     </div>

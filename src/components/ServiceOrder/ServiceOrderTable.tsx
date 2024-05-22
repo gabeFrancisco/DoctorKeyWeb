@@ -20,7 +20,7 @@ const ServiceOrderTable = () => {
             <th className="px-2 lg:px-6 py-2 m-1">Titulo</th>
             <th className="px-2 lg:px-6 py-2 m-1">Descrição</th>
             <th className="hidden lg:table-cell px-2 lg:px-6 py-2 m-1">Data</th>
-            <th className="px-2 lg:px-6 py-2 m-1">Preço</th>
+            <th className="px-2 lg:px-6 py-2 m-1">Valor</th>
             <th className="px-2 lg:px-6 py-2 m-1">Status</th>
             <th className="px-2 lg:px-6 py-2 m-1">Ações</th>
           </tr>
