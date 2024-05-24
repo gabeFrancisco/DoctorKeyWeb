@@ -34,7 +34,7 @@ const NotificationBell = () => {
         {number > 0 ? number : null}
       </small>
       <FontAwesomeIcon className="text-center ml-1  text-2xl" icon={faBell} />
-      {isDrop ? <NotificationDropdown ref={ref} /> : null}
+      {isDrop && <NotificationDropdown ref={ref} />}
     </div>
   );
 };

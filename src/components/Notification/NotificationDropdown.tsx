@@ -4,7 +4,7 @@ import NotificationCard from "./NotificationCard";
 import { useAppSelector } from "@/store/store";
 
 interface NotificationDropdownProps {
-  ref: React.LegacyRef<HTMLDivElement>;
+  ref?: React.LegacyRef<HTMLDivElement>;
 }
 
 const NotificationDropdown = (props: NotificationDropdownProps) => {
