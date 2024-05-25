@@ -24,7 +24,7 @@ const Dropdown = (props: Props) => {
           <FontAwesomeIcon icon={faCaretDown} />
         </i>
       </button>
-      {isDrop ? (
+      {isDrop && (
         <div ref={ref}>
           <ul
             className="absolute rounded flex flex-col border border-gray-300 z-30 bg-gray-50 shadow right-10"
@@ -33,7 +33,7 @@ const Dropdown = (props: Props) => {
             {React.Children.map(props.children, (child) => child)}
           </ul>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

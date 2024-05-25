@@ -5,8 +5,9 @@ import { getAllNotifications } from "@/store/features/notificationSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import NotificationDropdown from "./NotificationDropdown";
+import NotificationCard from "./NotificationCard";
 
 const NotificationBell = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +35,17 @@ const NotificationBell = () => {
         {number > 0 ? number : null}
       </small>
       <FontAwesomeIcon className="text-center ml-1  text-2xl" icon={faBell} />
-      {isDrop && <NotificationDropdown ref={ref} />}
+      {isDrop && (
+        <div
+          className="absolute rounded border flex flex-col
+    border-gray-300 bg-gray-50 shadow z-30 right-20 w-1/4 cursor-default"
+          ref={ref}
+        >
+          {notifications.map((el, key) => (
+            <NotificationCard notification={el} key={key} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
