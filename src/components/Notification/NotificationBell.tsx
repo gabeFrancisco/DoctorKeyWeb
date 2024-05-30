@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { forwardRef, useEffect, useState } from "react";
-import NotificationDropdown from "./NotificationDropdown";
 import NotificationCard from "./NotificationCard";
 
 const NotificationBell = () => {
@@ -27,23 +26,26 @@ const NotificationBell = () => {
     setNumber(notifications.length);
   }, [notifications]);
   return (
-    <div
-      className="hover:bg-green-300 rounded-xl p-1 mx-2 cursor-pointer"
-      onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
-    >
-      <small className="text- absolute top-1 bg-red-400 px-1 rounded-full scale-90">
-        {number > 0 ? number : null}
-      </small>
-      <FontAwesomeIcon className="text-center ml-1  text-2xl" icon={faBell} />
+    <div>
+      <div
+        className="hover:bg-green-300 rounded-xl p-1 mx-2 cursor-pointer"
+        onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
+      >
+        <small className="text- absolute top-1 bg-red-400 px-1 rounded-full scale-90">
+          {number > 0 ? number : null}
+        </small>
+        <FontAwesomeIcon className="text-center ml-1  text-2xl" icon={faBell} />
+      </div>
       {isDrop && (
-        <div
-          className="absolute rounded border flex flex-col
+        <div ref={ref}>
+          <div
+            className="absolute rounded border flex flex-col
     border-gray-300 bg-gray-50 shadow z-30 right-20 w-1/4 cursor-default"
-          ref={ref}
-        >
-          {notifications.map((el, key) => (
-            <NotificationCard notification={el} key={key} />
-          ))}
+          >
+            {notifications.map((el, key) => (
+              <NotificationCard notification={el} key={key} />
+            ))}
+          </div>
         </div>
       )}
     </div>
