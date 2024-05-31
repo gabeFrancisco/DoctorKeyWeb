@@ -29,6 +29,16 @@ export const getAllNotifications = createAsyncThunk(
     })
 );
 
+export const setNotificationState = createAsyncThunk(
+  "notification/setState",
+  async (data: { notificationId: string; state: boolean }, thunkAPI) =>
+    await api.get("/api/notifications/").then((res) => {
+      if (res.status === 200) {
+        thunkAPI.dispatch(getAllNotifications());
+      }
+    })
+);
+
 export const NotificationSlice = createSlice({
   name: "Notifications",
   initialState,
