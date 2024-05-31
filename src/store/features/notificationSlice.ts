@@ -32,11 +32,15 @@ export const getAllNotifications = createAsyncThunk(
 export const setNotificationState = createAsyncThunk(
   "notification/setState",
   async (data: { notificationId: string; state: boolean }, thunkAPI) =>
-    await api.get("/api/notifications/").then((res) => {
-      if (res.status === 200) {
-        thunkAPI.dispatch(getAllNotifications());
-      }
-    })
+    await api
+      .get(
+        `/api/notifications/state/${data.notificationId}/?state=${data.state}`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          thunkAPI.dispatch(getAllNotifications());
+        }
+      })
 );
 
 export const NotificationSlice = createSlice({
