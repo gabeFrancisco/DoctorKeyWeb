@@ -23,7 +23,7 @@ const NotificationBell = () => {
 
   const [number, setNumber] = useState(notifications.length);
   useEffect(() => {
-    setNumber(notifications.length);
+    setNumber(notifications.filter((n) => n.readed === false).length);
   }, [notifications]);
   return (
     <div>
@@ -32,7 +32,7 @@ const NotificationBell = () => {
         onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
       >
         <small className="text- absolute top-1 bg-red-400 px-1 rounded-full scale-90">
-          {number > 0 ? number : null}
+          {number > 0 && number}
         </small>
         <FontAwesomeIcon className="text-center ml-1  text-2xl" icon={faBell} />
       </div>
@@ -40,7 +40,7 @@ const NotificationBell = () => {
         <div ref={ref}>
           <div
             className="absolute rounded border flex flex-col
-    border-gray-300 bg-gray-50 shadow z-30 right-20 w-1/4 cursor-default"
+    border-gray-300 bg-gray-50 shadow z-30 right-20 w-3/4 lg:w-1/4 cursor-default"
           >
             {notifications.map((el, key) => (
               <NotificationCard notification={el} key={key} />

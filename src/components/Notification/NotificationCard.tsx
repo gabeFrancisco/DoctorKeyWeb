@@ -1,11 +1,7 @@
 import { Notification } from "@/models/Notification";
 import { setNotificationState } from "@/store/features/notificationSlice";
 import { useAppDispatch } from "@/store/store";
-import {
-  faEnvelope,
-  faEnvelopeOpen,
-  faMailForward,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
@@ -16,16 +12,14 @@ const NotificationCard = ({ notification }: { notification: Notification }) => {
     if (read) {
       dispatch(
         setNotificationState({ notificationId: notification.id!, state: false })
-      );
-      setRead(false);
+      ).then(() => setRead(false));
     } else {
       dispatch(
         setNotificationState({
           notificationId: notification.id!,
           state: true,
         })
-      );
-      setRead(true);
+      ).then(() => setRead(true));
     }
   };
 
