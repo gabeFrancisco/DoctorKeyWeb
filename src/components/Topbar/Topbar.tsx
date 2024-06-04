@@ -13,6 +13,7 @@ import {
 } from "@/store/features/workGroupSlice";
 import WorkgroupComboBox from "../WorkgroupComboBox/WorkgroupComboBox";
 import NotificationBell from "../Notification/NotificationBell";
+import ServiceNotificationBell from "../ServiceNotification/ServiceNotificationBell";
 
 const Topbar = () => {
   const workGroups = useAppSelector((state) => state.workGroups);
@@ -52,6 +53,7 @@ const Topbar = () => {
           value={workGroups.workGroup.title}
         />
         <NotificationBell />
+        <ServiceNotificationBell />
         <UserProfile />
       </div>
     </div>

@@ -2,7 +2,7 @@ import axios, { InternalAxiosRequestConfig } from "axios";
 import { getSession } from "next-auth/react";
 
 const urls = {
-  dev: "http://10.0.10.250:5003",
+  dev: "http://localhost:5003",
   prod: "https://doctorkeyapi.azurewebsites.net",
 };
 
