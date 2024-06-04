@@ -37,6 +37,7 @@ const NotificationCard = ({ notification }: { notification: Notification }) => {
           icon={read ? faEnvelopeOpen : faEnvelope}
         />
       </div>
+      <small>{new Date(notification.createdAt!).toLocaleString()}</small>
       <small>{notification.message}</small>
       <small className="text-teal-600">@{notification.username}</small>
       <hr />
