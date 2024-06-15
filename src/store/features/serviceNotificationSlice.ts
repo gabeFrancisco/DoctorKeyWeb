@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import api from "@/services/api";
-import { ServiceNotification } from "@/hooks/ServiceNotification";
+import { ServiceNotification } from "@/models/ServiceNotification";
 
 interface ServiceNotificationState {
   serviceNotificatoin: ServiceNotification;
