@@ -28,13 +28,13 @@ const NotificationBell = () => {
   return (
     <div>
       <div
-        className="hover:bg-green-300 rounded-xl p-1 mx-2 cursor-pointer"
+        className="hover:bg-green-300 rounded-xl p-1 mx-1 cursor-pointer"
         onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
       >
         <small className="text- absolute top-1 bg-red-400 px-1 rounded-full scale-90">
           {number > 0 && number}
         </small>
-        <FontAwesomeIcon className="text-center ml-1  text-2xl" icon={faBell} />
+        <FontAwesomeIcon className="text-center ml-1  text-xl" icon={faBell} />
       </div>
       {isDrop && (
         <div ref={ref}>
