@@ -14,6 +14,7 @@ import {
 import WorkgroupComboBox from "../WorkgroupComboBox/WorkgroupComboBox";
 import NotificationBell from "../Notification/NotificationBell";
 import ServiceNotificationBell from "../ServiceNotification/ServiceNotificationBell";
+import ChecklistNotificationBell from "../ChecklistNotification/ChecklistNotificationBell";
 
 const Topbar = () => {
   const workGroups = useAppSelector((state) => state.workGroups);
@@ -54,6 +55,7 @@ const Topbar = () => {
         />
         <NotificationBell />
         <ServiceNotificationBell />
+        <ChecklistNotificationBell />
         <UserProfile />
       </div>
     </div>
