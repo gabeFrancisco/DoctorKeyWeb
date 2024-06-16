@@ -15,7 +15,7 @@ const ChecklistNotificationBell = () => {
   return (
     <div>
       <div
-        className="hover:bg-green-300 rounded-xl p-1 ml-1 mr-2 cursor-pointer"
+        className="hover:bg-green-300 rounded-xl p-1 ml-0.5 mr-2 cursor-pointer"
         onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
       >
         <small className="text- absolute top-1 bg-red-400 px-1 rounded-full scale-90">
