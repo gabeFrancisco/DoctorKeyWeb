@@ -7,6 +7,7 @@ export interface ServiceOrder extends BaseEntity {
   customer: Customer;
   address: Address;
   description: string;
+  state: string;
   value: number;
   workgroupId: string;
 }

@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import api from "@/services/api";
-import { ServiceNotification } from "@/models/ServiceNotification";
+import { ServiceOrderNotification } from "@/models/ServiceOrderNotification";
 
 interface ServiceNotificationState {
-  serviceNotificatoin: ServiceNotification;
-  serviceNotificationList: Array<ServiceNotification>;
+  serviceNotificatoin: ServiceOrderNotification;
+  serviceNotificationList: Array<ServiceOrderNotification>;
 }
 
 const initialState: ServiceNotificationState = {
@@ -17,7 +17,7 @@ const initialState: ServiceNotificationState = {
     username: "",
     workGroupId: "",
   },
-  serviceNotificationList: new Array<ServiceNotification>(),
+  serviceNotificationList: new Array<ServiceOrderNotification>(),
 };
 
 export const ServiceNotificationSlice = createSlice({

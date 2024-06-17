@@ -42,10 +42,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
   return (
     <div className="rounded-md my-1 py-2 flex flex-col lg:flex-row justify-between">
       <div className="my-2 lg:my-0 flex flex-wrap flex-row items-center justify-evenly">
-        <Link
-          href="chaves/adicionar"
-          className="rounded-sm shadow-lg bg-green-400  my-1 text-sm text-white hover:bg-green-600 p-0.5 px-3"
-        >
+        <Link href="chaves/adicionar">
           {/* New key button */}
           <FontAwesomeIcon icon={faPlus} className="mx-1" height={25} />
           <span className="hidden md:inline-block">Nova chave!</span>

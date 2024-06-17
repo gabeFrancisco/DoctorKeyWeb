@@ -1,6 +1,6 @@
 import { BaseEntity } from "@/models/BaseEntity";
 
-export interface ServiceNotification extends BaseEntity {
+export interface ServiceOrderNotification extends BaseEntity {
   title: string;
   message: string;
   state: string;

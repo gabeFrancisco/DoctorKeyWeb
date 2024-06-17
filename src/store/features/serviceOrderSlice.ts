@@ -31,6 +31,7 @@ const initialState: ServiceOrderState = {
       address: nullAddress,
     },
     address: nullAddress,
+    state: "",
   },
   serviceOrderList: new Array<ServiceOrder>(),
 };
