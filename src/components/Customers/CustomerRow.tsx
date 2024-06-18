@@ -38,7 +38,9 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
       <td className="hidden lg:table-cell px-2 lg:px-6 py-1">
         {customer.email}
       </td>
-      <td className="px-2 lg:px-6 py-1">{`${customer.address.road}, ${customer.address.number}`}</td>
+      <td className="px-2 lg:px-6 py-1">{`${customer.address!.road}, ${
+        customer.address!.number
+      }`}</td>
       <td className="px-2 lg:px-6 py-1">
         <Dropdown buttonText="">
           <DropdownItem
