@@ -47,18 +47,6 @@ const page = () => {
             delay={1.4}
             className="bg-gradient-to-tr from-red-400 to-red-200 font-bold"
           />
-
-          <Chart
-            chartType="ScatterChart"
-            data={[
-              ["Age", "Weight"],
-              [4, 5.5],
-              [8, 12],
-            ]}
-            width="100%"
-            height="400px"
-            legendToggle
-          />
         </div>
       ) : null}
     </div>

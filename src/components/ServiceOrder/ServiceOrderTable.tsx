@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import React, { useEffect } from "react";
 import ServiceOrderRow from "./ServiceOrderRow";
 import Link from "next/link";
+import ServiceOrderToolbar from "./ServiceOrderToolbar";
 
 const ServiceOrderTable = () => {
   const dispatch = useAppDispatch();
@@ -16,14 +17,7 @@ const ServiceOrderTable = () => {
   }, []);
   return (
     <div className=" ">
-      <div>
-        <Link
-          className="rounded-sm shadow-lg bg-green-400  my-1 text-sm text-white hover:bg-green-600 p-0.5 px-3"
-          href="ordens/adicionar"
-        >
-          Nova O.S.
-        </Link>
-      </div>
+      <ServiceOrderToolbar />
       <table className="w-full text-sm text-left text-gray-500 rounded-smborder rounded overflow-x-auto shadow-md">
         <thead className="border-0 rounded-sm text-md text-white bg-green-400">
           <tr>
