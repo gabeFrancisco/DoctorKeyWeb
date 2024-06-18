@@ -28,12 +28,21 @@ const page = () => {
                     id="title"
                   />
                 </div>
+
                 <div className="mb-5">
                   <label htmlFor="title">Descrição</label>
                   <textarea
                     className="rounded-sm border block w-full px-0.5"
-                    id="title"
+                    id="description"
                     rows={5}
+                  />
+                </div>
+                <div className="mb-5">
+                  <label htmlFor="title">Valor</label>
+                  <input
+                    type="text"
+                    className="rounded-sm border block w-full px-0.5"
+                    id="value"
                   />
                 </div>
               </div>
@@ -50,7 +59,36 @@ const page = () => {
                     caracterista rápida no modelo para diferenciar.
                   </small>
                 </div>
+                <div className="mb-5">
+                  <label htmlFor="blade">Prioridade</label>
+                  <select
+                    className="rounded-sm border bg-white block w-full my-2"
+                    id="bladeType"
+                    // value={formik.values.bladeType}
+                    // onChange={formik.handleChange}
+                  >
+                    <option value="low">Baixa</option>
+                    <option value="normal">Normal</option>
+                    <option value="high">Alta</option>
+                  </select>
+                </div>
               </div>
+            </div>
+            <div className="mt-5 p-3">
+              <button
+                type="button"
+                onClick={() => navigate.replace("/painel/chaves")}
+                className="rounded-sm bg-red-500 text-white px-3 py-1 m-2 hover:bg-red-600 shadow"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                // onClick={() => formik.handleSubmit()}
+                className="rounded-sm bg-green-500 text-white px-3 py-1 m-2 hover:bg-green-600 shadow"
+              >
+                Criar O.S.!
+              </button>
             </div>
           </form>
         </div>
