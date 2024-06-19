@@ -40,7 +40,7 @@ const Topbar = () => {
   }, [selectedWorkGroup]);
 
   return (
-    <div className="flex flex-row items-center justify-between w-full bg-green-400 shadow px-8 py-1 top-0 fixed z-50 text-white">
+    <div className="flex flex-row items-center justify-between w-full bg-green-400 shadow px-8 py-1 top-0 sticky rounded z-50 text-white">
       <div>
         <Image src={Logo} alt="Logo" className="w-28 md:w-36" />
       </div>

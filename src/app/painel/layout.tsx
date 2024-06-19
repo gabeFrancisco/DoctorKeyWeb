@@ -41,10 +41,10 @@ const layout = ({ children }: { children: ReactNode }) => {
     <div className="bg-white w-full h-full">
       {/* <Header /> */}
       <div className="flex flex-col items-stretch w-full">
-        <Topbar />
         <div className="flex flex-col lg:flex-row">
           <Sidebar />
-          <div className="px-5 lg:p-2 lg:mx-7 mt-3 lg:mt-12 w-full">
+          <div className="px-5 lg:p-2 lg:mx-7 mt-3 w-full">
+            <Topbar />
             {children}
           </div>
         </div>
