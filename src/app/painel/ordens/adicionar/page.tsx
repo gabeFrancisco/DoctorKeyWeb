@@ -27,6 +27,7 @@ const page = () => {
       //     city: "",
       //   },
       // },
+      phone: "",
       address: {
         road: "",
         number: "",
@@ -36,10 +37,15 @@ const page = () => {
         city: "",
       },
       description: "",
-      priority: "",
+      priority: "normal",
       value: "",
     },
-    onSubmit: (values) => {},
+    enableReinitialize: true,
+    validateOnChange: false,
+    validateOnBlur: true,
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
 
   return (
@@ -65,11 +71,13 @@ const page = () => {
                 </div>
 
                 <div className="mb-5">
-                  <label htmlFor="title">Descrição</label>
+                  <label htmlFor="description">Descrição</label>
                   <textarea
                     className="rounded-sm border block w-full px-0.5"
                     id="description"
                     rows={5}
+                    value={formik.values.description}
+                    onChange={formik.handleChange}
                   />
                 </div>
                 <div className="mb-5">
@@ -78,15 +86,17 @@ const page = () => {
                     type="text"
                     className="rounded-sm border block w-full px-0.5"
                     id="value"
+                    value={formik.values.value}
+                    onChange={formik.handleChange}
                   />
                 </div>
                 <div className="mb-5">
-                  <label htmlFor="blade">Prioridade</label>
+                  <label htmlFor="priority">Prioridade</label>
                   <select
                     className="rounded-sm border bg-white block w-full my-2"
-                    id="bladeType"
-                    // value={formik.values.bladeType}
-                    // onChange={formik.handleChange}
+                    id="priority"
+                    value={formik.values.priority}
+                    onChange={formik.handleChange}
                   >
                     <option value="low">Baixa</option>
                     <option value="normal">Normal</option>
@@ -102,6 +112,8 @@ const page = () => {
                     name="customer"
                     type="text"
                     placeholder="Insira o nome ou pesquise no botão ao lado"
+                    value={formik.values.customer}
+                    onChange={formik.handleChange}
                     required
                   />
                 </div>
@@ -111,6 +123,8 @@ const page = () => {
                     className="rounded-sm border block w-full px-0.5"
                     name="phone"
                     type="text"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
                     required
                   />
 
@@ -124,12 +138,12 @@ const page = () => {
                 </div>
                 <div className="text-gray-700 mr-5">
                   <div className="mb-5">
-                    <label htmlFor="name">Rua</label>
+                    <label htmlFor="address.aroad">Rua</label>
                     <input
-                      name="road"
+                      name="address.road"
                       className="rounded-sm border block w-full my-2"
-                      // value={formik.values.road}
-                      // onChange={formik.handleChange}
+                      value={formik.values.address.road}
+                      onChange={formik.handleChange}
                       type="text"
                       required
                     />
@@ -144,12 +158,12 @@ const page = () => {
                   </div>
 
                   <div className="mb-5">
-                    <label htmlFor="name">Bairro</label>
+                    <label htmlFor="address.neighborhood">Bairro</label>
                     <input
-                      name="neighborhood"
+                      name="address.neighborhood"
                       className="rounded-sm border block w-full my-2"
-                      // value={formik.values.neighborhood}
-                      // onChange={formik.handleChange}
+                      value={formik.values.address.neighborhood}
+                      onChange={formik.handleChange}
                       type="text"
                       required
                     />
@@ -164,12 +178,12 @@ const page = () => {
                   </div>
                 </div>
                 <div className="mb-5">
-                  <label htmlFor="name">Número</label>
+                  <label htmlFor="address.number">Número</label>
                   <input
-                    name="number"
+                    name="address.number"
                     className="rounded-sm border block w-full my-2"
-                    // value={formik.values.number}
-                    // onChange={formik.handleChange}
+                    value={formik.values.address.number}
+                    onChange={formik.handleChange}
                     type="text"
                     required
                   />
@@ -183,12 +197,12 @@ const page = () => {
                   </small>
                 </div>
                 <div className="mb-5">
-                  <label htmlFor="name">CEP</label>
+                  <label htmlFor="address.cep">CEP</label>
                   <input
-                    name="cep"
+                    name="address.cep"
                     className="rounded-sm border block w-full my-2"
-                    // value={formik.values.cep}
-                    // onChange={formik.handleChange}
+                    value={formik.values.address.cep}
+                    onChange={formik.handleChange}
                     type="text"
                     required
                   />
@@ -206,14 +220,14 @@ const page = () => {
             <div className="mt-5 p-3">
               <button
                 type="button"
-                onClick={() => navigate.replace("/painel/chaves")}
+                onClick={() => navigate.replace("/painel/ordens")}
                 className="rounded-sm bg-red-500 text-white px-3 py-1 m-2 hover:bg-red-600 shadow"
               >
                 Cancelar
               </button>
               <button
                 type="button"
-                // onClick={() => formik.handleSubmit()}
+                onClick={() => formik.handleSubmit()}
                 className="rounded-sm bg-green-500 text-white px-3 py-1 m-2 hover:bg-green-600 shadow"
               >
                 Criar O.S.!
