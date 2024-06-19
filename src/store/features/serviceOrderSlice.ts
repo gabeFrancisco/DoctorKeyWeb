@@ -22,6 +22,7 @@ const initialState: ServiceOrderState = {
   serviceOrder: {
     title: "",
     description: "",
+    priority: "",
     value: 0,
     workgroupId: "",
     customer: {
