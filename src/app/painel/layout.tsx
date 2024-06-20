@@ -44,7 +44,7 @@ const layout = ({ children }: { children: ReactNode }) => {
         <Topbar />
         <div className="flex flex-col lg:flex-row">
           <Sidebar />
-          <div className="px-5 lg:p-5 lg:mx-7 mt-3 lg:mt-16 rounded shadow w-full bg-white">
+          <div className="px-5 lg:p-5 lg:mx-7 mt-3 rounded shadow w-full bg-white">
             {children}
           </div>
         </div>
