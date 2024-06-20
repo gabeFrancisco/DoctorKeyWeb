@@ -19,7 +19,9 @@ const SidebarItem = (props: SidebarItemProps) => {
   return (
     <li
       className={`lg:my-1 py-5 lg:py-1 px-5 w-full text-white overflow-x-hidden ${
-        props.selected ? "bg-white text-green-400 py-1" : "font-normal text-white"
+        props.selected
+          ? "bg-white text-gray-600 py-1"
+          : "font-normal text-white"
       }`}
     >
       <Link
@@ -28,12 +30,10 @@ const SidebarItem = (props: SidebarItemProps) => {
       >
         <motion.div whileHover={{ x: 5 }}>
           <FontAwesomeIcon
-            className={`${
-              props.toggle ? "text-lg" : "lg:hidden text-lg"
-            } ${
+            className={`${props.toggle ? "text-lg" : "lg:hidden text-lg"} ${
               props.selected
                 ? "lg:font-bold text-green-400"
-                : "font-normal text-white"
+                : "font-normal text-gray-600"
             } lg:py-2`}
             icon={props.icon}
           />
@@ -42,7 +42,7 @@ const SidebarItem = (props: SidebarItemProps) => {
               className={`hidden lg:inline ${
                 props.selected
                   ? "lg:font-bold text-green-400"
-                  : "font-normal text-white"
+                  : "font-normal text-gray-600"
               }`}
             >
               {props.title}

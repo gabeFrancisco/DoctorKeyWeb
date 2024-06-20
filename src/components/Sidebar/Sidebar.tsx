@@ -86,9 +86,9 @@ const Sidebar = () => {
   return (
     <aside
       id="sidebar"
-      className={`overflow-x-hidden pt-12 md:pt-24 overflow-y-auto overflow-x-h shadow-none lg:drop-shadow-lg flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-green-400 ${
+      className={`overflow-x-hidden pt-12 md:pt-24 overflow-y-auto overflow-x-h shadow-none lg:drop-shadow-lg flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-white ${
         toggle ? "" : "lg:w-1/5"
-      } lg:h-screen sticky top-0 text-white lg:shadow border-b border-white lg:border-0`}
+      } lg:h-screen sticky top-0 text-gray-600 lg:shadow border-b border-white lg:border-0`}
     >
       {/* {!toggle ? (
         <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
@@ -117,7 +117,7 @@ const Sidebar = () => {
         </div>
       ) : null} */}
 
-      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-green-400">
+      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-white">
         {links.map((link, key) => (
           <SidebarItem
             key={key}
@@ -129,15 +129,15 @@ const Sidebar = () => {
           />
         ))}
         <div
-          className="hidden lg:block px-5 my-10 cursor-pointer bg-green-400"
+          className="hidden lg:block px-5 my-10 cursor-pointer bg-white"
           onClick={toggleSidebar}
         >
           <motion.div whileHover={{ x: 5 }}>
             <FontAwesomeIcon
-              className=" mr-3 text-xl text-white"
+              className=" mr-3 text-xl text-gray-600"
               icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}
             />
-            <span className="text-white">
+            <span className="text-ray-600">
               {toggle ? null : "Recolher Menu"}
             </span>
           </motion.div>
