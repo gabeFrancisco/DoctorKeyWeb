@@ -15,13 +15,16 @@ const ChecklistNotificationBell = () => {
   return (
     <div>
       <div
-        className="hover:bg-green-400 rounded-xl p-1 ml-0.5 mr-2 cursor-pointer"
+        className="p-1 ml-0.5 mr-2 cursor-pointer"
         onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
       >
         <small className="absolute text-white top-1 bg-red-400  px-1 rounded-full scale-90">
           {number > 0 && number}
         </small>
-        <FontAwesomeIcon className="text-xl text-gray-500" icon={faList} />
+        <FontAwesomeIcon
+          className="text-xl text-gray-400 hover:text-green-400"
+          icon={faList}
+        />
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const WorkgroupComboBox = (props: WorkgroupComboBoxProps) => {
   return (
     <select
       placeholder={props.placeholder}
-      className="border rounded-md border-white py-0.5 bg-green-400 my-1 w-2/3 md:3/5 mx-5 block lg:mx-1 text-sm text-white font-bold"
+      className="border rounded-md py-0.5 bg-white  w-2/3 md:3/5 mx-5 block lg:mx-1 text-sm text-gray-400 font-bold"
       onChange={props.onChange}
       value={props.value}
       required
@@ -25,11 +25,7 @@ const WorkgroupComboBox = (props: WorkgroupComboBoxProps) => {
         {props.placeholder}
       </option>
       {props.list.map((el, key) => (
-        <option
-          key={key}
-          className="rounded-sm border-2 bg-green-400"
-          data-id={el.id!}
-        >
+        <option key={key} className="rounded-sm border-2" data-id={el.id!}>
           {el.title}
         </option>
       ))}

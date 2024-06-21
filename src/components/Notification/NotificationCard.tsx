@@ -24,7 +24,7 @@ const NotificationCard = ({ notification }: { notification: Notification }) => {
   };
 
   return (
-    <div className="flex flex-col bg-gray-100 rounded cursor-default p-3 mx-2 my-1 text-gray-600">
+    <div className="flex flex-col bg-white shadow rounded cursor-default p-3 mx-2 my-1 text-gray-600">
       <div className="flex flex-row justify-between">
         <h4
           className={notification.readed ? "text-gray-500" : "text-green-400 "}
