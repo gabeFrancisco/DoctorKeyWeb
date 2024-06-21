@@ -25,7 +25,7 @@ const UserProfile = () => {
         <div className="flex flex-row items-center mx-2">
           {status === "authenticated" && data !== null && (
             <div className="items-center">
-              <p className="text-sm">{data.user.name}</p>
+              <p className="text-sm text-gray-500">{data.user.name}</p>
             </div>
           )}
         </div>
@@ -37,7 +37,7 @@ const UserProfile = () => {
             id="dropbox"
           >
             <li
-              className="text-sm px-2 py-1 text-gray-700 hover:bg-green-400 hover:text-white cursor-pointer"
+              className="text-sm px-2 py-1 text-gray-  hover:bg-green-400 hover:text-white cursor-pointer"
               onClick={() => {}}
             >
               Configurações

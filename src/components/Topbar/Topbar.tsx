@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Logo from "../../../public/logo-white.svg";
+import Logo from "../../../public/logo.svg";
 import Image from "next/image";
 import UserProfile from "../UserProfile/UserProfile";
 import ComboBox from "../ComboBox/ComboBox";
@@ -40,7 +40,7 @@ const Topbar = () => {
   }, [selectedWorkGroup]);
 
   return (
-    <div className="flex flex-row items-center justify-between w-full bg-green-400 shadow px-8 py-1 top-0 sticky rounded z-50 text-white">
+    <div className="flex flex-row items-center justify-between w-full bg-white shadow px-8 py-1 top-0 sticky rounded z-50 text-gray-500">
       <div>
         <Image src={Logo} alt="Logo" className="w-28 md:w-36" />
       </div>

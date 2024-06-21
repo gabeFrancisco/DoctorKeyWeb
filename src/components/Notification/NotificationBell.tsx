@@ -31,10 +31,10 @@ const NotificationBell = () => {
         className="hover:bg-green-300 rounded-xl p-1 mr-1 ml-2 cursor-pointer"
         onClick={() => (isDrop ? setIsDrop(false) : setIsDrop(true))}
       >
-        <small className="absolute top-1 ml-2 bg-red-400 px-1 rounded-full scale-90">
+        <small className="absolute top-1 ml-2 text-white bg-red-400 px-1 rounded-full scale-90">
           {number > 0 && number}
         </small>
-        <FontAwesomeIcon className="text-xl" icon={faBell} />
+        <FontAwesomeIcon className="text-xl text-gray-500" icon={faBell} />
       </div>
       {isDrop && (
         <div ref={ref}>
