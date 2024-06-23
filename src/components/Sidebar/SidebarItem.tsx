@@ -18,31 +18,31 @@ interface SidebarItemProps {
 const SidebarItem = (props: SidebarItemProps) => {
   return (
     <li
-      className={`lg:my-1 py-5 lg:py-1 px-5 w-full text-white overflow-x-hidden ${
+      className={`lg:my-1 py-3 lg:py-1 px-5 w-full overflow-x-hidden ${
         props.selected
-          ? "bg-white text-gray-600 py-1"
-          : "font-normal text-white"
+          ? "bg-green-400 text-white py-1"
+          : "font-normal text-gray-400"
       }`}
     >
       <Link
-        className="font-normal tracking-widest text-sm lg:text-md p-0 w-1 hover:text-green-400"
+        className={`font-normal tracking-widest text-sm lg:text-md p-0 w-1 ${
+          props.toggle ? "bg-green" : "bg-white"
+        }`}
         href={props.url}
       >
         <motion.div whileHover={{ x: 5 }}>
           <FontAwesomeIcon
             className={`${props.toggle ? "text-lg" : "lg:hidden text-lg"} ${
               props.selected
-                ? "lg:font-bold text-green-400"
-                : "font-normal text-gray-600"
+                ? "lg:font-bold text-white"
+                : "font-normal text-gray-400"
             } lg:py-2`}
             icon={props.icon}
           />
           {props.toggle ? null : (
             <span
               className={`hidden lg:inline ${
-                props.selected
-                  ? "lg:font-bold text-green-400"
-                  : "font-normal text-gray-600"
+                props.selected ? "lg:font-bold" : "font-normal text-gray-600"
               }`}
             >
               {props.title}
