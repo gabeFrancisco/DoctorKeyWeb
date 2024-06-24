@@ -18,6 +18,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import path from "path";
 
 const Sidebar = () => {
   const [links, setLinks] = useState([
@@ -74,9 +75,7 @@ const Sidebar = () => {
   useEffect(() => {
     let newLinks = links.map((el) => {
       // el.selected = false
-      console.log("/" + pathname.split("/")[2]);
-      let splitLink = "/" + pathname.split("/")[1];
-      if (splitLink === el.url) {
+      if (pathname === el.url) {
         el.selected = true;
       } else {
         el.selected = false;
