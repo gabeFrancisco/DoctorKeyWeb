@@ -34,7 +34,7 @@ const Sidebar = () => {
       selected: false,
     },
     {
-      title: "Ordens de Serviço",
+      title: "O.S",
       url: "/painel/ordens",
       icon: faSheetPlastic,
       selected: false,
@@ -74,7 +74,9 @@ const Sidebar = () => {
   useEffect(() => {
     let newLinks = links.map((el) => {
       // el.selected = false
-      if (pathname === el.url) {
+      console.log("/" + pathname.split("/")[2]);
+      let splitLink = "/" + pathname.split("/")[1];
+      if (splitLink === el.url) {
         el.selected = true;
       } else {
         el.selected = false;
@@ -88,7 +90,7 @@ const Sidebar = () => {
       id="sidebar"
       className={`overflow-x-hidden overflow-y-auto overflow-x-h shadow-none lg:drop-shadow-lg lg:py-10 flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-white ${
         toggle ? "" : "lg:w-1/5"
-      } lg:h-screen sticky top-0 text-gray-600 shadow-lg lg:shadow-lg border-b border-gray-200 lg:border-0`}
+      } lg:h-screen sticky top-0 lg:px-3 text-gray-600 shadow-lg lg:shadow-lg border-b border-gray-200 lg:border-0`}
     >
       {/* {!toggle ? (
         <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
