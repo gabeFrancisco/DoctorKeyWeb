@@ -19,25 +19,21 @@ const SidebarItem = (props: SidebarItemProps) => {
   return (
     <li
       className={`lg:my-1 flex flex-row items-center py-3 lg:py-1 px-5 w-full overflow-x-hidden rounded-lg ${
-        props.selected
-          ? "bg-green-400 text-white py-1"
-          : "font-normal text-gray-400"
+        props.selected ? "bg-green-400 text-white py-1" : " text-gray-400"
       }`}
     >
       <Link href={props.url} className="flex flex-row flex-1">
         <motion.div whileHover={{ x: 5 }}>
           <FontAwesomeIcon
-            className={`mr-2 fa-fw ${props.toggle ? "text-lg" : " text-lg"} ${
-              props.selected
-                ? "lg:font-bold text-white"
-                : "font-normal text-gray-400"
-            }lg:-2`}
+            className={`lg:mr-2 fa-fw ${
+              props.toggle ? "text-lg" : " text-lg"
+            } ${props.selected ? " text-white" : " text-gray-400"}lg:-2`}
             icon={props.icon}
           />
           {props.toggle ? null : (
             <span
               className={`hidden lg:inline ${
-                props.selected ? "lg:font-bold" : "font-thin text-gray-600"
+                props.selected ? "lg:font-bold" : "font-light text-gray-500"
               }`}
             >
               {props.title}

@@ -134,10 +134,10 @@ const Sidebar = () => {
         >
           <motion.div whileHover={{ x: 5 }}>
             <FontAwesomeIcon
-              className=" mr-3 text-xl text-gray-600"
+              className=" mr-3 text-xl text-gray-400"
               icon={toggle ? faArrowAltCircleRight : faArrowAltCircleLeft}
             />
-            <span className="text-ray-600">
+            <span className="text-gray-500">
               {toggle ? null : "Recolher Menu"}
             </span>
           </motion.div>

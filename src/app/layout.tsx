@@ -9,14 +9,17 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import { Providers } from "@/components/Provider/Provider";
 config.autoAddCss = false;
 
-const ubuntu = Archivo({ subsets: ["latin"], weight: ["400"] });
+const ubuntu = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "300", "200", "100", "500"],
+});
 
 export const metadata: Metadata = {
   title: "Doctor Key",
   description: "Seu gerenciador de chaves automotivas moderno e inteligente.",
   icons: ["favicon.ico"],
   // manifest: 'manifest.json',
-  themeColor: "#22C55E"
+  themeColor: "#22C55E",
 };
 
 export default function RootLayout({
