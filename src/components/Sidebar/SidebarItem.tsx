@@ -18,31 +18,26 @@ interface SidebarItemProps {
 const SidebarItem = (props: SidebarItemProps) => {
   return (
     <li
-      className={`lg:my-1 py-3 lg:py-1 px-5 w-full overflow-x-hidden ${
+      className={`lg:my-1 flex flex-row items-center py-3 lg:py-1 px-5 w-full overflow-x-hidden rounded-lg ${
         props.selected
           ? "bg-green-400 text-white py-1"
           : "font-normal text-gray-400"
       }`}
     >
-      <Link
-        className={`font-normal tracking-widest text-sm lg:text-md p-0 w-1 ${
-          props.toggle ? "bg-green" : "bg-white"
-        }`}
-        href={props.url}
-      >
+      <Link href={props.url} className="flex flex-row flex-1">
         <motion.div whileHover={{ x: 5 }}>
           <FontAwesomeIcon
-            className={`${props.toggle ? "text-lg" : "lg:hidden text-lg"} ${
+            className={`mr-2 fa-fw ${props.toggle ? "text-lg" : " text-lg"} ${
               props.selected
                 ? "lg:font-bold text-white"
                 : "font-normal text-gray-400"
-            } lg:py-2`}
+            }lg:-2`}
             icon={props.icon}
           />
           {props.toggle ? null : (
             <span
               className={`hidden lg:inline ${
-                props.selected ? "lg:font-bold" : "font-normal text-gray-600"
+                props.selected ? "lg:font-bold" : "font-thin text-gray-600"
               }`}
             >
               {props.title}
