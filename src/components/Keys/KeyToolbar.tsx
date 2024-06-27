@@ -45,7 +45,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
         <Link
           href="chaves/adicionar"
           className="rounded-sm shadow-lg bg-green-400 mr-1 py-0.5 h-6 px-3 
-            text-sm text-white hover:bg-green-600"
+            text-sm text-white hover:bg-green-500"
         >
           {/* New key button */}
           <FontAwesomeIcon icon={faPlus} className="mx-1" height={25} />
@@ -88,14 +88,14 @@ const KeyToolbar = (props: KeyToolbarProps) => {
           <input
             type="text"
             placeholder="Pesquisar por modelo"
-            className="rounded-sm border-2 block w-52 h-6 mt-1 lg:w-full p-0.5 text-sm"
+            className="rounded-sm border block w-52 h-6 mt-1 lg:w-full p-0.5"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <button
             onClick={handleSearch}
             className="rounded-sm shadow-lg bg-green-400 mx-1 py-0.5 h-6 my-1 px-3 
-            text-sm text-white hover:bg-green-600"
+            text-sm text-white hover:bg-green-500"
           >
             <FontAwesomeIcon icon={faSearch} height={25} />
           </button>
@@ -108,7 +108,7 @@ const KeyToolbar = (props: KeyToolbarProps) => {
               setSearch("");
               props.handleClear();
             }}
-            className="rounded-sm shadow-lg bg-blue-400 mx-1 px-3 my-1 h-6 text-sm text-white hover:bg-blue-600"
+            className="rounded-sm shadow-lg bg-blue-400 mx-1 px-3 my-1 h-6 text-sm text-white hover:bg-blue-500"
           >
             <FontAwesomeIcon icon={faSync} height={25} />
           </button>

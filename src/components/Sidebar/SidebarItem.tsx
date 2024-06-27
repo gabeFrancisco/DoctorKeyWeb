@@ -1,6 +1,9 @@
 "use client";
 
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+  IconDefinition,
+  findIconDefinition,
+} from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
@@ -10,7 +13,7 @@ import { motion } from "framer-motion";
 interface SidebarItemProps {
   title: string;
   url: string;
-  icon: IconDefinition;
+  icon: IconDefinition | React.ReactElement;
   toggle: boolean;
   selected: boolean;
 }
@@ -28,7 +31,7 @@ const SidebarItem = (props: SidebarItemProps) => {
             className={`lg:mr-2 fa-fw ${
               props.toggle ? "text-lg" : " text-lg"
             } ${props.selected ? " text-white" : " text-gray-400"}lg:-2`}
-            icon={props.icon}
+            icon={props.icon as IconDefinition}
           />
           {props.toggle ? null : (
             <span
