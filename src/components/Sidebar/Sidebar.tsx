@@ -89,36 +89,9 @@ const Sidebar = () => {
       id="sidebar"
       className={`overflow-x-hidden overflow-y-auto overflow-x-h shadow-none lg:drop-shadow-lg lg:py-10 flex flex-row-reverse lg:flex-col justify-evenly lg:justify-start bg-white ${
         toggle ? "" : "lg:w-1/5"
-      } lg:h-screen sticky top-0 lg:px-3 text-gray-600 shadow-lg lg:shadow-lg border-b border-gray-200 lg:border-0`}
+      } lg:h-screen sticky top-12 lg:top-0 lg:px-3 text-gray-600 shadow-lg lg:shadow-lg border-b border-gray-200 lg:border-0`}
     >
-      {/* {!toggle ? (
-        <div className="flex flex-row lg:flex-col items-center justify-center m-0 lg:m-5">
-          {status === "authenticated" && data !== null && (
-            <div className="relative lg:flex lg:relative flex-row lg:flex-col items-center">
-              <div className="hidden lg:flex w-0 lg:w-28 mb-0 lg:mb-5">
-                <Image
-                  className="rounded-full border-2 border-white"
-                  src={User}
-                  alt="User image"
-                />
-              </div>
-              <p className="hidden lg:inline-block text-center">
-                Bem vindo <i>{data.user.name}</i>
-              </p>
-              <a
-                onClick={async () => {
-                  signOut({ callbackUrl: "/login" });
-                }}
-                className="cursor-pointer hover:text-green-200 font-semibold"
-              >
-                Sair
-              </a>
-            </div>
-          )}
-        </div>
-      ) : null} */}
-
-      <ul className="flex flex-row justify-center items-center lg:flex-col lg:items-start bg-white">
+      <ul className="flex flex-row lg:sticky lg:top-4 justify-center items-center lg:flex-col lg:items-start bg-white">
         {links.map((link, key) => (
           <SidebarItem
             key={key}
