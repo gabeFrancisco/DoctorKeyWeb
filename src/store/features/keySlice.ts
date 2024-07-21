@@ -150,8 +150,6 @@ export const KeySlice = createSlice({
             : x
         );
 
-      // console.log(action.payload);
-      // console.log(filtered);
       state.filteredList = filtered;
     },
     searchKeyByName: (state, action: PayloadAction<string>) => {

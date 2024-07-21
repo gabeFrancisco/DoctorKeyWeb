@@ -48,6 +48,18 @@ export const getAllServiceOrders = createAsyncThunk(
   }
 );
 
+export const postServiceOrder = createAsyncThunk(
+  "serviceOrders/create",
+  async (data: {}, thunkAPI) => {
+    return await api.post("/api/serviceOrders", data).then((res) => {
+      if (res.status === 200) {
+        thunkAPI.dispatch(getAllServiceOrders());
+        return res.data;
+      }
+    });
+  }
+);
+
 export const ServiceOrderSlice = createSlice({
   name: "ServiceOrders",
   initialState,
