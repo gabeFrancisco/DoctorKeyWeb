@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../../public/logo.svg";
 import Image from "next/image";
 import UserProfile from "../UserProfile/UserProfile";
-import ComboBox from "../ComboBox/ComboBox";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import {
   getActualWorkGroup,
