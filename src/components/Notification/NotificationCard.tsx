@@ -10,16 +10,18 @@ const NotificationCard = ({ notification }: { notification: Notification }) => {
   const [read, setRead] = useState(notification.readed);
   const handleClick = () => {
     if (read) {
+      setRead(false);
       dispatch(
         setNotificationState({ notificationId: notification.id!, state: false })
-      ).then(() => setRead(false));
+      );
     } else {
+      setRead(true);
       dispatch(
         setNotificationState({
           notificationId: notification.id!,
           state: true,
         })
-      ).then(() => setRead(true));
+      );
     }
   };
 
